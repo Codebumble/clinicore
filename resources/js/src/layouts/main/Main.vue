@@ -189,13 +189,6 @@ export default {
           params  : {
             placement: 'left'
           }
-        },
-        {
-          target  : '.vs-button.buy-now',
-          content : 'Buy this awesomeness at affordable price!',
-          params  : {
-            placement: 'top'
-          }
         }
       ]
     }
