@@ -63,8 +63,8 @@
 export default {
   data () {
     return {
-      email: 'demo@demo.com',
-      password: 'demodemo',
+      email: 'i@fuck.you',
+      password: 'ifuckyou',
       checkbox_remember_me: false
     }
   },

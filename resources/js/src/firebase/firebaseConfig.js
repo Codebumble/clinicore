@@ -6,12 +6,12 @@ import firebase from 'firebase/app'
 
 // Initialize Firebase
 const config = {
-  apiKey: 'AIzaSyDFYIpJlgGZBHyjcaiIKgPAadzSofuYaCY',
-  authDomain: 'vuesax-admin.firebaseapp.com',
-  databaseURL: 'https://vuesax-admin.firebaseio.com',
-  projectId: 'vuesax-admin',
-  storageBucket: 'vuesax-admin.appspot.com',
-  messagingSenderId: '914001522995'
+  apiKey: 'AIzaSyCQKDXjoxx6BfAWP4iCR97IJOA8boNVVAs',
+  authDomain: 'hospih-devs.firebaseapp.com',
+  databaseURL: 'https://vhospih-devs.firebaseio.com',
+  projectId: 'hospih-devs',
+  storageBucket: 'hospih-devs.appspot.com',
+  messagingSenderId: '707176766258'
 }
 
 firebase.initializeApp(config)
