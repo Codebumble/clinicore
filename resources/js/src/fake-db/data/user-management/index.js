@@ -1,5 +1,16 @@
 import mock from '@/fake-db/mock.js'
 
+
+
+
+
+
+
+
+
+
+
+
 const data = {
   users: [
     {
@@ -11,8 +22,8 @@ const data = {
       'dob': '28 January 1998',
       'gender': 'male',
       'country': 'Bolivia',
-      'role': 'admin',
-      'status': 'active',
+      'role': 'Admin',
+      'status': 'Active',
       'is_verified': true,
       'department': 'sales',
       'company': 'WinDon Technologies Pvt Ltd',
@@ -656,11 +667,11 @@ mock.onGet('/api/user-management/users').reply(() => {
 })
 
 // GET: Fetch Single User Details
-mock.onGet(/\/api\/user-management\/users\/\d+/).reply((request) => {
+mock.onGet(/\/api\/user-management\/users\/\S+/).reply((request) => {
 
   const userId = request.url.substring(request.url.lastIndexOf('/') + 1)
 
-  const user = data.users.find((user) => user.id == userId)
+  const user = data.users.find((user) => user.username == userId)
 
   return user ? [200, JSON.parse(JSON.stringify(user))] : [404]
 })

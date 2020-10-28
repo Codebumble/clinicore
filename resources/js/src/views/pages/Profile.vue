@@ -1,577 +1,452 @@
 <!-- =========================================================================================
-  File Name: Profile.vue
-  Description: Profile Page
+  File Name: UserView.vue
+  Description: User View page
   ----------------------------------------------------------------------------------------
   Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: Pixinvent
+  Author: Pixinvent
   Author URL: http://www.themeforest.net/user/pixinvent
 ========================================================================================== -->
 
-
 <template>
-    <div id="profile-page">
+  <div id="page-user-view">
 
-        <!-- PROFILE HEADER -->
-        <div class="profile-header">
-            <div class="relative">
-                <div class="cover-container rounded-t-lg">
-                    <img :src="user_info.cover_img" alt="user-profile-cover" class="responsive block">
-                </div>
-                <div class="profile-img-container pointer-events-none">
-                    <div>
-                        <vs-avatar class="user-profile-img" :src="user_info.profile_img" size="85px" />
-                    </div>
-                    <div class="profile-actions pointer-events-auto flex">
-                        <vs-button icon-pack="feather" radius icon="icon-edit-2"></vs-button>
-                        <vs-button icon-pack="feather" radius icon="icon-settings" class="ml-2 lg:ml-4"></vs-button>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-center justify-end flex-wrap profile-header-nav p-6">
+    <vs-alert color="danger" title="User Not Found" :active.sync="user_not_found">
+      <span>User record with id: {{ $route.params.userId }} not found. </span>
+      <span>
+        <span>Check </span><router-link :to="{name:'page-user-list'}" class="text-inherit underline">All Users</router-link>
+      </span>
+    </vs-alert>
 
-                <div class="block sm:hidden">
-                    <feather-icon @click="isNavOpen = !isNavOpen" icon="AlignJustifyIcon" v-show="!isNavOpen" class="vx-navbar-toggler cursor-pointer" />
-                    <feather-icon icon="XIcon" v-show="isNavOpen" @click="isNavOpen = !isNavOpen" class="vx-navbar-toggler cursor-pointer" />
-                </div>
-                <div :class="isNavOpen ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
-                    <div class="text-sm sm:flex-grow">
-                        <ul class="sm:flex justify-around mt-8 w-full md:mt-0 md:ml-auto md:w-3/4">
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">Timeline</router-link></li>
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">About</router-link></li>
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">Photos</router-link></li>
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">Friends</router-link></li>
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">Videos</router-link></li>
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">Events</router-link></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- <vx-navbar> -->
-            <!-- </vx-navbar> -->
-        </div>
+    <div id="user-data" v-if="user_data">
 
-        <!-- COL AREA -->
+      <vx-card title="Account" class="mb-base">
+
+        <!-- Avatar -->
         <div class="vx-row">
-            <!-- COL 1 -->
-            <div class="vx-col w-full lg:w-1/4">
-                <!-- ABOUT CARD -->
-                <vx-card title="About" class="mt-base">
-                    <!-- ACTION SLOT -->
-                    <template slot="actions">
-                        <feather-icon icon="MoreHorizontalIcon"></feather-icon>
-                    </template>
 
-                    <!-- USER BIO -->
-                    <div class="user-bio">
-                        <p>Tart I love sugar plum I love oat cake. Sweet roll caramels I love jujubes. Topping cake wafer.</p>
-                    </div>
-
-                    <!-- OTEHR DATA -->
-                    <div class="mt-5">
-                        <h6>Joined:</h6>
-                        <p>November 15, 2015</p>
-                    </div>
-
-                    <div class="mt-5">
-                        <h6>Lives:</h6>
-                        <p>New York, USA</p>
-                    </div>
-
-                    <div class="mt-5">
-                        <h6>Email:</h6>
-                        <p>bucketful@fiendhead.org</p>
-                    </div>
-
-                    <div class="mt-5">
-                        <h6>Website:</h6>
-                        <p>www.pixinvent.com</p>
-                    </div>
-
-                    <div class="social-links flex mt-4">
-                        <feather-icon svgClasses="h-7 w-7 cursor-pointer bg-primary p-1 text-white rounded" class="mr-2" icon="FacebookIcon"></feather-icon>
-                        <feather-icon svgClasses="h-7 w-7 cursor-pointer bg-primary p-1 text-white rounded" class="mr-2" icon="TwitterIcon"></feather-icon>
-                        <feather-icon svgClasses="h-7 w-7 cursor-pointer bg-primary p-1 text-white rounded" class="mr-2" icon="InstagramIcon"></feather-icon>
-                    </div>
-                </vx-card>
-
-                <!-- PAGES SUGGESTION -->
-                <vx-card title="Suggested Pages" class="mt-base">
-                    <ul class="page-suggestions-list">
-                        <li class="page-suggestion flex items-center mb-4" v-for="page in suggestedPages" :key="page.index">
-                            <div class="mr-3"><vs-avatar class="m-0" :src="page.img" size="35px" /></div>
-                            <div class="leading-tight">
-                                <p class="font-medium">{{ page.title | capitalize }}</p>
-                                <span class="text-xs">{{ page.type | capitalize }}</span>
-                            </div>
-                            <div class="ml-auto">
-                                <div class="flex">
-                                    <feather-icon icon="StarIcon" svgClasses="h-4 w-4" class="mr-2 cursor-pointer"></feather-icon>
-                                </div>
-                                <!-- <span class="flex bg-primary rounded p-2 text-white"><feather-icon icon="UserPlusIcon" svgClasses="w-4 h-4"></feather-icon></span> -->
-                            </div>
-                        </li>
-                    </ul>
-                </vx-card>
-
-                <!-- TWITER FEEDS -->
-                <vx-card title="Twitter Feeds" class="mt-base">
-                    <ul class="twitter-feeds-list">
-                        <li class="twitter-feed" :class="{'mt-8': index}" v-for="(feed, index) in twitterFeeds" :key="feed.id">
-                            <!-- FEED HEADER -->
-                            <div class="twitter-feed-header flex items-center">
-                                <vs-avatar class="m-0" :src="feed.authorAvatar" size="35px" />
-                                <div class="leading-tight ml-3">
-                                    <p class="feed-author font-semibold">{{ feed.authorDisplayName }}</p>
-                                    <span class="flex items-center"><small>@{{ feed.authorUsername }}</small><feather-icon class="ml-1" icon="CheckIcon" svgClasses="h-3 w-3 bg-primary rounded-full text-white"></feather-icon></span>
-                                </div>
-                            </div>
-
-                            <!-- FEED CONTENT -->
-                            <p class="mt-4">{{ feed.content }}</p>
-                            <div class="tags-container" v-if="feed.tags.length">
-                                <span v-for="tag in feed.tags" :key="tag" id="tag" class="mr-2 text-primary">#{{tag}}</span>
-                            </div>
-                            <small class="mt-3 inline-block">{{ feed.time | date(true) }}</small>
-                        </li>
-                    </ul>
-                </vx-card>
+          <!-- Avatar Col -->
+          <div class="vx-col" id="avatar-col">
+            <div class="img-container mb-4">
+              <img :src="user_data.avatar" class="rounded w-full" />
             </div>
+          </div>
 
-            <!-- COL 2 -->
-            <div class="vx-col w-full lg:w-1/2">
-                <vx-card class="mt-base" v-for="(post, index) in userPosts" :key="index">
-                    <div>
-                        <!-- POST HEADER -->
-                        <div class="post-header flex justify-between mb-4">
-                            <div class="flex items-center">
-                                <div>
-                                    <vs-avatar class="m-0" :src="userLatestPhotos[0]" size="45px"></vs-avatar>
-                                </div>
-                                <div class="ml-4">
-                                    <h6>{{ post.author }}</h6>
-                                    <small>{{ post.time | date(true) }} at {{ post.time | time }}</small>
-                                </div>
-                            </div>
-                            <div class="flex">
-                                <feather-icon class="ml-4" icon="HeartIcon" :svgClasses="{'text-danger fill-current stroke-current': post.isLiked}"></feather-icon>
-                            </div>
-                        </div>
+          <!-- Information - Col 1 -->
+          <div class="vx-col flex-1" id="account-info-col-1">
+            <table>
+              <tr>
+                <td class="font-semibold">Username</td>
+                <td>{{ user_data.username }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Name</td>
+                <td>{{ user_data.name }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Email</td>
+                <td>{{ user_data.email }}</td>
+              </tr>
+            </table>
+          </div>
+          <!-- /Information - Col 1 -->
 
-                        <!-- POST CONTENT -->
-                        <div class="post-content">
-                            <p>{{ post.text }}</p>
-                        </div>
-                        <div class="post-media-container mb-6 mt-4">
-                            <ul class="flex post-media-list">
-                                <li class="post-media m-1 w-full" v-for="(media, mediaIdex) in post.media.slice(0, 2)" :key="mediaIdex">
-                                    <img class="responsive rounded" :src="media.img" alt="user-upload" v-if="mediaType(media) == 'image'">
-                                    <video-player ref="player" class="media-video-player" :options="playerOptions(media)" v-else-if="mediaType(media) == 'video'" v-once />
-                                    <span class="text-lg text-primary" v-else>Unknown Media Type</span>
-                                </li>
-                            </ul>
-                            <span class="flex justify-end" v-if="post.media.length > 2">
-                                <a class="inline-flex items-center text-sm" href=""><span>View All</span> <feather-icon :icon="$vs.rtl ? 'ChevronsLeftIcon' : 'ChevronsRightIcon'" svgClasses="h-4 w-4"></feather-icon></a>
-                            </span>
-                        </div>
+          <!-- Information - Col 2 -->
+          <div class="vx-col flex-1" id="account-info-col-2">
+            <table>
+              <tr>
+                <td class="font-semibold">Status</td>
+                <td><div class="badge badge-primary">{{ user_data.status }}</div></td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Role</td>
+                <td>{{ user_data.role }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Company</td>
+                <td>{{ user_data.company }}</td>
+              </tr>
+            </table>
+          </div>
+          <!-- /Information - Col 2 -->
+          <div class="vx-col w-full flex" id="account-manage-buttons">
+            <vs-button icon-pack="feather" icon="icon-edit" class="mr-4" :to="{name: 'app-user-edit', params: { userId: $route.params.userId }}">Edit</vs-button>
+            <vs-button type="border" color="danger" icon-pack="feather" icon="icon-trash" @click="confirmDeleteRecord">Delete</vs-button>
+          </div>
 
-                        <!-- POST ACTION DATA -->
-                        <div>
-                            <div class="flex justify-between">
-                                <div class="flex items-center">
-                                    <div class="flex items-center"><feather-icon class="mr-2" icon="HeartIcon" svgClasses="h-5 w-5"></feather-icon> <span>{{ post.likes }}</span></div>
-                                    <ul class="users-liked user-list ml-3 sm:ml-6">
-                                        <li v-for="(user, userIndex) in post.usersLiked" :key="userIndex">
-                                            <vx-tooltip :text="user.name" position="bottom">
-                                                <vs-avatar :src="user.img" size="30px" class="border-2 border-white border-solid -m-1"></vs-avatar>
-                                            </vx-tooltip>
-                                        </li>
-                                    </ul>
-                                    <small class="ml-2">+{{ post.likes - 5 }} more</small>
-                                </div>
-                                <div class="flex items-center"><feather-icon class="mr-2" icon="MessageSquareIcon" svgClasses="h-5 w-5"></feather-icon> <span>{{ post.comments }}</span></div>
-                            </div>
-                            <div class="comments-container mt-4">
-                                <ul class="user-comments-list">
-                                    <li v-for="(commentedUser, commentIndex) in post.usersCommented.slice(0, 2)" :key="commentIndex" class="commented-user flex items-center mb-4">
-                                        <div class="mr-3"><vs-avatar class="m-0" :src="commentedUser.img" size="30px" /></div>
-                                        <div class="leading-tight">
-                                            <p class="font-medium">{{ commentedUser.author }}</p>
-                                            <span class="text-xs">{{ commentedUser.comment }}</span>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <div class="flex">
-                                                <feather-icon icon="HeartIcon" svgClasses="h-4 w-4" class="mr-2 cursor-pointer"></feather-icon>
-                                                <feather-icon icon="MessageSquareIcon" svgClasses="h-4 w-4" class="cursor-pointer"></feather-icon>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <span class="flex justify-end" v-if="post.usersCommented.length > 2">
-                                    <a class="inline-flex items-center text-sm" href=""><span>View All</span> <feather-icon :icon="$vs.rtl ? 'ChevronsLeftIcon' : 'ChevronsRightIcon'" svgClasses="h-4 w-4"></feather-icon></a>
-                                </span>
-                            </div>
-                            <div class="post-comment">
-                                <vs-textarea label="Add Comment" class="mb-2" v-model="post.commentbox" />
-                                <vs-button size="small">Post Comment</vs-button>
-                            </div>
-                        </div>
-                    </div>
-                </vx-card>
-            </div>
-
-            <!-- COL 3 -->
-            <div class="vx-col w-full lg:w-1/4">
-
-                <!-- LATEST PHOTOS -->
-                <vx-card title="Latest Photos" class="mt-base">
-                    <div class="vx-row pt-2">
-                        <div class="vx-col w-1/2 sm:w-1/2 md:w-1/3 xl:1/4" v-for="(img, index) in userLatestPhotos" :key="index">
-                            <img :src="img" alt="latest-upload" class="rounded mb-4 user-latest-image responsive">
-                        </div>
-                    </div>
-                </vx-card>
-
-                <vx-card title="Suggestions" class="mt-base">
-                    <!-- ACTION SLOT -->
-                    <template slot="actions">
-                        <feather-icon icon="MoreHorizontalIcon"></feather-icon>
-                    </template>
-
-                    <!-- FRIENDS LIST -->
-                    <ul class="friend-suggesions-list">
-                        <li class="friend-suggestion flex items-center mb-4" v-for="(friend, index) in suggestedFriends" :key="index">
-                            <div class="mr-3"><vs-avatar class="m-0" :src="friend.avatar" size="35px" /></div>
-                            <div class="leading-tight">
-                                <p class="font-medium">{{ friend.name }}</p>
-                                <span class="text-xs">{{ friend.mutualFriends }} Mutual Friends</span>
-                            </div>
-                            <div class="ml-auto cursor-pointer">
-                                <vs-button radius type="border" icon-pack="feather" icon="icon-user-plus" />
-                            </div>
-                        </li>
-                    </ul>
-                    <template slot="footer">
-                    <vs-button icon-pack="feather" icon="icon-plus" class="w-full">Load More</vs-button>
-                    </template>
-                </vx-card>
-
-                <vx-card title="Polls" class="mt-base">
-                    <ul class="polls-list">
-                        <li class="poll" v-for="poll in polls" :key="poll.id">
-                            <h6 class="poll-title">{{ poll.title }}</h6>
-                            <ul class="poll-options-result">
-                                <li class="poll-option mt-6" v-for="option in poll.options" :key="option.value">
-                                    <div class="flex">
-                                        <vs-radio v-model="userPoll" :vs-value="option.value">{{ option.text | capitalize }}</vs-radio>
-                                        <span class="block ml-auto">{{ option.voted }}%</span>
-                                    </div>
-                                    <vs-progress :percent="option.voted"></vs-progress>
-                                    <ul class="users-voted user-list mt-2">
-                                        <li v-for="(user, userIndex) in option.usersVoted" :key="userIndex">
-                                            <vx-tooltip :text="user.name" position="bottom">
-                                                <vs-avatar :src="user.avatar" size="30px" class="border-2 border-white border-solid -m-1"></vs-avatar>
-                                            </vx-tooltip>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <vs-button class="mt-5 w-full">Vote Now</vs-button>
-                        </li>
-                    </ul>
-                </vx-card>
-            </div>
         </div>
+
+      </vx-card>
+
+      <div class="vx-row">
+        <div class="vx-col lg:w-1/2 w-full">
+          <vx-card title="Information" class="mb-base">
+            <table>
+              <tr>
+                <td class="font-semibold">Birth Date</td>
+                <td>{{ user_data.dob }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Mobile</td>
+                <td>{{ user_data.mobile }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Website</td>
+                <td>{{ user_data.website }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Languages</td>
+                <td>{{ user_data.languages_known.join(", ") }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Gender</td>
+                <td>{{ user_data.gender }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Contact</td>
+                <td>{{ user_data.contact_options.join(", ") }}</td>
+              </tr>
+            </table>
+          </vx-card>
+        </div>
+
+        <div class="vx-col lg:w-1/2 w-full">
+          <vx-card title="Social Links" class="mb-base">
+            <table>
+              <tr>
+                <td class="font-semibold">Twitter</td>
+                <td>{{ user_data.social_links.twitter }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Facebook</td>
+                <td>{{ user_data.social_links.facebook }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Instagram</td>
+                <td>{{ user_data.social_links.instagram }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Github</td>
+                <td>{{ user_data.social_links.github }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">CodePen</td>
+                <td>{{ user_data.social_links.codepen }}</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Slack</td>
+                <td>{{ user_data.social_links.slack }}</td>
+              </tr>
+            </table>
+          </vx-card>
+        </div>
+      </div>
+
+      <!-- Permissions -->
+      <vx-card>
 
         <div class="vx-row">
-            <div class="vx-col w-full">
-                <div class="flex justify-center mt-base">
-                    <vs-button id="button-load-more-posts" class="vs-con-loading__container" @click="loadContent">Load More</vs-button>
-                </div>
+          <div class="vx-col w-full">
+            <div class="flex items-end px-3">
+              <feather-icon svgClasses="w-6 h-6" icon="LockIcon" class="mr-2" />
+              <span class="font-medium text-lg leading-none">Permissions</span>
             </div>
+            <vs-divider />
+          </div>
         </div>
+
+        <div class="block overflow-x-auto">
+          <table class="w-full permissions-table">
+            <tr>
+              <!--
+                You can also use `Object.keys(Object.values(data_local.permissions)[0])` this logic if you consider,
+                our data structure. You just have to loop over above variable to get table headers.
+                Below we made it simple. So, everyone can understand.
+               -->
+              <th class="font-semibold text-base text-left px-3 py-2" v-for="heading in ['Module', 'Read', 'Write', 'Create', 'Delete']" :key="heading">{{ heading }}</th>
+            </tr>
+
+            <tr v-for="(val, name) in user_data.permissions" :key="name">
+              <td class="px-3 py-2">{{ name }}</td>
+              <td v-for="(permission, name) in val" class="px-3 py-2" :key="name+permission">
+                <vs-checkbox v-model="val[name]" class="pointer-events-none" />
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </vx-card>
     </div>
+  </div>
 </template>
 
 <script>
-import { videoPlayer } from 'vue-video-player'
-import 'video.js/dist/video-js.css'
+import moduleUserManagement from '@/store/user-management/moduleUserManagement.js'
 
 export default {
   data () {
     return {
-      isNavOpen: false,
-      userPoll: '',
-      user_info: {
-        profile_img: require('@assets/images/profile/user-uploads/user-13.jpg'),
-        cover_img: require('@assets/images/profile/user-uploads/cover.jpg')
-      },
-      mediaExtensions: { img: ['jpg', 'jpeg', 'png', 'bmp', 'gif', 'exif', 'tiff'], video: ['avi', 'flv', 'wmv', 'mov', 'mp4', '3gp'] },
-      suggestedFriends: [
-        { name: 'Carissa Dolle', avatar: require('@assets/images/portrait/small/avatar-s-5.jpg'),  mutualFriends: 6 },
-        { name: 'Liliana Pecor', avatar: require('@assets/images/portrait/small/avatar-s-6.jpg'),  mutualFriends: 3 },
-        { name: 'Isidra Strunk', avatar: require('@assets/images/portrait/small/avatar-s-7.jpg'),  mutualFriends: 2 },
-        { name: 'Gerald Licea',  avatar: require('@assets/images/portrait/small/avatar-s-8.jpg'),  mutualFriends: 1 },
-        { name: 'Kelle Herrick', avatar: require('@assets/images/portrait/small/avatar-s-9.jpg'),  mutualFriends: 1 },
-        { name: 'Cesar Lee',     avatar: require('@assets/images/portrait/small/avatar-s-10.jpg'), mutualFriends: 1 },
-        { name: 'John Doe',      avatar: require('@assets/images/portrait/small/avatar-s-11.jpg'), mutualFriends: 1 },
-        { name: 'Tonia Seabold', avatar: require('@assets/images/portrait/small/avatar-s-12.jpg'), mutualFriends: 1 }
-      ],
-      userLatestPhotos: [
-        require('@assets/images/profile/user-uploads/user-01.jpg'),
-        require('@assets/images/profile/user-uploads/user-02.jpg'),
-        require('@assets/images/profile/user-uploads/user-04.jpg'),
-        require('@assets/images/profile/user-uploads/user-03.jpg'),
-        require('@assets/images/profile/user-uploads/user-05.jpg'),
-        require('@assets/images/profile/user-uploads/user-06.jpg'),
-        require('@assets/images/profile/user-uploads/user-07.jpg'),
-        require('@assets/images/profile/user-uploads/user-08.jpg'),
-        require('@assets/images/profile/user-uploads/user-09.jpg')
-      ],
-      userPosts: [
-        {
-          author     : 'Leeanna Alvord',
-          time       : 'Mon Dec 12 2018 07:46:05 GMT+0000 (GMT)',
-          isLiked    : true,
-          text       : 'I love jujubes wafer pie ice cream tiramisu. Chocolate I love pastry pastry sesame snaps wafer. Pastry topping biscuit lollipop topping I love lemon drops sweet roll bonbon. Brownie donut icing.',
-          media      : [{ img: require('@assets/images/profile/post-media/2.jpg') }],
-          likes      : 145,
-          comments   : 77,
-          usersLiked : [
-            { name: 'Trina Lynes',       img: require('@assets/images/portrait/small/avatar-s-1.jpg') },
-            { name: 'Lilian Nenez',      img: require('@assets/images/portrait/small/avatar-s-2.jpg') },
-            { name: 'Alberto Glotzbach', img: require('@assets/images/portrait/small/avatar-s-3.jpg') },
-            { name: 'George Nordick',    img: require('@assets/images/portrait/small/avatar-s-4.jpg') },
-            { name: 'Vennie Mostowy',    img: require('@assets/images/portrait/small/avatar-s-5.jpg') }
-          ],
-          commentbox : '',
-          usersCommented: [
-            {
-              comment : 'orthoplumbate morningtide naphthaline exarteritis',
-              author  : 'Kitty Allanson',
-              img     : require('@assets/images/portrait/small/avatar-s-6.jpg'),
-              time    : 'Mon Dec 10 2018 08:56:05 GMT+0000 (GMT)'
-            },
-            {
-              comment : 'blockiness pandemy metaxylene speckle coppy',
-              author  : 'Jeanie Bulgrin',
-              img     : require('@assets/images/portrait/small/avatar-s-8.jpg'),
-              time    : 'Mon Dec 10 2018 08:55:00 GMT+0000 (GMT)'
-            }
-          ]
-        },
-        {
-          author     : 'Leeanna Alvord',
-          time       : 'Mon Dec 11 2018 08:05:05 GMT+0000 (GMT)',
-          isLiked    : false,
-          text       : 'Candy jelly beans powder brownie biscuit. Jelly marzipan oat cake cake. Cupcake I love wafer cake. Halvah I love powder jelly I love cheesecake cotton candy tiramisu brownie.',
-          media      : [{ img: require('@assets/images/profile/post-media/25.jpg') }],
-          likes      : 276,
-          comments   : 105,
-          usersLiked : [
-            { name: 'Lai Lewandowski',   img: require('@assets/images/portrait/small/avatar-s-6.jpg')  },
-            { name: 'Elicia Rieske',     img: require('@assets/images/portrait/small/avatar-s-7.jpg')  },
-            { name: 'Darcey Nooner',     img: require('@assets/images/portrait/small/avatar-s-8.jpg')  },
-            { name: 'Julee Rossignol',   img: require('@assets/images/portrait/small/avatar-s-10.jpg') },
-            { name: 'Jeffrey Gerondale', img: require('@assets/images/portrait/small/avatar-s-9.jpg')  }
-          ],
-          commentbox: '',
-          usersCommented: [
-            {
-              comment : 'I love cupcake danish jujubes sweet.',
-              author  : 'Darcey Nooner',
-              img     : require('@assets/images/portrait/small/avatar-s-8.jpg'),
-              time    : 'Mon Dec 11 2018 09:56:05 GMT+0000 (GMT)'
-            },
-            {
-              comment : 'Wafer I love brownie jelly bonbon tart apple pie',
-              author  : 'Lai Lewandowski',
-              img     : require('@assets/images/portrait/small/avatar-s-6.jpg'),
-              time    : 'Mon Dec 10 2018 09:50:00 GMT+0000 (GMT)'
-            }
-          ]
-        },
-        {
-          author     : 'Leeanna Alvord',
-          time       : 'Mon Dec 10 2018 12:05:05 GMT+0000 (GMT)',
-          isLiked    : false,
-          text       : 'Wafer I love brownie jelly bonbon tart. Candy jelly beans powder brownie biscuit. Jelly marzipan oat cake cake.',
-          media      : [{ sources: [{ type: 'video/mp4', src: 'http://vjs.zencdn.net/v/oceans.mp4' }], poster: 'https://goo.gl/xcCsDd' }],
-          likes      : 269,
-          comments   : 98,
-          usersLiked : [
-            { name: 'Vennie Mostowy',  img: require('@assets/images/portrait/small/avatar-s-5.jpg')  },
-            { name: 'Elicia Rieske',   img: require('@assets/images/portrait/small/avatar-s-7.jpg')  },
-            { name: 'Julee Rossignol', img: require('@assets/images/portrait/small/avatar-s-10.jpg') },
-            { name: 'Darcey Nooner',   img: require('@assets/images/portrait/small/avatar-s-8.jpg')  },
-            { name: 'Elicia Rieske',   img: require('@assets/images/portrait/small/avatar-s-7.jpg')  }
-          ],
-          commentbox: '',
-          usersCommented: [
-            {
-              comment : 'I love cupcake danish jujubes sweet.',
-              author  : 'Darcey Nooner',
-              img     : require('@assets/images/portrait/small/avatar-s-8.jpg'),
-              time    : 'Mon Dec 11 2018 09:56:05 GMT+0000 (GMT)'
-            },
-            {
-              comment : 'Wafer I love brownie jelly bonbon tart apple pie',
-              author  : 'Lai Lewandowski',
-              img     : require('@assets/images/portrait/small/avatar-s-6.jpg'),
-              time    : 'Mon Dec 10 2018 09:50:00 GMT+0000 (GMT)'
-            }
-          ]
-        }
-      ],
-      suggestedPages: [
-        { img: require('@assets/images/profile/pages/page-09.jpg'), title: 'Rockose',      type: 'Company'          },
-        { img: require('@assets/images/profile/pages/page-08.jpg'), title: 'The Devil\'s', type: 'Clothing Store'   },
-        { img: require('@assets/images/profile/pages/page-03.jpg'), title: 'The Magician', type: 'Public Figure'    },
-        { img: require('@assets/images/profile/pages/page-02.jpg'), title: 'AC/DC',        type: 'Music'            },
-        { img: require('@assets/images/profile/pages/page-07.jpg'), title: 'eat hard',     type: 'restaurant / bar' },
-        { img: require('@assets/images/profile/pages/page-04.jpg'), title: 'B4B',          type: 'Beauty Store'     },
-        { img: require('@assets/images/profile/pages/page-05.jpg'), title: 'Kylie Jenner', type: 'Public Figure'    },
-        { img: require('@assets/images/profile/pages/page-01.jpg'), title: 'RDJ',          type: 'Actor'            },
-        { img: require('@assets/images/profile/pages/page-06.jpg'), title: 'Taylor Swift', type: 'Music'            }
-      ],
-      polls: [
-        {
-          id: 59,
-          title: 'Who is the best actor in Marvel Cinematic Universe?',
-          options: [
-            {
-              text       : 'RDJ',
-              value      : 'rdj',
-              voted      : 58,
-              usersVoted : [
-                { name: 'Tonia Seabold',  avatar: require('@assets/images/portrait/small/avatar-s-12.jpg') },
-                { name: 'Carissa Dolle',  avatar: require('@assets/images/portrait/small/avatar-s-5.jpg') },
-                { name: 'Kelle Herrick',  avatar: require('@assets/images/portrait/small/avatar-s-9.jpg') },
-                { name: 'Len Bregantini', avatar: require('@assets/images/portrait/small/avatar-s-10.jpg') },
-                { name: 'John Doe',       avatar: require('@assets/images/portrait/small/avatar-s-11.jpg') },
-                { name: 'Tonia Seabold',  avatar: require('@assets/images/portrait/small/avatar-s-12.jpg') },
-                { name: 'Dirk Fornili',   avatar: require('@assets/images/portrait/small/avatar-s-2.jpg') }
-              ]
-            },
-            {
-              text       : 'Chris Hemsworth',
-              value      : 'chris hemsworth',
-              voted      : 16,
-              usersVoted : [
-                { name: 'Liliana Pecor',      avatar: require('@assets/images/portrait/small/avatar-s-6.jpg') },
-                { name: 'Kasandra Nalevanko', avatar: require('@assets/images/portrait/small/avatar-s-1.jpg') }
-              ]
-            },
-            {
-              text       : 'mark ruffalo',
-              value      : 'mark ruffalo',
-              voted      : 8,
-              usersVoted : [{ name: 'Lorelei Lacsamana', avatar: require('@assets/images/portrait/small/avatar-s-4.jpg') }]
-            },
-            {
-              text       : 'Chris Evans',
-              value      : 'chris evans',
-              voted      : 16,
-              usersVoted : [
-                { name: 'Jeanie Bulgrin', avatar: require('@assets/images/portrait/small/avatar-s-8.jpg') },
-                { name: 'Graig Muckey',   avatar: require('@assets/images/portrait/small/avatar-s-3.jpg') }
-              ]
-            }
-          ]
-
-        }
-      ],
-      twitterFeeds: [
-        {
-          authorAvatar      : require('@assets/images/portrait/small/avatar-s-12.jpg'),
-          authorUsername    : 'tiana59',
-          authorDisplayName : 'Tiana Vercetti',
-          content           : 'I love cookie chupa chups sweet tart apple pie chocolate bar. Jelly-o oat cake chupa chups.',
-          tags              : ['js', 'vuejs'],
-          time              : 'Mon Dec 12 2018 07:46:05 GMT+0000 (GMT)'
-        },
-        {
-          authorAvatar      : require('@assets/images/portrait/small/avatar-s-12.jpg'),
-          authorUsername    : 'tiana59',
-          authorDisplayName : 'Tiana Vercetti',
-          content           : 'Carrot cake cake gummies I love I love tiramisu. Biscuit marzipan cookie lemon drops.',
-          tags              : ['python'],
-          time              : 'Mon Dec 11 2018 01:05:05 GMT+0000 (GMT)'
-        },
-        {
-          authorAvatar      : require('@assets/images/portrait/small/avatar-s-12.jpg'),
-          authorUsername    : 'tiana59',
-          authorDisplayName : 'Tiana Vercetti',
-          content           : 'I love cookie chupa chups sweet tart apple pie chocolate bar. Jelly-o oat cake chupa chups .',
-          tags              : [],
-          time              : 'Mon Dec 10 2018 03:33:05 GMT+0000 (GMT)'
-        },
-        {
-          authorAvatar      : require('@assets/images/portrait/small/avatar-s-12.jpg'),
-          authorUsername    : 'tiana59',
-          authorDisplayName : 'Tiana Vercetti',
-          content           : 'Muffin candy caramels. I love caramels tiramisu jelly. Pie I love wafer. Chocolate cake lollipop tootsie roll cake.',
-          tags              : ['django', 'vuejs'],
-          time              : 'Mon Dec 9 2018 08:47:05 GMT+0000 (GMT)'
-        }
-      ],
-      wasSidebarOpen: null
+      user_data: null,
+      user_not_found: false
     }
   },
   computed: {
-    mediaType () {
-      return (media) => {
-        if (media.img) {
-          const ext = media.img.split('.').pop()
-          if (this.mediaExtensions.img.includes(ext)) return 'image'
-        } else if (media.sources && media.poster) {
-          // other validations
-          return 'video'
-        }
+    userAddress () {
+      let str = ''
+      for (const field in this.user_data.location) {
+        str += `${field  } `
       }
-    },
-    playerOptions () {
-      return (media) => {
-        return {
-          height: '360',
-          fluid: true,
-          autoplay: false,
-          muted: true,
-          language: 'en',
-          playbackRates: [0.7, 1.0, 1.5, 2.0],
-          sources: media.sources,
-          poster: media.poster
-        }
-      }
+      return str
     }
   },
   methods: {
-    loadContent () {
-      this.$vs.loading({
-        background: this.backgroundLoading,
-        color: this.colorLoading,
-        container: '#button-load-more-posts',
-        scale: 0.45
+    confirmDeleteRecord () {
+      this.$vs.dialog({
+        type: 'confirm',
+        color: 'danger',
+        title: 'Confirm Delete',
+        text: `You are about to delete "${this.user_data.username}"`,
+        accept: this.deleteRecord,
+        acceptText: 'Delete'
       })
-      setTimeout(() => {
-        this.$vs.loading.close('#button-load-more-posts > .con-vs-loading')
-      }, 3000)
+    },
+    deleteRecord () {
+      /* Below two lines are just for demo purpose */
+      this.$router.push({name:'app-user-list'})
+      this.showDeleteSuccess()
+
+      /* UnComment below lines for enabling true flow if deleting user */
+      // this.$store.dispatch("userManagement/removeRecord", this.user_data.id)
+      //   .then(()   => { this.$router.push({name:'app-user-list'}); this.showDeleteSuccess() })
+      //   .catch(err => { console.error(err)       })
+    },
+    showDeleteSuccess () {
+      this.$vs.notify({
+        color: 'success',
+        title: 'User Deleted',
+        text: 'The selected user was successfully deleted'
+      })
     }
   },
-  components: {
-    videoPlayer
-  },
-  mounted () {
-    this.wasSidebarOpen = this.$store.state.reduceButton
-    this.$store.commit('TOGGLE_REDUCE_BUTTON', true)
-  },
-  beforeDestroy () {
-    if (!this.wasSidebarOpen) this.$store.commit('TOGGLE_REDUCE_BUTTON', false)
+  created () {
+    // Register Module UserManagement Module
+    if (!moduleUserManagement.isRegistered) {
+      this.$store.registerModule('userManagement', moduleUserManagement)
+      moduleUserManagement.isRegistered = true
+    }
+
+    const userId = this.$route.params.userId
+    this.$store.dispatch('userManagement/fetchUser', userId)
+      .then(res => { this.user_data = res.data })
+      .catch(err => {
+        if (err.response.status === 404) {
+          this.user_not_found = true
+          return
+        }
+        console.error(err)
+      })
   }
 }
 
+
 </script>
 
-
 <style lang="scss">
-@import "@sass/vuexy/pages/profile.scss";
+
+// .badge {
+//   display : inline-block;
+//   padding : 0.35em 0.4em;
+//   font-size : 80%;
+//   font-weight : 700;
+//   line-height : 1;
+//   text-align : center;
+//   white-space : nowrap;
+//   vertical-align : baseline;
+//   border-radius : 0.25rem;
+//   -webkit-transition : color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+//   transition : color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+// }
+// @media (prefers-reduced-motion: reduce) {
+//   .badge {
+//     -webkit-transition : none;
+//             transition : none;
+//   }
+// }
+// a.badge:hover, a.badge:focus {
+//   text-decoration : none;
+// }
+// .badge:empty {
+//   display : none;
+// }
+
+// .btn .badge {
+//   position : relative;
+//   top : -1px;
+// }
+
+// .badge-pill {
+//   padding-right : 0.6em;
+//   padding-left : 0.6em;
+//   border-radius : 10rem;
+// }
+
+// .badge-primary {
+//   color : #FFFFFF;
+//   background-color : #7367F0;
+// }
+// a.badge-primary:hover, a.badge-primary:focus {
+//   color : #FFFFFF;
+//   background-color : #4839EB;
+// }
+// a.badge-primary:focus, a.badge-primary.focus {
+//   outline : 0;
+//   box-shadow : 0 0 0 0.2rem rgba(115, 103, 240, 0.5);
+// }
+
+// .badge-secondary {
+//   color : #2A2E30;
+//   background-color : #B8C2CC;
+// }
+// a.badge-secondary:hover, a.badge-secondary:focus {
+//   color : #2A2E30;
+//   background-color : #9AA9B7;
+// }
+// a.badge-secondary:focus, a.badge-secondary.focus {
+//   outline : 0;
+//   box-shadow : 0 0 0 0.2rem rgba(184, 194, 204, 0.5);
+// }
+
+// .badge-success {
+//   color : #FFFFFF;
+//   background-color : #28C76F;
+// }
+// a.badge-success:hover, a.badge-success:focus {
+//   color : #FFFFFF;
+//   background-color : #1F9D57;
+// }
+// a.badge-success:focus, a.badge-success.focus {
+//   outline : 0;
+//   box-shadow : 0 0 0 0.2rem rgba(40, 199, 111, 0.5);
+// }
+
+// .badge-info {
+//   color : #FFFFFF;
+//   background-color : #00CFE8;
+// }
+// a.badge-info:hover, a.badge-info:focus {
+//   color : #FFFFFF;
+//   background-color : #00A1B5;
+// }
+// a.badge-info:focus, a.badge-info.focus {
+//   outline : 0;
+//   box-shadow : 0 0 0 0.2rem rgba(0, 207, 232, 0.5);
+// }
+
+// .badge-warning {
+//   color : #2A2E30;
+//   background-color : #FF9F43;
+// }
+// a.badge-warning:hover, a.badge-warning:focus {
+//   color : #2A2E30;
+//   background-color : #FF8510;
+// }
+// a.badge-warning:focus, a.badge-warning.focus {
+//   outline : 0;
+//   box-shadow : 0 0 0 0.2rem rgba(255, 159, 67, 0.5);
+// }
+
+// .badge-danger {
+//   color : #FFFFFF;
+//   background-color : #EA5455;
+// }
+// a.badge-danger:hover, a.badge-danger:focus {
+//   color : #FFFFFF;
+//   background-color : #E42728;
+// }
+// a.badge-danger:focus, a.badge-danger.focus {
+//   outline : 0;
+//   box-shadow : 0 0 0 0.2rem rgba(234, 84, 85, 0.5);
+// }
+
+// .badge-light {
+//   color : #2A2E30;
+//   background-color : #BABFC7;
+// }
+// a.badge-light:hover, a.badge-light:focus {
+//   color : #2A2E30;
+//   background-color : #9EA5B0;
+// }
+// a.badge-light:focus, a.badge-light.focus {
+//   outline : 0;
+//   box-shadow : 0 0 0 0.2rem rgba(186, 191, 199, 0.5);
+// }
+
+// .badge-dark {
+//   color : #FFFFFF;
+//   background-color : #1E1E1E;
+// }
+// a.badge-dark:hover, a.badge-dark:focus {
+//   color : #FFFFFF;
+//   background-color : #050505;
+// }
+// a.badge-dark:focus, a.badge-dark.focus {
+//   outline : 0;
+//   box-shadow : 0 0 0 0.2rem rgba(30, 30, 30, 0.5);
+// }
+
+
+
+
+
+#avatar-col {
+  width: 10rem;
+}
+
+#page-user-view {
+  table {
+    td {
+      vertical-align: top;
+      min-width: 140px;
+      padding-bottom: .8rem;
+      word-break: break-all;
+    }
+
+    &:not(.permissions-table) {
+      td {
+        @media screen and (max-width:370px) {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// #account-info-col-1 {
+//   // flex-grow: 1;
+//   width: 30rem !important;
+//   @media screen and (min-width:1200px) {
+//     & {
+//       flex-grow: unset !important;
+//     }
+//   }
+// }
+
+
+@media screen and (min-width:1201px) and (max-width:1211px),
+only screen and (min-width:636px) and (max-width:991px) {
+  #account-info-col-1 {
+    width: calc(100% - 12rem) !important;
+  }
+
+  // #account-manage-buttons {
+  //   width: 12rem !important;
+  //   flex-direction: column;
+
+  //   > button {
+  //     margin-right: 0 !important;
+  //     margin-bottom: 1rem;
+  //   }
+  // }
+
+}
+
 </style>

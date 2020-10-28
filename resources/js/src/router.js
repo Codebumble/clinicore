@@ -876,13 +876,12 @@ const router = new Router({
         // Pages Routes
         // =============================================================================
         {
-          path: '/pages/profile',
+          path: '/profile/:userId',
           name: 'page-profile',
           component: () => import('@/views/pages/Profile.vue'),
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Pages' },
               { title: 'Profile', active: true }
             ],
             pageTitle: 'Profile',
