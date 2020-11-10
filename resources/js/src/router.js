@@ -887,7 +887,21 @@ const router = new Router({
             pageTitle: 'Profile',
             rule: 'editor'
           }
-        },
+		},
+		{
+			path: '/profile/:userId/edit',
+			name: 'page-profile-edit',
+			component: () => import('@/views/pages/ProfileEdit.vue'),
+			meta: {
+			  breadcrumb: [
+				{ title: 'Home', url: '/' },
+				{ title: 'Profile' },
+				{ title: 'Edit', active: true }
+			  ],
+			  pageTitle: 'User Edit',
+			  rule: 'editor'
+			}
+		  },
         {
           path: '/pages/user-settings',
           name: 'page-user-settings',
@@ -901,7 +915,20 @@ const router = new Router({
             pageTitle: 'Settings',
             rule: 'editor'
           }
-        },
+		},
+		{
+			path: '/test',
+			name: 'page-test',
+			component: () => import('@/views/pages/testshakil.vue'),
+			meta: {
+			  breadcrumb: [
+				{ title: 'Home', url: '/' },
+				{ title: 'Profile', active: true }
+			  ],
+			  pageTitle: 'Profile',
+			  rule: 'editor'
+			}
+		  },
         {
           path: '/pages/faq',
           name: 'page-faq',
