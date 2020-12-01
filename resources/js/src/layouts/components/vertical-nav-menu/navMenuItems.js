@@ -55,11 +55,408 @@ export default [
     i18n: 'Apps',
     items: [
       {
-        url: '/apps/email',
-        name: 'Email',
-        slug: 'email',
-        icon: 'MailIcon',
-        i18n: 'Email'
+        url: 'null',
+        name: 'Sectors',
+		slug: 'sectors',
+		tag: '4',
+		tagColor: 'success',
+        icon: 'GitPullRequestIcon',
+		i18n: 'Sectors',
+		submenu: [
+			{
+				url: '/apps/allSectors',
+				name: 'All Sectors',
+				slug: 'all-sectors',
+				i18n: 'All Sectors'
+			},
+			{
+				url: '/apps/addSector',
+				name: 'Add Sector',
+				slug: 'add-sector',
+				i18n: 'Add Sector'
+			},
+			{
+				url: '/apps/removeSectors',
+				name: 'Remove Sectors',
+				slug: 'remove-sectors',
+				i18n: 'Remove Sectors'
+			},
+			{
+				url: '/apps/modifySectors',
+				name: 'Modify Sectors',
+				slug: 'modify-sectors',
+				i18n: 'Modify Sectors'
+			}
+		]
+      },
+      {
+        url: 'null',
+        name: 'Doctors',
+		slug: 'Doctors',
+		tag: '4',
+		tagColor: 'success',
+        icon: 'UsersIcon',
+		i18n: 'Doctors',
+		submenu: [
+			{
+				url: '/apps/allDoctors',
+				name: 'All Doctors',
+				slug: 'all-doctors',
+				i18n: 'All Doctors'
+			},
+			{
+				url: '/apps/addDoctors',
+				name: 'Add Doctor',
+				slug: 'add-doctor',
+				i18n: 'Add Doctor'
+			},
+			{
+				url: '/apps/removeDoctors',
+				name: 'Remove Doctor',
+				slug: 'remove-doctor',
+				i18n: 'Remove Doctor'
+			},
+			{
+				url: '/apps/modifyDoctors',
+				name: 'Modify Doctors',
+				slug: 'modify-doctors',
+				i18n: 'Modify Doctors'
+			}
+		]
+	  },
+	  {
+        url: 'null',
+        name: 'Patients',
+		slug: 'Patients',
+		tag: '6',
+		tagColor: 'success',
+        icon: 'SmileIcon',
+		i18n: 'Patients',
+		submenu: [
+			{
+				url: '/apps/allPatients',
+				name: 'All Patients',
+				slug: 'all-patients',
+				i18n: 'All Patients'
+			},
+			{
+				url: '/apps/addPatients',
+				name: 'Add Patients',
+				slug: 'add-patients',
+				i18n: 'Add Patients'
+			},
+			{
+				url: '/apps/removePatients',
+				name: 'Remove Patients',
+				slug: 'remove-patients',
+				i18n: 'Remove Patients'
+			},
+			{
+				url: '/apps/modifyPatients',
+				name: 'Modify Patients',
+				slug: 'modify-patients',
+				i18n: 'Modify Patients'
+			},
+			{
+				url: '/apps/addPatientDocs',
+				name: 'Add Patient Document',
+				slug: 'add-patient-doc',
+				i18n: 'Add Document'
+			},
+			{
+				url: '/apps/allDocs',
+				name: 'All Patient Documents',
+				slug: 'all-patient-docs',
+				i18n: 'All Documents'
+			}
+		]
+      },
+	  {
+        url: 'null',
+        name: 'Serial',
+		slug: 'Serial',
+		tag: '4',
+		tagColor: 'success',
+        icon: 'ListIcon',
+		i18n: 'Serial',
+		submenu: [
+			{
+				url: '/apps/allSerial',
+				name: 'All Serial',
+				slug: 'all-serial',
+				i18n: 'All Serial'
+			},
+			{
+				url: '/apps/addSerial',
+				name: 'Add Serial',
+				slug: 'add-patients',
+				i18n: 'Add Serial'
+			},
+			{
+				url: '/apps/removeSerial',
+				name: 'Remove Serial',
+				slug: 'remove-serial',
+				i18n: 'Remove Serial'
+			},
+			{
+				url: '/apps/modifySerial',
+				name: 'Modify Serial',
+				slug: 'modify-serial',
+				i18n: 'Modify Serial'
+			}
+		]
+      },
+	  {
+        url: 'null',
+        name: 'Appointment',
+		slug: 'Appointment',
+		tag: '6',
+		tagColor: 'success',
+        icon: 'CoffeeIcon',
+		i18n: 'Appointment',
+		submenu: [
+			{
+				url: '/apps/allAppointments',
+				name: 'All Appointment',
+				slug: 'all-appointment',
+				i18n: 'All Appointment'
+			},
+			{
+				url: '/apps/addAppointment',
+				name: 'Add Appointment',
+				slug: 'add-appointment',
+				i18n: 'Add Appointment'
+			},
+			{
+				url: '/apps/removeAppointment',
+				name: 'Remove Appointment',
+				slug: 'remove-appointment',
+				i18n: 'Remove Appointment'
+			},
+			{
+				url: '/apps/modifyAppointment',
+				name: 'Modify Appointment',
+				slug: 'modify-appointment',
+				i18n: 'Modify Appointment'
+			},
+			{
+				url: '/apps/assignedBy',
+				name: 'Assigned By',
+				slug: 'appointment-assigned-by',
+				i18n: 'Appoin. Assigned By'
+			},
+			{
+				url: '/apps/assignedTo',
+				name: 'Assigned to Doctor',
+				slug: 'assigned-to-doctor',
+				i18n: 'Assigned To Doctor'
+			}
+		]
+      },
+	  {
+        url: 'null',
+        name: 'Prescription',
+		slug: 'Prescription',
+		tag: '4',
+		tagColor: 'success',
+        icon: 'FileTextIcon',
+		i18n: 'Prescription',
+		submenu: [
+			{
+				url: '/apps/allPrescription',
+				name: 'All Prescription',
+				slug: 'all-prescription',
+				i18n: 'All Prescription'
+			},
+			{
+				url: '/apps/addPrescription',
+				name: 'Add Prescription',
+				slug: 'add-prescription',
+				i18n: 'Add Prescription'
+			},
+			{
+				url: '/apps/removePrescription',
+				name: 'Remove Prescription',
+				slug: 'remove-Prescription',
+				i18n: 'Remove Prescription'
+			},
+			{
+				url: '/apps/modifyPrescription',
+				name: 'Modify Prescription',
+				slug: 'modify-Prescription',
+				i18n: 'Modify Prescription'
+			}
+		]
+      },
+	  {
+        url: 'null',
+        name: 'Medical Records',
+		slug: 'medical-records',
+		tag: '4',
+		tagColor: 'success',
+        icon: 'LayersIcon',
+		i18n: 'Medical Records',
+		submenu: [
+			{
+				url: '/apps/allRecords',
+				name: 'All Records',
+				slug: 'all-records',
+				i18n: 'All Records'
+			},
+			{
+				url: '/apps/addRecords',
+				name: 'Add Records',
+				slug: 'add-records',
+				i18n: 'Add Records'
+			},
+			{
+				url: '/apps/removeRecords',
+				name: 'Remove Records',
+				slug: 'remove-records',
+				i18n: 'Remove Records'
+			},
+			{
+				url: '/apps/modifyRecords',
+				name: 'Modify Records',
+				slug: 'modify-records',
+				i18n: 'Modify Records'
+			}
+		]
+      },
+	  {
+        url: 'null',
+        name: 'Account Manager',
+		slug: 'Account Manager',
+		tag: '8',
+		tagColor: 'success',
+        icon: 'TrendingUpIcon',
+		i18n: 'Account Manager',
+		submenu: [
+			{
+				url: '/apps/allAccounts',
+				name: 'All Accounts',
+				slug: 'all-accounts',
+				i18n: 'All Accounts'
+			},
+			{
+				url: '/apps/addAccount',
+				name: 'Add Account',
+				slug: 'add-account',
+				i18n: 'Add Account'
+			},
+			{
+				url: '/apps/removeAccount',
+				name: 'Remove Account',
+				slug: 'remove-account',
+				i18n: 'Remove Account'
+			},
+			{
+				url: '/apps/modifyAccount',
+				name: 'Modify Account',
+				slug: 'modify-account',
+				i18n: 'Modify Account'
+			},
+			{
+				url: '/apps/addPayment',
+				name: 'Add Payment',
+				slug: 'add-payment',
+				i18n: 'Add Payment'
+			},
+			{
+				url: '/apps/allPayments',
+				name: 'All Payments',
+				slug: 'all-payments',
+				i18n: 'All Payments'
+			},
+			{
+				url: '/apps/debits',
+				name: 'Debits',
+				slug: 'debits',
+				i18n: 'Debits'
+			},
+			{
+				url: '/apps/credits',
+				name: 'Credits',
+				slug: 'credits',
+				i18n: 'Credits'
+			},
+		]
+	  },
+	  {
+        url: 'null',
+        name: 'Invoices',
+		slug: 'invoices',
+		tag: '3',
+		tagColor: 'success',
+        icon: 'AlertCircleIcon',
+		i18n: 'Invoices',
+		submenu: [
+			{
+				url: '/apps/allInvoices',
+				name: 'All Invoices',
+				slug: 'all-invoices',
+				i18n: 'All Invoices'
+			},
+			{
+				url: '/apps/addInvoices',
+				name: 'Add Invoices',
+				slug: 'add-invoices',
+				i18n: 'Add Invoices'
+			},
+			{
+				url: '/apps/removeInvoices',
+				name: 'Remove Invoices',
+				slug: 'remove-invoices',
+				i18n: 'Remove Invoices'
+			}
+		]
+      },
+	  {
+        url: 'null',
+        name: 'Insurance',
+		slug: 'insurance',
+		tag: '6',
+		tagColor: 'success',
+        icon: 'AnchorIcon',
+		i18n: 'Insurance',
+		submenu: [
+			{
+				url: '/apps/allInsurance',
+				name: 'All Insurance',
+				slug: 'all-insurance',
+				i18n: 'All Insurance'
+			},
+			{
+				url: '/apps/addInsurance',
+				name: 'Add Insurance',
+				slug: 'add-insurance',
+				i18n: 'Add Insurance'
+			},
+			{
+				url: '/apps/removeInsurance',
+				name: 'Remove Insurance',
+				slug: 'remove-insurance',
+				i18n: 'Remove Insurance'
+			},
+			{
+				url: '/apps/modifyInsurance',
+				name: 'Modify Insurance',
+				slug: 'modify-insurance',
+				i18n: 'Modify Insurance'
+			},
+			{
+				url: '/apps/addLimitApproval',
+				name: 'Add Limit Approval',
+				slug: 'add-limit-approval',
+				i18n: 'Add Limit Approval'
+			},
+			{
+				url: '/apps/AllApproval',
+				name: 'All Approval',
+				slug: 'all-approval',
+				i18n: 'All Approval'
+			},
+		]
       },
       {
         url: '/apps/chat',
