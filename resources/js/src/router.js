@@ -69,27 +69,225 @@ const router = new Router({
         // =============================================================================
         // Application Routes
         // =============================================================================
+        // {
+        //   path: '/apps/todo',
+        //   redirect: '/apps/todo/all',
+        //   name: 'todo'
+        // },
+        // {
+        //   path: '/apps/todo/:filter',
+        //   component: () => import('./views/apps/todo/Todo.vue'),
+        //   meta: {
+        //     rule: 'editor',
+        //     parent: 'todo',
+        //     no_scroll: true
+        //   }
+        // },
+        // {
+        //   path: '/apps/chat',
+        //   name: 'chat',
+        //   component: () => import('./views/apps/chat/Chat.vue'),
+        //   meta: {
+        //     rule: 'editor',
+        //     no_scroll: true
+        //   }
+        // },
         {
-          path: '/apps/todo',
-          redirect: '/apps/todo/all',
-          name: 'todo'
-        },
-        {
-          path: '/apps/todo/:filter',
-          component: () => import('./views/apps/todo/Todo.vue'),
+          path: '/apps/addSector',
+          name: 'Add-Sector',
+          component: () => import('./views/apps/sectors/addSector.vue'),
           meta: {
             rule: 'editor',
-            parent: 'todo',
-            no_scroll: true
+            no_scroll: false
           }
         },
         {
-          path: '/apps/chat',
-          name: 'chat',
-          component: () => import('./views/apps/chat/Chat.vue'),
+          path: '/apps/removeSector',
+          name: 'Remove Sector',
+          component: () => import('./views/apps/sectors/removeSector.vue'),
           meta: {
             rule: 'editor',
-            no_scroll: true
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/modifySector',
+          name: 'Modify Sector',
+          component: () => import('./views/apps/sectors/modifySector.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allSectors',
+          name: 'All Sectors',
+          component: () => import('./views/apps/sectors/allSectors.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/addService',
+          name: 'Add Service',
+          component: () => import('./views/apps/services-packages/addService.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/removeService',
+          name: 'Remove Service',
+          component: () => import('./views/apps/services-packages/removeService.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/modifyService',
+          name: 'Modify Service',
+          component: () => import('./views/apps/services-packages/modifyService.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allServices',
+          name: 'All Services',
+          component: () => import('./views/apps/services-packages/allServices.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/addPackage',
+          name: 'Add Package',
+          component: () => import('./views/apps/services-packages/addPackage.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/removePackage',
+          name: 'Remove Package',
+          component: () => import('./views/apps/services-packages/removePackage.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/modifyPackage',
+          name: 'Modify Package',
+          component: () => import('./views/apps/services-packages/modifyPackage.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allPackages',
+          name: 'All Packages',
+          component: () => import('./views/apps/services-packages/allPackages.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/addDoctor',
+          name: 'Add Doctor',
+          component: () => import('./views/apps/doctors/addDoctor.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/removeDoctor',
+          name: 'Remove Doctor',
+          component: () => import('./views/apps/doctors/removeDoctor.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/modifyDoctor',
+          name: 'Modify Doctor',
+          component: () => import('./views/apps/doctors/modifyDoctor.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allDoctors',
+          name: 'All Doctors',
+          component: () => import('./views/apps/doctors/allDoctors.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/addPatient',
+          name: 'All Patient',
+          component: () => import('./views/apps/patients/addPatient.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/removePatient',
+          name: 'Remove Patient',
+          component: () => import('./views/apps/patients/removePatient.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/modifyPatient',
+          name: 'Modify Patient',
+          component: () => import('./views/apps/patients/modifyPatient.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allPatient',
+          name: 'All Patients',
+          component: () => import('./views/apps/patients/allPatients.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/addPatientDocs',
+          name: 'Add Patient Document',
+          component: () => import('./views/apps/patients/addPatientDocs.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allDocs',
+          name: 'All Patient Document',
+          component: () => import('./views/apps/patients/allDocs.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
           }
         },
         {
@@ -1418,18 +1616,18 @@ router.beforeEach((to, from, next) => {
     // get firebase current user
     const firebaseCurrentUser = firebase.auth().currentUser
 
-    // if (
-    //     to.path === "/pages/login" ||
-    //     to.path === "/pages/forgot-password" ||
-    //     to.path === "/pages/error-404" ||
-    //     to.path === "/pages/error-500" ||
-    //     to.path === "/pages/register" ||
-    //     to.path === "/callback" ||
-    //     to.path === "/pages/comingsoon" ||
-    //     (auth.isAuthenticated() || firebaseCurrentUser)
-    // ) {
-    //     return next();
-    // }
+    if (
+        to.path === "/pages/login" ||
+        to.path === "/pages/forgot-password" ||
+        to.path === "/pages/error-404" ||
+        to.path === "/pages/error-500" ||
+        to.path === "/pages/register" ||
+        to.path === "/callback" ||
+        to.path === "/pages/comingsoon" ||
+        (auth.isAuthenticated() || firebaseCurrentUser)
+    ) {
+        return next();
+    }
 
     // If auth required, check login. If login fails redirect to login page
     if (to.meta.authRequired) {
