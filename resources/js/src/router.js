@@ -97,8 +97,14 @@ const router = new Router({
           name: 'Add-Sector',
           component: () => import('./views/apps/sectors/addSector.vue'),
           meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Sectors' },
+              { title: 'Add Sector', active: true }
+            ],
             rule: 'editor',
-            no_scroll: false
+            no_scroll: false,
+            pageTitle: 'Add Sector'
           }
         },
         {
