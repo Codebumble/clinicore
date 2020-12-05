@@ -233,25 +233,25 @@ export default [
 				icon: 'ThermometerIcon',
 				i18n: 'Admit Patients',
 				submenu: [{
-						url: '/apps/admit-patient/admitPatients',
+						url: '/apps/admitPatients',
 						name: 'Admit Patients',
 						slug: 'admit-patients',
 						i18n: 'Admit Patients'
 					},
 					{
-						url: '/apps/admit-patient/allAdmittedPatients',
+						url: '/apps/allAdmittedPatients',
 						name: 'All Admitted Patients',
 						slug: 'all-admitted-patients',
 						i18n: 'All Admitted Patients'
 					},
 					{
-						url: '/apps/admit-patient/releasePatients',
+						url: '/apps/releasePatients',
 						name: 'Release Patients',
 						slug: 'release-patients',
 						i18n: 'Release Patients'
 					},
 					{
-						url: '/apps/admit-patient/allReleasedPatients',
+						url: '/apps/allReleasedPatients',
 						name: 'All Released Patients',
 						slug: 'all-released-patients',
 						i18n: 'All Released Patients'
@@ -267,25 +267,25 @@ export default [
 				icon: 'ListIcon',
 				i18n: 'Serial',
 				submenu: [{
-						url: '/apps/serial/addSerial',
+						url: '/apps/addSerial',
 						name: 'Add Serial',
 						slug: 'add-patients',
 						i18n: 'Add Serial'
 					},
 					{
-						url: '/apps/serial/allSerial',
+						url: '/apps/allSerial',
 						name: 'All Serial',
 						slug: 'all-serial',
 						i18n: 'All Serial'
 					},
 					{
-						url: '/apps/serial/removeSerial',
+						url: '/apps/removeSerial',
 						name: 'Remove Serial',
 						slug: 'remove-serial',
 						i18n: 'Remove Serial'
 					},
 					{
-						url: '/apps/serial/modifySerial',
+						url: '/apps/modifySerial',
 						name: 'Modify Serial',
 						slug: 'modify-serial',
 						i18n: 'Modify Serial'
@@ -301,37 +301,37 @@ export default [
 				icon: 'CoffeeIcon',
 				i18n: 'Appointment',
 				submenu: [{
-						url: '/apps/appointment/addAppointment',
+						url: '/apps/addAppointment',
 						name: 'Add Appointment',
 						slug: 'add-appointment',
 						i18n: 'Add Appointment'
 					},
 					{
-						url: '/apps/appointment/allAppointments',
+						url: '/apps/allAppointments',
 						name: 'All Appointment',
 						slug: 'all-appointment',
 						i18n: 'All Appointment'
 					},
 					{
-						url: '/apps/appointment/modifyAppointment',
+						url: '/apps/modifyAppointment',
 						name: 'Modify Appointment',
 						slug: 'modify-appointment',
 						i18n: 'Modify Appointment'
 					},
 					{
-						url: '/apps/appointment/removeAppointment',
+						url: '/apps/removeAppointment',
 						name: 'Remove Appointment',
 						slug: 'remove-appointment',
 						i18n: 'Remove Appointment'
 					},
 					{
-						url: '/apps/appointment/assignedBy',
+						url: '/apps/assignedBy',
 						name: 'Assigned By',
 						slug: 'appointment-assigned-by',
 						i18n: 'Appoin. Assigned By'
 					},
 					{
-						url: '/apps/appointment/assignedTo',
+						url: '/apps/assignedTo',
 						name: 'Assigned to Doctor',
 						slug: 'assigned-to-doctor',
 						i18n: 'Assigned To Doctor'
@@ -347,25 +347,25 @@ export default [
 				icon: 'FileTextIcon',
 				i18n: 'Prescription',
 				submenu: [{
-						url: '/apps/prescription/addPrescription',
+						url: '/apps/addPrescription',
 						name: 'Add Prescription',
 						slug: 'add-prescription',
 						i18n: 'Add Prescription'
 					},
 					{
-						url: '/apps/prescription/removePrescription',
+						url: '/apps/removePrescription',
 						name: 'Remove Prescription',
 						slug: 'remove-Prescription',
 						i18n: 'Remove Prescription'
 					},
 					{
-						url: '/apps/prescription/modifyPrescription',
+						url: '/apps/modifyPrescription',
 						name: 'Modify Prescription',
 						slug: 'modify-Prescription',
 						i18n: 'Modify Prescription'
 					},
 					{
-						url: '/apps/prescription/allPrescription',
+						url: '/apps/allPrescription',
 						name: 'All Prescription',
 						slug: 'all-prescription',
 						i18n: 'All Prescription'
@@ -381,25 +381,25 @@ export default [
 				icon: 'LayersIcon',
 				i18n: 'Medical Records',
 				submenu: [{
-						url: '/apps/medical-records/addRecords',
+						url: '/apps/addRecords',
 						name: 'Add Records',
 						slug: 'add-records',
 						i18n: 'Add Records'
 					},
 					{
-						url: '/apps/medical-records/removeRecords',
+						url: '/apps/removeRecords',
 						name: 'Remove Records',
 						slug: 'remove-records',
 						i18n: 'Remove Records'
 					},
 					{
-						url: '/apps/medical-records/modifyRecords',
+						url: '/apps/modifyRecords',
 						name: 'Modify Records',
 						slug: 'modify-records',
 						i18n: 'Modify Records'
 					},
 					{
-						url: '/apps/medical-records/allRecords',
+						url: '/apps/allRecords',
 						name: 'All Records',
 						slug: 'all-records',
 						i18n: 'All Records'
@@ -415,55 +415,55 @@ export default [
 				icon: 'TrendingUpIcon',
 				i18n: 'Account Manager',
 				submenu: [{
-						url: '/apps/account-manager/addAccount',
+						url: '/apps/addAccount',
 						name: 'Add Account',
 						slug: 'add-account',
 						i18n: 'Add Account'
 					},
 					{
-						url: '/apps/account-manager/removeAccount',
+						url: '/apps/removeAccount',
 						name: 'Remove Account',
 						slug: 'remove-account',
 						i18n: 'Remove Account'
 					},
 					{
-						url: '/apps/account-manager/modifyAccount',
+						url: '/apps/modifyAccount',
 						name: 'Modify Account',
 						slug: 'modify-account',
 						i18n: 'Modify Account'
 					},
 					{
-						url: '/apps/account-manager/allAccounts',
+						url: '/apps/allAccounts',
 						name: 'All Accounts',
 						slug: 'all-accounts',
 						i18n: 'All Accounts'
 					},
 					{
-						url: '/apps/account-manager/addPayment',
+						url: '/apps/addPayment',
 						name: 'Add Payment',
 						slug: 'add-payment',
 						i18n: 'Add Payment'
 					},
 					{
-						url: '/apps/account-manager/allPayments',
+						url: '/apps/allPayments',
 						name: 'All Payments',
 						slug: 'all-payments',
 						i18n: 'All Payments'
 					},
 					{
-						url: '/apps/account-manager/debits',
+						url: '/apps/debits',
 						name: 'Debits',
 						slug: 'debits',
 						i18n: 'Debits'
 					},
 					{
-						url: '/apps/account-manager/credits',
+						url: '/apps/credits',
 						name: 'Credits',
 						slug: 'credits',
 						i18n: 'Credits'
 					},
 					{
-						url: '/apps/account-manager/accountManagerAnalytics',
+						url: '/apps/accountManagerAnalytics',
 						name: 'Accounts Analytics',
 						slug: 'accounts-analytics',
 						i18n: 'Accounts Analytics'
@@ -479,19 +479,19 @@ export default [
 				icon: 'AlertCircleIcon',
 				i18n: 'Invoices',
 				submenu: [{
-						url: '/apps/invoices/addInvoices',
+						url: '/apps/addInvoices',
 						name: 'Add Invoices',
 						slug: 'add-invoices',
 						i18n: 'Add Invoices'
 					},
 					{
-						url: '/apps/invoices/removeInvoices',
+						url: '/apps/removeInvoices',
 						name: 'Remove Invoices',
 						slug: 'remove-invoices',
 						i18n: 'Remove Invoices'
 					},
 					{
-						url: '/apps/invoices/allInvoices',
+						url: '/apps/allInvoices',
 						name: 'All Invoices',
 						slug: 'all-invoices',
 						i18n: 'All Invoices'
@@ -507,37 +507,37 @@ export default [
 				icon: 'AnchorIcon',
 				i18n: 'Insurance',
 				submenu: [{
-						url: '/apps/insurance/addInsurance',
+						url: '/apps/addInsurance',
 						name: 'Add Insurance',
 						slug: 'add-insurance',
 						i18n: 'Add Insurance'
 					},
 					{
-						url: '/apps/insurance/removeInsurance',
+						url: '/apps/removeInsurance',
 						name: 'Remove Insurance',
 						slug: 'remove-insurance',
 						i18n: 'Remove Insurance'
 					},
 					{
-						url: '/apps/insurance/modifyInsurance',
+						url: '/apps/modifyInsurance',
 						name: 'Modify Insurance',
 						slug: 'modify-insurance',
 						i18n: 'Modify Insurance'
 					},
 					{
-						url: '/apps/insurance/allInsurance',
+						url: '/apps/allInsurance',
 						name: 'All Insurance',
 						slug: 'all-insurance',
 						i18n: 'All Insurance'
 					},
 					{
-						url: '/apps/insurance/addLimitApproval',
+						url: '/apps/addLimitApproval',
 						name: 'Add Limit Approval',
 						slug: 'add-limit-approval',
 						i18n: 'Add Limit Approval'
 					},
 					{
-						url: '/apps/insurance/AllApproval',
+						url: '/apps/AllApproval',
 						name: 'All Approval',
 						slug: 'all-approval',
 						i18n: 'All Approval'
@@ -553,25 +553,25 @@ export default [
 				icon: 'DollarSignIcon',
 				i18n: 'Payments',
 				submenu: [{
-						url: '/apps/payments/addPayment',
+						url: '/apps/addPayment',
 						name: 'Add Payment',
 						slug: 'add-payment',
 						i18n: 'Add Payment'
 					},
 					{
-						url: '/apps/payments/paymentList',
+						url: '/apps/paymentList',
 						name: 'Payment List',
 						slug: 'payment-list',
 						i18n: 'Payment List'
 					},
 					{
-						url: '/apps/payments/addAdvancePayment',
+						url: '/apps/addAdvancePayment',
 						name: 'Add Advance Payment',
 						slug: 'add-advance-payment',
 						i18n: 'Add Advance Payment'
 					},
 					{
-						url: '/apps/payments/allAdvancePayment',
+						url: '/apps/allAdvancePayment',
 						name: 'All Advance Payment',
 						slug: 'all-advance-payment',
 						i18n: 'All Advance Payment'
@@ -587,49 +587,49 @@ export default [
 				icon: 'PieChartIcon',
 				i18n: 'HR Dept.',
 				submenu: [{
-						url: '/apps/hr-dept/addEmployee',
+						url: '/apps/addEmployee',
 						name: 'Add Employee',
 						slug: 'add-employee',
 						i18n: 'Add Employee'
 					},
 					{
-						url: '/apps/hr-dept/accountant',
+						url: '/apps/accountant',
 						name: 'Accountant',
 						slug: 'accountant',
 						i18n: 'Accountant'
 					},
 					{
-						url: '/apps/hr-dept/laboratorists',
+						url: '/apps/laboratorists',
 						name: 'Laboratorists',
 						slug: 'laboratorists',
 						i18n: 'Laboratorists'
 					},
 					{
-						url: '/apps/hr-dept/nurse',
+						url: '/apps/nurse',
 						name: 'Nurses',
 						slug: 'nurses',
 						i18n: 'Nurses'
 					},
 					{
-						url: '/apps/hr-dept/pharmacist',
+						url: '/apps/pharmacist',
 						name: 'Pharmacist',
 						slug: 'pharmacist',
 						i18n: 'Pharmacist'
 					},
 					{
-						url: '/apps/hr-dept/receptionist',
+						url: '/apps/receptionist',
 						name: 'Receptionist',
 						slug: 'receptionist',
 						i18n: 'Receptionist'
 					},
 					{
-						url: '/apps/hr-dept/representative',
+						url: '/apps/representative',
 						name: 'Representative',
 						slug: 'representative',
 						i18n: 'Representative'
 					},
 					{
-						url: '/apps/hr-dept/recordManager',
+						url: '/apps/recordManager',
 						name: 'Record Manager',
 						slug: 'record-manager',
 						i18n: 'Record Manager'
@@ -645,31 +645,31 @@ export default [
 				icon: 'ColumnsIcon',
 				i18n: 'Bed Management',
 				submenu: [{
-						url: '/apps/bed-management/addBed',
+						url: '/apps/addBed',
 						name: 'Add Bed',
 						slug: 'add-bed',
 						i18n: 'Add Bed'
 					},
 					{
-						url: '/apps/bed-management/allocateBed',
+						url: '/apps/allocateBed',
 						name: 'Allocate Bed',
 						slug: 'allocate-bed',
 						i18n: 'Allocate Bed'
 					},
 					{
-						url: '/apps/bed-management/allocatedBed',
+						url: '/apps/allocatedBed',
 						name: 'Allocated Bed',
 						slug: 'allocated-bed',
 						i18n: 'Allocated Bed'
 					},
 					{
-						url: '/apps/bed-management/allBeds',
+						url: '/apps/allBeds',
 						name: 'All Beds',
 						slug: 'all-beds',
 						i18n: 'All Beds'
 					},
 					{
-						url: '/apps/bed-management/bedAnalytics',
+						url: '/apps/bedAnalytics',
 						name: 'Bed Analytics',
 						slug: 'bed-analytics',
 						i18n: 'Bed Analytics'
@@ -685,25 +685,25 @@ export default [
 				icon: 'ShoppingBagIcon',
 				i18n: 'Pharmacy',
 				submenu: [{
-						url: '/apps/pharmacy/addCategory',
+						url: '/apps/addCategory',
 						name: 'Add Category',
 						slug: 'add-category',
 						i18n: 'Add Category'
 					},
 					{
-						url: '/apps/pharmacy/allCategories',
+						url: '/apps/allCategories',
 						name: 'All Categories',
 						slug: 'all-categories',
 						i18n: 'All Categories'
 					},
 					{
-						url: '/apps/pharmacy/addMedicine',
+						url: '/apps/addMedicine',
 						name: 'Add Medicine',
 						slug: 'add-medicine',
 						i18n: 'Add Medicine'
 					},
 					{
-						url: '/apps/pharmacy/allMedicines',
+						url: '/apps/allMedicines',
 						name: 'All Medicines',
 						slug: 'all-medicines',
 						i18n: 'All Medicines'
@@ -719,49 +719,49 @@ export default [
 				icon: 'ActivityIcon',
 				i18n: 'Hospital Activities',
 				submenu: [{
-						url: '/apps/hospital-activities/addBirthReport',
+						url: '/apps/addBirthReport',
 						name: 'Add Birth Report',
 						slug: 'add-birth-report',
 						i18n: 'Add Birth Report'
 					},
 					{
-						url: '/apps/hospital-activities/addDeathReport',
+						url: '/apps/addDeathReport',
 						name: 'Add Death Report',
 						slug: 'add-death-report',
 						i18n: 'Add Death Report'
 					},
 					{
-						url: '/apps/hospital-activities/allBirthReports',
+						url: '/apps/allBirthReports',
 						name: 'All Birth Reports',
 						slug: 'all-birth-reports',
 						i18n: 'All Birth Reports'
 					},
 					{
-						url: '/apps/hospital-activities/allDeathReports',
+						url: '/apps/allDeathReports',
 						name: 'All Death Reports',
 						slug: 'all-death-reports',
 						i18n: 'All Death Reports'
 					},
 					{
-						url: '/apps/hospital-activities/addOperationReport',
+						url: '/apps/addOperationReport',
 						name: 'Add Operation Report',
 						slug: 'add-operation-report',
 						i18n: 'Add Operation Report'
 					},
 					{
-						url: '/apps/hospital-activities/allOperationReports',
+						url: '/apps/allOperationReports',
 						name: 'All Operation Reports',
 						slug: 'all-operation-reports',
 						i18n: 'All Operation Reports'
 					},
 					{
-						url: '/apps/hospital-activities/addInvestigationReport',
+						url: '/apps/addInvestigationReport',
 						name: 'Add Investigation Report',
 						slug: 'add-investigation-report',
 						i18n: 'Add Investigation Report'
 					},
 					{
-						url: '/apps/hospital-activities/allInvestigationReports',
+						url: '/apps/allInvestigationReports',
 						name: 'All Investigation Reports',
 						slug: 'all-investigation-reports',
 						i18n: 'All Investigation Reports'
@@ -777,25 +777,25 @@ export default [
 				icon: 'ClipboardIcon',
 				i18n: 'Notice Board',
 				submenu: [{
-						url: '/apps/notice-board/addNotice',
+						url: '/apps/addNotice',
 						name: 'Add Notice',
 						slug: 'add-notice',
 						i18n: 'Add Notice'
 					},
 					{
-						url: '/apps/notice-board/modifyNotice',
+						url: '/apps/modifyNotice',
 						name: 'Modify Notice',
 						slug: 'modify-notice',
 						i18n: 'Modify Notice'
 					},
 					{
-						url: '/apps/notice-board/removeNotice',
+						url: '/apps/removeNotice',
 						name: 'Remove Notice',
 						slug: 'remove-notice',
 						i18n: 'Remove Notice'
 					},
 					{
-						url: '/apps/notice-board/allNotice',
+						url: '/apps/allNotice',
 						name: 'All Notice',
 						slug: 'all-notice',
 						i18n: 'All Notice'
@@ -812,25 +812,25 @@ export default [
 				i18n: 'App Settings',
 				submenu: [
 					{
-						url: '/apps/app-settings/changeInformation',
+						url: '/apps/changeInformation',
 						name: 'Change Information',
 						slug: 'change-information',
 						i18n: 'Chagne Information'
 					},
 					{
-						url: '/apps/app-settings/language',
+						url: '/apps/language',
 						name: 'Language',
 						slug: 'language',
 						i18n: 'Language'
 					},
 					{
-						url: '/apps/app-settings/smsGateway',
+						url: '/apps/smsGateway',
 						name: 'SMS Gateway',
 						slug: 'sms-gateway',
 						i18n: 'SMS Gateway'
 					},
 					{
-						url: '/apps/app-settings/mailConfig',
+						url: '/apps/mailConfig',
 						name: 'Mail Config',
 						slug: 'mail-config',
 						i18n: 'Mail Config'
@@ -847,31 +847,31 @@ export default [
 				i18n: 'SMS',
 				submenu: [
 					{
-						url: '/apps/sms/smsTemplate',
+						url: '/apps/smsTemplate',
 						name: 'SMS Template',
 						slug: 'sms-template',
 						i18n: 'SMS Template'
 					},
 					{
-						url: '/apps/sms/scheduleSms',
+						url: '/apps/scheduleSms',
 						name: 'Schedule SMS',
 						slug: 'schedule-sms',
 						i18n: 'Schedule SMS'
 					},
 					{
-						url: '/apps/sms/sendCustomSms',
+						url: '/apps/sendCustomSms',
 						name: 'Send Custom SMS',
 						slug: 'send-custom-sms',
 						i18n: 'Send Custom SMS'
 					},
 					{
-						url: '/apps/sms/customSmsList',
+						url: '/apps/customSmsList',
 						name: 'Custom SMS List',
 						slug: 'custom-sms-list',
 						i18n: 'Custom SMS List'
 					},
 					{
-						url: '/apps/sms/usersSms',
+						url: '/apps/usersSms',
 						name: 'Users SMS',
 						slug: 'users-sms',
 						i18n: 'Users SMS'
@@ -888,19 +888,19 @@ export default [
 				i18n: 'Messages',
 				submenu: [
 					{
-						url: '/apps/messages/newMessage',
+						url: '/apps/newMessage',
 						name: 'New Message',
 						slug: 'new-message',
 						i18n: 'New Message'
 					},
 					{
-						url: '/apps/messages/messageInbox',
+						url: '/apps/messageInbox',
 						name: 'Message Inbox',
 						slug: 'message-inbox',
 						i18n: 'Message Inbox'
 					},
 					{
-						url: '/apps/messages/sentMessages',
+						url: '/apps/sentMessages',
 						name: 'Sent Messages',
 						slug: 'sent-messages',
 						i18n: 'Sent Messages'
@@ -917,19 +917,19 @@ export default [
 				i18n: 'Mail',
 				submenu: [
 					{
-						url: '/apps/mail/composeMail',
+						url: '/apps/composeMail',
 						name: 'Compose Mail',
 						slug: 'compose-mail',
 						i18n: 'Compose Mail'
 					},
 					{
-						url: '/apps/mail/mailInbox',
+						url: '/apps/mailInbox',
 						name: 'Mail Inbox',
 						slug: 'mail-inbox',
 						i18n: 'Mail Inbox'
 					},
 					{
-						url: '/apps/mail/sentMail',
+						url: '/apps/sentMail',
 						name: 'Sent Mail',
 						slug: 'sent-mail',
 						i18n: 'Sent Mail'
