@@ -69,29 +69,1141 @@ const router = new Router({
         // =============================================================================
         // Application Routes
         // =============================================================================
+        // {
+        //   path: '/apps/todo',
+        //   redirect: '/apps/todo/all',
+        //   name: 'todo'
+        // },
+        // {
+        //   path: '/apps/todo/:filter',
+        //   component: () => import('./views/apps/todo/Todo.vue'),
+        //   meta: {
+        //     rule: 'editor',
+        //     parent: 'todo',
+        //     no_scroll: true
+        //   }
+        // },
+        // {
+        //   path: '/apps/chat',
+        //   name: 'chat',
+        //   component: () => import('./views/apps/chat/Chat.vue'),
+        //   meta: {
+        //     rule: 'editor',
+        //     no_scroll: true
+        //   }
+		// },
+
+
+		// ********************
+		// Sector Path
+		// ********************
         {
-          path: '/apps/todo',
-          redirect: '/apps/todo/all',
-          name: 'todo'
-        },
-        {
-          path: '/apps/todo/:filter',
-          component: () => import('./views/apps/todo/Todo.vue'),
+          path: '/apps/addSector',
+          name: 'Add-Sector',
+          component: () => import('./views/apps/sectors/addSector.vue'),
           meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Sectors' },
+              { title: 'Add Sector', active: true }
+            ],
             rule: 'editor',
-            parent: 'todo',
-            no_scroll: true
+            no_scroll: false,
+            pageTitle: 'Add Sector'
           }
         },
         {
-          path: '/apps/chat',
-          name: 'chat',
-          component: () => import('./views/apps/chat/Chat.vue'),
+          path: '/apps/removeSector',
+          name: 'Remove Sector',
+          component: () => import('./views/apps/sectors/removeSector.vue'),
           meta: {
             rule: 'editor',
-            no_scroll: true
+            no_scroll: false
           }
         },
+        {
+          path: '/apps/modifySector',
+          name: 'Modify Sector',
+          component: () => import('./views/apps/sectors/modifySector.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allSectors',
+          name: 'All Sectors',
+          component: () => import('./views/apps/sectors/allSectors.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+		},
+
+
+		// **************************
+		// Services & Package Path
+		// **************************
+
+        {
+          path: '/apps/addService',
+          name: 'Add Service',
+          component: () => import('./views/apps/services-packages/addService.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/removeService',
+          name: 'Remove Service',
+          component: () => import('./views/apps/services-packages/removeService.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/modifyService',
+          name: 'Modify Service',
+          component: () => import('./views/apps/services-packages/modifyService.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allServices',
+          name: 'All Services',
+          component: () => import('./views/apps/services-packages/allServices.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/addPackage',
+          name: 'Add Package',
+          component: () => import('./views/apps/services-packages/addPackage.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/removePackage',
+          name: 'Remove Package',
+          component: () => import('./views/apps/services-packages/removePackage.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/modifyPackage',
+          name: 'Modify Package',
+          component: () => import('./views/apps/services-packages/modifyPackage.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allPackages',
+          name: 'All Packages',
+          component: () => import('./views/apps/services-packages/allPackages.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+		},
+
+		// ********************
+		// Doctor Path
+		// ********************
+
+        {
+          path: '/apps/addDoctor',
+          name: 'Add Doctor',
+          component: () => import('./views/apps/doctors/addDoctor.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/removeDoctor',
+          name: 'Remove Doctor',
+          component: () => import('./views/apps/doctors/removeDoctor.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/modifyDoctor',
+          name: 'Modify Doctor',
+          component: () => import('./views/apps/doctors/modifyDoctor.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allDoctors',
+          name: 'All Doctors',
+          component: () => import('./views/apps/doctors/allDoctors.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+		},
+
+		// ********************
+		// Patient Path
+		// ********************
+
+        {
+          path: '/apps/addPatient',
+          name: 'All Patient',
+          component: () => import('./views/apps/patients/addPatient.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/removePatient',
+          name: 'Remove Patient',
+          component: () => import('./views/apps/patients/removePatient.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/modifyPatient',
+          name: 'Modify Patient',
+          component: () => import('./views/apps/patients/modifyPatient.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allPatient',
+          name: 'All Patients',
+          component: () => import('./views/apps/patients/allPatients.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/addPatientDocs',
+          name: 'Add Patient Document',
+          component: () => import('./views/apps/patients/addPatientDocs.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allDocs',
+          name: 'All Patient Document',
+          component: () => import('./views/apps/patients/allDocs.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+		},
+
+		// ********************
+		// Admit Patients Path
+		// ********************
+
+        {
+          path: '/apps/admitPatients',
+          name: 'Admit Patients',
+          component: () => import('./views/apps/admit-patient/admitPatients.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allAdmittedPatients',
+          name: 'All Admitted Patients',
+          component: () => import('./views/apps/admit-patient/allAdmittedPatients.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/releasePatients',
+          name: 'Release Patients',
+          component: () => import('./views/apps/admit-patient/releasePatients.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+        },
+        {
+          path: '/apps/allReleasedPatients',
+          name: 'All Released Patients',
+          component: () => import('./views/apps/admit-patient/allReleasedPatients.vue'),
+          meta: {
+            rule: 'editor',
+            no_scroll: false
+          }
+		},
+
+		// ********************
+		// Serial Path
+		// ********************
+
+		{
+			path: '/apps/addSerial',
+			name: 'Add Serial',
+			component: () => import('./views/apps/serial/addSerial.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allSerial',
+			name: 'All Serial',
+			component: () => import('./views/apps/serial/allSerial.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/removeSerial',
+			name: 'Remove Serial',
+			component: () => import('./views/apps/serial/removeSerial.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/modifySerial',
+			name: 'Modify Serial',
+			component: () => import('./views/apps/serial/modifySerial.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// ********************
+		// Appointment Path
+		// ********************
+
+		{
+			path: '/apps/addAppointment',
+			name: 'Add Appointment',
+			component: () => import('./views/apps/appointment/addAppointment.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allAppointments',
+			name: 'All Appointment',
+			component: () => import('./views/apps/appointment/allAppointments.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/modifyAppointment',
+			name: 'Modify Appointment',
+			component: () => import('./views/apps/appointment/modifyAppointment.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/removeAppointment',
+			name: 'Remove Appointment',
+			component: () => import('./views/apps/appointment/removeAppointment.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/assignedBy',
+			name: 'Assigned By',
+			component: () => import('./views/apps/appointment/assignedBy.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/assignedTo',
+			name: 'Assigned to Doctor',
+			component: () => import('./views/apps/appointment/assignedTo.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// ********************
+		// Prescription Path
+		// ********************
+
+		{
+			path: '/apps/addPrescription',
+			name: 'Add Prescription',
+			component: () => import('./views/apps/prescription/addPrescription.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/removePrescription',
+			name: 'Remove Prescription',
+			component: () => import('./views/apps/prescription/removePrescription.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/modifyPrescription',
+			name: 'Modify Prescription',
+			component: () => import('./views/apps/prescription/modifyPrescription.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allPrescription',
+			name: 'All Prescription',
+			component: () => import('./views/apps/prescription/allPrescription.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// ********************
+		// Medical Records Path
+		// ********************
+
+		{
+			path: '/apps/addRecords',
+			name: 'Add Records',
+			component: () => import('./views/apps/medical-records/addRecords.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/removeRecords',
+			name: 'Remove Records',
+			component: () => import('./views/apps/medical-records/removeRecords.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/modifyRecords',
+			name: 'Modify Records',
+			component: () => import('./views/apps/medical-records/modifyRecords.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allRecords',
+			name: 'All Records',
+			component: () => import('./views/apps/medical-records/allRecords.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// ********************
+		// Account Manager Path
+		// ********************
+
+		{
+			path: '/apps/addAccount',
+			name: 'Add Account',
+			component: () => import('./views/apps/account-manager/addAccount.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/removeAccount',
+			name: 'Remove Account',
+			component: () => import('./views/apps/account-manager/removeAccount.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/modifyAccount',
+			name: 'Modify Account',
+			component: () => import('./views/apps/account-manager/modifyAccount.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allAccounts',
+			name: 'All Accounts',
+			component: () => import('./views/apps/account-manager/allAccounts.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/addPayment',
+			name: 'Add Payment',
+			component: () => import('./views/apps/account-manager/addPayment.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allPayments',
+			name: 'All Payments',
+			component: () => import('./views/apps/account-manager/allPayments.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/debits',
+			name: 'Debits',
+			component: () => import('./views/apps/account-manager/debits.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/credits',
+			name: 'Credits',
+			component: () => import('./views/apps/account-manager/credits.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/accountManagerAnalytics',
+			name: 'Accounts Analytics',
+			component: () => import('./views/apps/account-manager/accountManagerAnalytics.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// ********************
+		// Invoices Path
+		// ********************
+
+		{
+			path: '/apps/addInvoices',
+			name: 'Add Invoices',
+			component: () => import('./views/apps/invoices/addInvoices.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/removeInvoices',
+			name: 'Remove Invoices',
+			component: () => import('./views/apps/invoices/removeInvoices.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allInvoices',
+			name: 'All Invoices',
+			component: () => import('./views/apps/invoices/allInvoices.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// ********************
+		// Insurance Path
+		// ********************
+
+		{
+			path: '/apps/addInsurance',
+			name: 'Add Insurance',
+			component: () => import('./views/apps/insurance/addInsurance.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/removeInsurance',
+			name: 'Remove Insurance',
+			component: () => import('./views/apps/insurance/removeInsurance.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/modifyInsurance',
+			name: 'Modify Insurance',
+			component: () => import('./views/apps/insurance/modifyInsurance.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allInsurance',
+			name: 'All Insurance',
+			component: () => import('./views/apps/insurance/allInsurance.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/addLimitApproval',
+			name: 'Add Limit Approval',
+			component: () => import('./views/apps/insurance/addLimitApproval.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/AllApproval',
+			name: 'All Approval',
+			component: () => import('./views/apps/insurance/AllApproval.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// ********************
+		// Payments Path
+		// ********************
+
+		{
+			path: '/apps/addPayment',
+			name: 'Add Payment',
+			component: () => import('./views/apps/payments/addPayment.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/paymentList',
+			name: 'Payment List',
+			component: () => import('./views/apps/payments/paymentList.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/addAdvancePayment',
+			name: 'Add Advance Payment',
+			component: () => import('./views/apps/payments/addAdvancePayment.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allAdvancePayment',
+			name: 'All Advance Payment',
+			component: () => import('./views/apps/payments/allAdvancePayment.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// ********************
+		// HR Dept Path
+		// ********************
+
+		{
+			path: '/apps/addEmployee',
+			name: 'Add Employee',
+			component: () => import('./views/apps/hr-dept/addEmployee.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/accountant',
+			name: 'Accountant',
+			component: () => import('./views/apps/hr-dept/accountant.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/laboratorists',
+			name: 'Laboratorists',
+			component: () => import('./views/apps/hr-dept/laboratorists.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/nurse',
+			name: 'Nurses',
+			component: () => import('./views/apps/hr-dept/nurse.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/pharmacist',
+			name: 'Pharmacist',
+			component: () => import('./views/apps/hr-dept/pharmacist.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/receptionist',
+			name: 'Receptionist',
+			component: () => import('./views/apps/hr-dept/receptionist.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/representative',
+			name: 'Representative',
+			component: () => import('./views/apps/hr-dept/representative.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/recordManager',
+			name: 'Record Manager',
+			component: () => import('./views/apps/hr-dept/recordManager.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+
+		// ********************
+		// Bed Management Path
+		// ********************
+
+		{
+			path: '/apps/addBed',
+			name: 'Add Bed',
+			component: () => import('./views/apps/bed-management/addBed.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allocateBed',
+			name: 'Allocate Bed',
+			component: () => import('./views/apps/bed-management/allocateBed.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allocatedBed',
+			name: 'Allocated Bed',
+			component: () => import('./views/apps/bed-management/allocatedBed.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allBeds',
+			name: 'All Beds',
+			component: () => import('./views/apps/bed-management/allBeds.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/bedAnalytics',
+			name: 'Bed Analytics',
+			component: () => import('./views/apps/bed-management/bedAnalytics.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// ********************
+		// Pharmacy Path
+		// ********************
+
+		{
+			path: '/apps/addCategory',
+			name: 'Add Category',
+			component: () => import('./views/apps/pharmacy/addCategory.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allCategories',
+			name: 'All Categories',
+			component: () => import('./views/apps/pharmacy/allCategories.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/addMedicine',
+			name: 'Add Medicine',
+			component: () => import('./views/apps/pharmacy/addMedicine.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allMedicines',
+			name: 'All Medicines',
+			component: () => import('./views/apps/pharmacy/allMedicines.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// **************************
+		// Hospital Activities Path
+		// **************************
+
+		{
+			path: '/apps/addBirthReport',
+			name: 'Add Birth Report',
+			component: () => import('./views/apps/hospital-activities/addBirthReport.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/addDeathReport',
+			name: 'Add Death Report',
+			component: () => import('./views/apps/hospital-activities/addDeathReport.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allBirthReports',
+			name: 'All Birth Reports',
+			component: () => import('./views/apps/hospital-activities/allBirthReports.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allDeathReports',
+			name: 'All Death Reports',
+			component: () => import('./views/apps/hospital-activities/allDeathReports.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/addOperationReport',
+			name: 'Add Operation Report',
+			component: () => import('./views/apps/hospital-activities/addOperationReport.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allOperationReports',
+			name: 'All Operation Reports',
+			component: () => import('./views/apps/hospital-activities/allOperationReports.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/addInvestigationReport',
+			name: 'Add Investigation Report',
+			component: () => import('./views/apps/hospital-activities/addInvestigationReport.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allInvestigationReports',
+			name: 'All Investigation Reports',
+			component: () => import('./views/apps/hospital-activities/allInvestigationReports.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+
+		// **************************
+		// Notice Board Path
+		// **************************
+
+		{
+			path: '/apps/addNotice',
+			name: 'Add Notice',
+			component: () => import('./views/apps/notice-board/addNotice.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/modifyNotice',
+			name: 'Modify Notice',
+			component: () => import('./views/apps/notice-board/modifyNotice.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/removeNotice',
+			name: 'Remove Notice',
+			component: () => import('./views/apps/notice-board/removeNotice.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allNotice',
+			name: 'All Notice',
+			component: () => import('./views/apps/notice-board/allNotice.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// **************************
+		// App Settings Path
+		// **************************
+
+		{
+			path: '/apps/changeInformation',
+			name: 'Change Information',
+			component: () => import('./views/apps/app-settings/changeInformation.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/language',
+			name: 'Language',
+			component: () => import('./views/apps/app-settings/language.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/smsGateway',
+			name: 'SMS Gateway',
+			component: () => import('./views/apps/app-settings/smsGateway.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/mailConfig',
+			name: 'Mail Config',
+			component: () => import('./views/apps/app-settings/mailConfig.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// **************************
+		// SMS Path
+		// **************************
+
+		{
+			path: '/apps/smsTemplate',
+			name: 'SMS Template',
+			component: () => import('./views/apps/sms/smsTemplate.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/scheduleSms',
+			name: 'Schedule SMS',
+			component: () => import('./views/apps/sms/scheduleSms.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/sendCustomSms',
+			name: 'Send Custom SMS',
+			component: () => import('./views/apps/sms/sendCustomSms.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/customSmsList',
+			name: 'Custom SMS List',
+			component: () => import('./views/apps/sms/customSmsList.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/usersSms',
+			name: 'Users SMS',
+			component: () => import('./views/apps/sms/usersSms.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		// **************************
+		// Messages Path
+		// **************************
+
+		{
+			path: '/apps/newMessage',
+			name: 'New Message',
+			component: () => import('./views/apps/messages/newMessage.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/messageInbox',
+			name: 'Message Inbox',
+			component: () => import('./views/apps/messages/messageInbox.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/sentMessages',
+			name: 'Sent Messages',
+			component: () => import('./views/apps/messages/sentMessages.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+
+		// **************************
+		// Mail Path
+		// **************************
+
+		{
+			path: '/apps/composeMail',
+			name: 'Compose Mail',
+			component: () => import('./views/apps/mail/composeMail.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/mailInbox',
+			name: 'Mail Inbox',
+			component: () => import('./views/apps/mail/mailInbox.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/sentMail',
+			name: 'Sent Mail',
+			component: () => import('./views/apps/mail/sentMail.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+
         {
           path: '/apps/email',
           redirect: '/apps/email/inbox',
@@ -1418,18 +2530,18 @@ router.beforeEach((to, from, next) => {
     // get firebase current user
     const firebaseCurrentUser = firebase.auth().currentUser
 
-    // if (
-    //     to.path === "/pages/login" ||
-    //     to.path === "/pages/forgot-password" ||
-    //     to.path === "/pages/error-404" ||
-    //     to.path === "/pages/error-500" ||
-    //     to.path === "/pages/register" ||
-    //     to.path === "/callback" ||
-    //     to.path === "/pages/comingsoon" ||
-    //     (auth.isAuthenticated() || firebaseCurrentUser)
-    // ) {
-    //     return next();
-    // }
+    if (
+        to.path === "/pages/login" ||
+        to.path === "/pages/forgot-password" ||
+        to.path === "/pages/error-404" ||
+        to.path === "/pages/error-500" ||
+        to.path === "/pages/register" ||
+        to.path === "/callback" ||
+        to.path === "/pages/comingsoon" ||
+        (auth.isAuthenticated() || firebaseCurrentUser)
+    ) {
+        return next();
+    }
 
     // If auth required, check login. If login fails redirect to login page
     if (to.meta.authRequired) {
