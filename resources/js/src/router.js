@@ -126,8 +126,14 @@ const router = new Router({
           name: 'Modify Sector',
           component: () => import('./views/apps/sectors/modifySector.vue'),
           meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Sectors' },
+              { title: 'Modify Sector', active: true }
+            ],
             rule: 'editor',
-            no_scroll: false
+            no_scroll: false,
+            pageTitle: 'Modify Sector'
           }
         },
         {
@@ -135,8 +141,14 @@ const router = new Router({
           name: 'All Sectors',
           component: () => import('./views/apps/sectors/allSectors.vue'),
           meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Sectors' },
+              { title: 'Sector List', active: true }
+            ],
             rule: 'editor',
-            no_scroll: false
+            no_scroll: false,
+            pageTitle: 'Sector List'
           }
 		},
 
@@ -227,8 +239,14 @@ const router = new Router({
           name: 'Add Doctor',
           component: () => import('./views/apps/doctors/addDoctor.vue'),
           meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Doctor' },
+              { title: 'Add Doctor', active: true }
+            ],
             rule: 'editor',
-            no_scroll: false
+            no_scroll: false,
+            pageTitle: 'Add A Doctor'
           }
         },
         {
@@ -245,8 +263,14 @@ const router = new Router({
           name: 'Modify Doctor',
           component: () => import('./views/apps/doctors/modifyDoctor.vue'),
           meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Doctor' },
+              { title: 'Modify Doctor', active: true }
+            ],
             rule: 'editor',
-            no_scroll: false
+            no_scroll: false,
+            pageTitle: 'Modify A Doctor'
           }
         },
         {
@@ -254,8 +278,14 @@ const router = new Router({
           name: 'All Doctors',
           component: () => import('./views/apps/doctors/allDoctors.vue'),
           meta: {
+            breadcrumb: [
+              { title: 'Home', url: '/' },
+              { title: 'Doctor' },
+              { title: 'Doctor List', active: true }
+            ],
             rule: 'editor',
-            no_scroll: false
+            no_scroll: false,
+            pageTitle: 'List of All Doctor'
           }
 		},
 
@@ -287,7 +317,8 @@ const router = new Router({
           component: () => import('./views/apps/patients/modifyPatient.vue'),
           meta: {
             rule: 'editor',
-            no_scroll: false
+            no_scroll: false,
+            pageTitle: 'Modify Sector'
           }
         },
         {
