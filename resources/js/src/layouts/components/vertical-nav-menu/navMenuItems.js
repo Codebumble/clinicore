@@ -48,6 +48,11 @@ export default [
 			}
 		]
 	},
+
+	// ********************
+	// Sectors Items
+	// ********************
+
 	{
 		header: 'Apps',
 		icon: 'PackageIcon',
@@ -56,7 +61,7 @@ export default [
 				url: 'null',
 				name: 'Sectors',
 				slug: 'sectors',
-				tag: '4',
+				tag: '3',
 				tagColor: 'success',
 				icon: 'GitPullRequestIcon',
 				i18n: 'Sectors',
@@ -80,11 +85,15 @@ export default [
 					}
 				]
 			},
+
+	// ********************
+	// 'Services & Packages Items
+	// ********************
 			{
 				url: 'null',
 				name: 'Services & Packages',
 				slug: 'services-and-packages',
-				tag: '8',
+				tag: '6',
 				tagColor: 'success',
 				icon: 'PackageIcon',
 				i18n: 'Services & Packages',
@@ -126,11 +135,16 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Doctors Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Doctors',
 				slug: 'Doctors',
-				tag: '4',
+				tag: '3',
 				tagColor: 'success',
 				icon: 'UsersIcon',
 				i18n: 'Doctors',
@@ -154,11 +168,16 @@ export default [
 					}
 				]
 			},
+
+	// ********************
+	// Patients Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Patients',
 				slug: 'Patients',
-				tag: '6',
+				tag: '5',
 				tagColor: 'success',
 				icon: 'SmileIcon',
 				i18n: 'Patients',
@@ -194,6 +213,11 @@ export default [
 					}
 				]
 			},
+
+	// ********************
+	// Admit Patients Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Admit Patients',
@@ -228,11 +252,16 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Serial Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Serial',
 				slug: 'Serial',
-				tag: '4',
+				tag: '3',
 				tagColor: 'success',
 				icon: 'ListIcon',
 				i18n: 'Serial',
@@ -256,11 +285,16 @@ export default [
 					}
 				]
 			},
+
+	// ********************
+	// Appointment Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Appointment',
 				slug: 'Appointment',
-				tag: '6',
+				tag: '5',
 				tagColor: 'success',
 				icon: 'CoffeeIcon',
 				i18n: 'Appointment',
@@ -296,11 +330,16 @@ export default [
 					}
 				]
 			},
+
+	// ********************
+	// Prescription Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Prescription',
 				slug: 'Prescription',
-				tag: '4',
+				tag: '3',
 				tagColor: 'success',
 				icon: 'FileTextIcon',
 				i18n: 'Prescription',
@@ -324,11 +363,16 @@ export default [
 					}
 				]
 			},
+
+	// ********************
+	// Medical Records Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Medical Records',
 				slug: 'medical-records',
-				tag: '4',
+				tag: '3',
 				tagColor: 'success',
 				icon: 'LayersIcon',
 				i18n: 'Medical Records',
@@ -352,11 +396,16 @@ export default [
 					}
 				]
 			},
+
+	// ********************
+	// Account Manager Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Account Manager',
 				slug: 'account-manager',
-				tag: '9',
+				tag: '8',
 				tagColor: 'success',
 				icon: 'TrendingUpIcon',
 				i18n: 'Account Manager',
@@ -410,6 +459,11 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Invoices Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Invoices',
@@ -438,11 +492,16 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Insurance Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Insurance',
 				slug: 'insurance',
-				tag: '6',
+				tag: '5',
 				tagColor: 'success',
 				icon: 'AnchorIcon',
 				i18n: 'Insurance',
@@ -478,6 +537,11 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Payments Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Payments',
@@ -512,6 +576,11 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// HR Dept. Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'HR Dept.',
@@ -570,6 +639,11 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Bed Management Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Bed Management',
@@ -610,6 +684,11 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Pharmacy Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Pharmacy',
@@ -644,6 +723,11 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Hospital Activities Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Hospital Activities',
@@ -702,11 +786,16 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Notice Board Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Notice Board',
 				slug: 'notice-board',
-				tag: '4',
+				tag: '3',
 				tagColor: 'success',
 				icon: 'ClipboardIcon',
 				i18n: 'Notice Board',
@@ -730,6 +819,11 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// App Settings Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'App Settings',
@@ -765,6 +859,11 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// SMS Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'SMS',
@@ -806,6 +905,11 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Messages Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Messages',
@@ -835,6 +939,11 @@ export default [
 					},
 				]
 			},
+
+	// ********************
+	// Mail Items
+	// ********************
+
 			{
 				url: 'null',
 				name: 'Mail',
