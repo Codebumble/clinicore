@@ -67,12 +67,6 @@ export default [
 						i18n: 'Add Sector'
 					},
 					{
-						url: '/apps/removeSector',
-						name: 'Remove Sector',
-						slug: 'remove-sector',
-						i18n: 'Remove Sector'
-					},
-					{
 						url: '/apps/modifySector',
 						name: 'Modify Sector',
 						slug: 'modify-sector',
@@ -101,12 +95,6 @@ export default [
 						i18n: 'Add Service'
 					},
 					{
-						url: '/apps/removeService',
-						name: 'Remove Service',
-						slug: 'remove-service',
-						i18n: 'Remove Service'
-					},
-					{
 						url: '/apps/modifyService',
 						name: 'Modify Service',
 						slug: 'modify-service',
@@ -123,12 +111,6 @@ export default [
 						name: 'Add Package',
 						slug: 'add-package',
 						i18n: 'Add Package'
-					},
-					{
-						url: '/apps/removePackage',
-						name: 'Remove Package',
-						slug: 'remove-package',
-						i18n: 'Remove Package'
 					},
 					{
 						url: '/apps/modifyPackage',
@@ -159,12 +141,6 @@ export default [
 						i18n: 'Add Doctor'
 					},
 					{
-						url: '/apps/removeDoctor',
-						name: 'Remove Doctor',
-						slug: 'remove-doctor',
-						i18n: 'Remove Doctor'
-					},
-					{
 						url: '/apps/modifyDoctor',
 						name: 'Modify Doctors',
 						slug: 'modify-doctors',
@@ -191,12 +167,6 @@ export default [
 						name: 'Add Patients',
 						slug: 'add-patients',
 						i18n: 'Add Patients'
-					},
-					{
-						url: '/apps/removePatient',
-						name: 'Remove Patients',
-						slug: 'remove-patients',
-						i18n: 'Remove Patients'
 					},
 					{
 						url: '/apps/modifyPatient',
@@ -279,12 +249,6 @@ export default [
 						i18n: 'All Serial'
 					},
 					{
-						url: '/apps/removeSerial',
-						name: 'Remove Serial',
-						slug: 'remove-serial',
-						i18n: 'Remove Serial'
-					},
-					{
 						url: '/apps/modifySerial',
 						name: 'Modify Serial',
 						slug: 'modify-serial',
@@ -319,12 +283,6 @@ export default [
 						i18n: 'Modify Appointment'
 					},
 					{
-						url: '/apps/removeAppointment',
-						name: 'Remove Appointment',
-						slug: 'remove-appointment',
-						i18n: 'Remove Appointment'
-					},
-					{
 						url: '/apps/assignedBy',
 						name: 'Assigned By',
 						slug: 'appointment-assigned-by',
@@ -351,12 +309,6 @@ export default [
 						name: 'Add Prescription',
 						slug: 'add-prescription',
 						i18n: 'Add Prescription'
-					},
-					{
-						url: '/apps/removePrescription',
-						name: 'Remove Prescription',
-						slug: 'remove-Prescription',
-						i18n: 'Remove Prescription'
 					},
 					{
 						url: '/apps/modifyPrescription',
@@ -387,12 +339,6 @@ export default [
 						i18n: 'Add Records'
 					},
 					{
-						url: '/apps/removeRecords',
-						name: 'Remove Records',
-						slug: 'remove-records',
-						i18n: 'Remove Records'
-					},
-					{
 						url: '/apps/modifyRecords',
 						name: 'Modify Records',
 						slug: 'modify-records',
@@ -419,12 +365,6 @@ export default [
 						name: 'Add Account',
 						slug: 'add-account',
 						i18n: 'Add Account'
-					},
-					{
-						url: '/apps/removeAccount',
-						name: 'Remove Account',
-						slug: 'remove-account',
-						i18n: 'Remove Account'
 					},
 					{
 						url: '/apps/modifyAccount',
@@ -511,12 +451,6 @@ export default [
 						name: 'Add Insurance',
 						slug: 'add-insurance',
 						i18n: 'Add Insurance'
-					},
-					{
-						url: '/apps/removeInsurance',
-						name: 'Remove Insurance',
-						slug: 'remove-insurance',
-						i18n: 'Remove Insurance'
 					},
 					{
 						url: '/apps/modifyInsurance',
@@ -787,12 +721,6 @@ export default [
 						name: 'Modify Notice',
 						slug: 'modify-notice',
 						i18n: 'Modify Notice'
-					},
-					{
-						url: '/apps/removeNotice',
-						name: 'Remove Notice',
-						slug: 'remove-notice',
-						i18n: 'Remove Notice'
 					},
 					{
 						url: '/apps/allNotice',

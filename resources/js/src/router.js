@@ -113,15 +113,6 @@ const router = new Router({
           }
         },
         {
-          path: '/apps/removeSector',
-          name: 'Remove Sector',
-          component: () => import('./views/apps/sectors/removeSector.vue'),
-          meta: {
-            rule: 'editor',
-            no_scroll: false
-          }
-        },
-        {
           path: '/apps/modifySector',
           name: 'Modify Sector',
           component: () => import('./views/apps/sectors/modifySector.vue'),
@@ -167,15 +158,6 @@ const router = new Router({
           }
         },
         {
-          path: '/apps/removeService',
-          name: 'Remove Service',
-          component: () => import('./views/apps/services-packages/removeService.vue'),
-          meta: {
-            rule: 'editor',
-            no_scroll: false
-          }
-        },
-        {
           path: '/apps/modifyService',
           name: 'Modify Service',
           component: () => import('./views/apps/services-packages/modifyService.vue'),
@@ -197,15 +179,6 @@ const router = new Router({
           path: '/apps/addPackage',
           name: 'Add Package',
           component: () => import('./views/apps/services-packages/addPackage.vue'),
-          meta: {
-            rule: 'editor',
-            no_scroll: false
-          }
-        },
-        {
-          path: '/apps/removePackage',
-          name: 'Remove Package',
-          component: () => import('./views/apps/services-packages/removePackage.vue'),
           meta: {
             rule: 'editor',
             no_scroll: false
@@ -250,15 +223,6 @@ const router = new Router({
           }
         },
         {
-          path: '/apps/removeDoctor',
-          name: 'Remove Doctor',
-          component: () => import('./views/apps/doctors/removeDoctor.vue'),
-          meta: {
-            rule: 'editor',
-            no_scroll: false
-          }
-        },
-        {
           path: '/apps/modifyDoctor',
           name: 'Modify Doctor',
           component: () => import('./views/apps/doctors/modifyDoctor.vue'),
@@ -297,15 +261,6 @@ const router = new Router({
           path: '/apps/addPatient',
           name: 'All Patient',
           component: () => import('./views/apps/patients/addPatient.vue'),
-          meta: {
-            rule: 'editor',
-            no_scroll: false
-          }
-        },
-        {
-          path: '/apps/removePatient',
-          name: 'Remove Patient',
-          component: () => import('./views/apps/patients/removePatient.vue'),
           meta: {
             rule: 'editor',
             no_scroll: false
@@ -413,15 +368,6 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/apps/removeSerial',
-			name: 'Remove Serial',
-			component: () => import('./views/apps/serial/removeSerial.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
 			path: '/apps/modifySerial',
 			name: 'Modify Serial',
 			component: () => import('./views/apps/serial/modifySerial.vue'),
@@ -463,15 +409,6 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/apps/removeAppointment',
-			name: 'Remove Appointment',
-			component: () => import('./views/apps/appointment/removeAppointment.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
 			path: '/apps/assignedBy',
 			name: 'Assigned By',
 			component: () => import('./views/apps/appointment/assignedBy.vue'),
@@ -498,15 +435,6 @@ const router = new Router({
 			path: '/apps/addPrescription',
 			name: 'Add Prescription',
 			component: () => import('./views/apps/prescription/addPrescription.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
-			path: '/apps/removePrescription',
-			name: 'Remove Prescription',
-			component: () => import('./views/apps/prescription/removePrescription.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
@@ -545,15 +473,6 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/apps/removeRecords',
-			name: 'Remove Records',
-			component: () => import('./views/apps/medical-records/removeRecords.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
 			path: '/apps/modifyRecords',
 			name: 'Modify Records',
 			component: () => import('./views/apps/medical-records/modifyRecords.vue'),
@@ -580,15 +499,6 @@ const router = new Router({
 			path: '/apps/addAccount',
 			name: 'Add Account',
 			component: () => import('./views/apps/account-manager/addAccount.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
-			path: '/apps/removeAccount',
-			name: 'Remove Account',
-			component: () => import('./views/apps/account-manager/removeAccount.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
@@ -698,15 +608,6 @@ const router = new Router({
 			path: '/apps/addInsurance',
 			name: 'Add Insurance',
 			component: () => import('./views/apps/insurance/addInsurance.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
-			path: '/apps/removeInsurance',
-			name: 'Remove Insurance',
-			component: () => import('./views/apps/insurance/removeInsurance.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
@@ -1054,15 +955,6 @@ const router = new Router({
 			path: '/apps/modifyNotice',
 			name: 'Modify Notice',
 			component: () => import('./views/apps/notice-board/modifyNotice.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
-			path: '/apps/removeNotice',
-			name: 'Remove Notice',
-			component: () => import('./views/apps/notice-board/removeNotice.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
