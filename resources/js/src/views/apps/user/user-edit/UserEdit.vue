@@ -8,7 +8,7 @@
 ========================================================================================== -->
 
 <template>
-  <div id="page-user-edit fuck">
+  <div id="page-user-edit">
 
     <vs-alert color="danger" title="User Not Found" :active.sync="user_not_found">
       <span>User record with id: {{ $route.params.userId }} not found. </span>
