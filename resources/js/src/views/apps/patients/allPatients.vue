@@ -111,8 +111,8 @@ export default {
           width: 175
         },
         {
-          headerName: 'Email',
-          field: 'email',
+          headerName: 'UID',
+          field: 'fax',
           filter: true,
           width: 250,
           pinned: 'left'
