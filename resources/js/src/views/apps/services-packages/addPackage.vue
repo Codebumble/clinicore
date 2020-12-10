@@ -20,7 +20,6 @@
 							<vs-th>Quantity</vs-th>
 							<vs-th>Price</vs-th>
 							<vs-th>Action</vs-th>
-							<!-- <vs-th>Remove</vs-th> -->
 						</template>
 
 						<template>
@@ -38,9 +37,6 @@
 									<vs-button radius color="success" type="gradient" icon-pack="feather" icon="icon-plus" class="inline-action" @click="addNewService"></vs-button>
 									<vs-button radius color="danger" type="gradient" icon-pack="feather" icon="icon-minus" class="inline-action" @click="removeService(index, servicePackage)" :disabled="servicePackage.serviceName < 1"></vs-button>
 								</vs-td>
-								<!-- <vs-td>
-									<vs-button radius color="danger" type="gradient" icon-pack="feather" icon="icon-minus" @click="removeService(index, servicePackage)" @disabled="servicePackages.length > 1"></vs-button>
-								</vs-td> -->
 							</vs-tr>
 						</template>
 					</vs-table>
