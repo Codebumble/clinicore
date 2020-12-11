@@ -56,19 +56,23 @@
 
           </div>
           
-        <div class="vx-row ml-auto mr-auto">
+        <div class="vx-row">
          <div class="vx-col w-full">
              <div class="vx-row mb-6">
-      <div class="vx-col sm:w-1/6 w-full">
+      <div class="vx-col sm:w-2/6">
         <span>Status:</span>
       </div>
-      <div class="vx-col sm:w-1/6 w-full">
-      <vs-switch color="success" v-model="switch2">
-        <span slot="on">Active</span>
-        <span slot="off">Inactive</span>
-      </vs-switch>
+      <div class="vx-col sm:w-3/6">
+		<ul class="centerx inline-status">
+			<li class="mr-4">
+				<vs-radio color="success" v-model="status" vs-value="Active">Active</vs-radio>
+			</li>
+			<li class="mr-4">
+				<vs-radio color="danger" v-model="status" vs-value="Inactive">Inactive</vs-radio>
+			</li>
+		</ul>
       </div>
-     </div>
+    </div>
          </div>
         </div>
         
@@ -108,6 +112,15 @@
       </div>
     </div>
 </template>
+<style lang="scss">
+.inline-status{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+</style>
+
 <script>
 import vSelect from 'vue-select'
 import flatPickr from 'vue-flatpickr-component'
@@ -129,7 +142,7 @@ export default{
       input10: '',
       input11: '',
       input12: '',
-      switch2:true,
+	  status: 'Active',
       colorx:"#def1d1",
       popupActive: false,
       popupActive1: false,
