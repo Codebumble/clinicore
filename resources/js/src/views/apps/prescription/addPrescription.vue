@@ -1,237 +1,113 @@
-<!-- =========================================================================================
-    File Name: Invoice.vue
-    Description: Invoice Page
-    ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
-========================================================================================== -->
-
-
 <template>
-    <div id="invoice-page">
-
-        <div class="flex flex-wrap items-center justify-between">
-          <vx-input-group class="mb-base mr-3">
-            <vs-input v-model="mailTo" placeholder="Email" />
-
-            <template slot="append">
-              <div class="append-text btn-addon">
-                <vs-button type="border" @click="mailTo = ''" class="whitespace-no-wrap">Send Prescription</vs-button>
-              </div>
-            </template>
-          </vx-input-group>
-          <div class="flex items-center">
-            <vs-button class="mb-base mr-3" type="border" icon-pack="feather" icon="icon icon-download">Download</vs-button>
-            <vs-button class="mb-base mr-3" icon-pack="feather" icon="icon icon-file" @click="printInvoice">Print</vs-button>
+<div class="vx-col w-full mb-base">
+      <vx-card title="Prescription for Your Patient">
+        <div class="vx-row">
+          <div class="vx-col sm:w-1/2 w-full mb-2">
+            <v-select v-model="selected1" placeholder="Patient UID" :options="options1" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
           </div>
+          <div class="vx-col sm:w-1/2 w-full mb-2">
+            <vs-input  class="w-full"  icon-pack="feather" icon="icon-bookmark" disabled label-placeholder="Dr. Nurul Islam" v-model="input2" />
+          </div>
+          <div class="vx-col sm:w-1/2 w-full mb-2 mt-3">
+            <vs-textarea class="w-full" v-model="textarea" placeholder="Description" />
+          </div>
+          <vs-divider color="primary">Add Medicine Here</vs-divider>
+<div class="vx-col sm:w-1/2 w-full mb-2">
+
+		<ul class="centerx inline-status">
+      <li class="mr-3">
+            <vs-input class="w-full"  icon-pack="feather" icon="icon-plus" label-placeholder="Doctor Full Name*" v-model="input1" />
+            </li>
+            <li class="mr-1 mt-4">
+            <vs-button radius color="danger" type="gradient" @click="addmedicinefeild" icon-pack="feather" icon="icon-user-plus"></vs-button>
+          </li>
+          </ul>
+          
+          </div>
+
+
+
         </div>
+        
 
-        <vx-card id="invoice-container">
-
-            <!-- INVOICE METADATA -->
-            <div class="vx-row leading-loose p-base">
-                <div class="vx-col w-1/2 mt-base">
-                    <img src="@assets/images/logo/logo.png" alt="vuexy-logo">
-                </div>
-                <div class="vx-col w-1/2 text-right">
-                    <h1>Prescription</h1>
-                    <div class="invoice__invoice-detail mt-6">
-                        <h6>Prescription NO.</h6>
-                        <p>{{ invoiceDetails.invoiceNo }}</p>
-
-                        <h6 class="mt-4">Issue DATE</h6>
-                        <p>{{ invoiceDetails.invoiceDate | date(true) }}</p>
-                    </div>
-                </div>
-                <div class="vx-col w-1/2 mt-12">
-                    <h5>Patients</h5>
-                    <div class="invoice__recipient-info my-4">
-                        <p>{{ recipientDetails.fullName }}</p>
-                        <p>{{ recipientDetails.addressLine1 }}</p>
-                        <p>{{ recipientDetails.addressLine2 }}</p>
-                        <p>{{ recipientDetails.zipcode }}</p>
-                    </div>
-                    <div class="invoice__recipient-contact ">
-                        <p class="flex items-center">
-                            <feather-icon icon="MailIcon" svgClasses="h-4 w-4"></feather-icon>
-                            <span class="ml-2">{{ recipientDetails.mailId }}</span>
-                        </p>
-                        <p class="flex items-center">
-                            <feather-icon icon="PhoneIcon" svgClasses="h-4 w-4"></feather-icon>
-                            <span class="ml-2">{{ recipientDetails.mobile }}</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="vx-col w-1/2 mt-base text-right mt-12">
-                    <h5>{{ companyDetails.name }}</h5>
-                    <div class="invoice__company-info my-4">
-                        <p>{{ companyDetails.addressLine1 }}</p>
-                        <p>{{ companyDetails.addressLine2 }}</p>
-                        <p>{{ companyDetails.zipcode }}</p>
-                    </div>
-                    <div class="invoice__company-contact">
-                        <p class="flex items-center justify-end">
-                            <feather-icon icon="MailIcon" svgClasses="h-4 w-4"></feather-icon>
-                            <span class="ml-2">{{ companyDetails.mailId }}</span>
-                        </p>
-                        <p class="flex items-center justify-end">
-                            <feather-icon icon="PhoneIcon" svgClasses="h-4 w-4"></feather-icon>
-                            <span class="ml-2">{{ companyDetails.mobile }}</span>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- INVOICE CONTENT -->
-            <div class="p-base">
-                <!-- INVOICE TASKS TABLE -->
-                <vs-table hoverFlat :data="invoiceData.tasks">
-                    <!-- HEADER -->
-                    <template slot="thead">
-                        <vs-th class="pointer-events-none">Medicine name</vs-th>
-                        <vs-th class="pointer-events-none">Times(Morning-Noon-Night)</vs-th>
-                        <vs-th class="pointer-events-none">Days</vs-th>
-                    </template>
-
-                    <!-- DATA -->
-                    <template slot-scope="{data}">
-                        <vs-tr v-for="(tr, index) in data" :key="index">
-                            <vs-td :data="data[index].task">{{ data[index].task }}</vs-td>
-                            <vs-td :data="data[index].hours">{{ data[index].morning }}-{{ data[index].noon }}-{{ data[index].night }}</vs-td>
-                            <vs-td :data="data[index].rate">{{ data[index].rate }} Days</vs-td>
-                        </vs-tr>
-                    </template>
-                </vs-table>
-
-                <!-- INVOICE SUMMARY TABLE -->
-                <vs-table hoverFlat class="w-1/2 ml-auto mt-4" :data="invoiceData">
-                    <vs-tr>
-                        <vs-th class="pointer-events-none">SUBTOTAL</vs-th>
-                        <vs-td>{{ invoiceData.subtotal }} USD</vs-td>
-                    </vs-tr>
-                    <vs-tr>
-                        <vs-th class="pointer-events-none">DISCOUNT ({{ invoiceData.discountPercentage }}%)</vs-th>
-                        <vs-td>{{ invoiceData.discountedAmount }} USD</vs-td>
-                    </vs-tr>
-                    <vs-tr>
-                        <vs-th class="pointer-events-none">TOTAL</vs-th>
-                        <vs-td>{{ invoiceData.total }} USD</vs-td>
-                    </vs-tr>
-                </vs-table>
-            </div>
-
-            <!-- INVOICE FOOTER -->
-            <div class="invoice__footer text-right p-base">
-                <p class="mb-4">Transfer the amounts to the business amount below. Please include invoice number on your check.</p>
-                <p>
-                    <span class="mr-8">BANK: <span class="font-semibold">FTSBUS33</span></span>
-                    <span>IBAN: <span class="font-semibold"> G882-1111-2222-3333 </span></span>
-                </p>
-            </div>
-        </vx-card>
+      </vx-card>
     </div>
 </template>
-
+<style lang="scss">
+.inline-status{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+</style>
 <script>
-
+import flatPickr from 'vue-flatpickr-component'
+import 'flatpickr/dist/flatpickr.css'
+import vSelect from 'vue-select'
 export default{
+  components: {
+    'v-select': vSelect,
+    flatPickr
+  },
   data () {
     return {
-      mailTo: '',
-      companyDetails: {
-        name: 'Dr.Saifur Rahman',
-        addressLine1: 'M.B.B.S, F.R.C.S',
-        addressLine2: 'Dhaka Medical College',
-        zipcode: '',
-        mailId: 'drsaifur969@gmail.com',
-        mobile: '+880-1981-796399'
-      },
-      recipientDetails: {
-        fullName: 'Shakil Ahmed',
-        addressLine1: '187/6, East Khilgaon',
-        addressLine2: 'Dhaka,Bangladesh',
-        zipcode: '1237',
-        mailId: 'shakilofficial0@mail.com',
-        mobile: '+880 1701 678374'
-      },
-      invoiceDetails: {
-        invoiceNo: '981600/8h655/622-v',
-        invoiceDate: 'Mon Dec 10 2018 07:46:00 GMT+12.54 (GMT)'
-      },
-      invoiceData: {
-        tasks: [
-          {
-            id: 1,
-            task: 'Napa',
-            morning: 2,
-            noon:3,
-            night:2,
-            rate: 13,
-            amount: 90000
-          },
-          {
-            id: 2,
-            task: 'Newsletter template design',
-            hours: 20,
-            rate: 12,
-            amount: 24000
-          }
-        ],
-        subtotal: 114000,
-        discountPercentage: 5,
-        discountedAmount: 5700,
-        total: 108300
-      }
+      check7: '',
+      input1: '',
+      input2: '',
+      input3: '',
+      input4: '',
+      input5: '',
+      input6: '',
+      input7: '',
+      input8: '',
+      input9: '',
+      input10: '',
+      input11: '',
+      input12: '',
+	  status: 'Active',
+      colorx:"#def1d1",
+      popupActive: false,
+      colorLoading: '#ff8000',
+      date: null,
+      options1: [
+        {id: 1, label: 'Shakil Ahmed(6620)'},
+        {id: 3, label: 'Saifur Rahman(8390)'},
+        {id: 2, label: 'Saymoon Islam(8793)'},
+      ],
+      selected2: {id: 0, label: 'Patients UID'},
+     
     }
-  },
-  computed: {
-
   },
   methods: {
-    printInvoice () {
-      window.print()
-    }
-  },
-  components: {},
-  mounted () {
-    this.$emit('setAppClasses', 'invoice-page')
+    openLoadingColor() {
+      this.$vs.loading({ type: 'sound' })
+      this.popupActive=false;
+      
+      setTimeout(() => {
+          
+        this.$vs.loading.close()
+      }, 2000);
+        setTimeout(() =>{
+      this.$vs.notify({
+        title: 'Success',
+        text: 'Data Added Successfully!!',
+        color: 'success',
+        position:'top-right',
+        time: '4000',
+        iconPack: 'feather',
+        icon:'icon-check'})
+        }, 2000);
+    },addmedicinefeild(){
+      this.applicants.push({
+        previous:'',
+        expiration: ''
+      })
+    },
+    deleteVisa(counter){
+      this.applicants.splice(counter,1);
+},
   }
 }
 </script>
 
-<style lang="scss">
-@media print {
-  .invoice-page {
-    * {
-      visibility: hidden;
-    }
-
-    #content-area {
-      margin: 0 !important;
-    }
-
-    .vs-con-table {
-      .vs-con-tbody {
-        overflow: hidden !important;
-      }
-    }
-
-    #invoice-container,
-    #invoice-container * {
-      visibility: visible;
-    }
-    #invoice-container {
-      position: absolute;
-      left: 0;
-      top: 0;
-      box-shadow: none;
-    }
-  }
-}
-
-@page {
-  size: auto;
-}
-</style>
