@@ -15,39 +15,39 @@
 						v-model="addr" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-terminal" label-placeholder="City"
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="City"
 						v-model="city" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-zap" label-placeholder="Postal Code"
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Postal Code"
 						v-model="post" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-shield" label-placeholder="Country"
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Country"
 						v-model="country" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-shield" label-placeholder="Guardian Name"
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Guardian Name"
 						v-model="guardianName" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-shield"
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit"
 						label-placeholder="Guardian Relation" v-model="guardianRel" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-shield" label-placeholder="Guardian Address"
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Guardian Address"
 						v-model="guardianAddr" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-shield" label-placeholder="Guardian Contact"
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Guardian Contact"
 						v-model="guardianContact" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-shield" label-placeholder="Agent Name"
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Agent Name"
 						v-model="agentName" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-shield" label-placeholder="Policy No"
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Policy No"
 						v-model="policyNo" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
@@ -58,13 +58,13 @@
 					<flat-pickr placeholder="Release Date" v-model="releaseDate" :config="{ dateFormat: 'd F Y' }"
 						class="w-full" v-validate="'required'" />
 				</div>
+				<div class="vx-col sm:w-1/2 w-full mb-2">
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Mobile Number*"
+						v-model="mob" />
+				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
 					<v-select v-model="selectedGender" placeholder="Gender" :options="genders"
 						:dir="$vs.rtl ? 'rtl' : 'ltr'" />
-				</div>
-				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-tablet" label-placeholder="Mobile Number*"
-						v-model="mob" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
 					<v-select v-model="selectedSector" :options="sectors" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
