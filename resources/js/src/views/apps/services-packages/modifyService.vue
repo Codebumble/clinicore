@@ -49,7 +49,7 @@
 
     </div>
     <div class="vx-col sm:w-1/2 mb-6">
-      <vx-card title="Remove A Serive">
+      <vx-card title="Remove A Service">
         <div class="vx-row mr-auto">
             <div class="vx-col sm:w-2/2 w-full mb-2">
             <v-select v-model="selected1" :options="options1" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
