@@ -326,24 +326,6 @@ const router = new Router({
             no_scroll: false
           }
         },
-        {
-          path: '/apps/releasePatients',
-          name: 'Release Patients',
-          component: () => import('./views/apps/admit-patient/releasePatients.vue'),
-          meta: {
-            rule: 'editor',
-            no_scroll: false
-          }
-        },
-        {
-          path: '/apps/allReleasedPatients',
-          name: 'All Released Patients',
-          component: () => import('./views/apps/admit-patient/allReleasedPatients.vue'),
-          meta: {
-            rule: 'editor',
-            no_scroll: false
-          }
-		},
 
 		// ********************
 		// Serial Path

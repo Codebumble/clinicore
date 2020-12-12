@@ -1,7 +1,7 @@
 <template>
 	<div class="vx-row">
 		<div class="vx-col w-full mb-6">
-			<vx-card title="All Packages">
+			<vx-card title="All Admitted Patients">
 
 				<vs-table pagination max-items="3" stripe search :data="allAdmittedPatients">
 
@@ -34,6 +34,14 @@
 
 							<vs-td :data="data[index].releaseDate">
 								{{ data[index].releaseDate }}
+
+								<template slot="edit">
+									<div class="vx-col mb-2">
+										<flat-pickr placeholder="Release Date" v-model="data[index].releaseDate"
+						:config="{ dateFormat: 'd F Y'}" class="w-full inputx" />
+									</div>
+								</template>
+
 							</vs-td>
 
 							<template class="expand-user" slot="expand">
@@ -148,7 +156,13 @@
 
 
 <script>
+
+import flatPickr from 'vue-flatpickr-component'
+import 'flatpickr/dist/flatpickr.css'
 	export default {
+		components: {
+		flatPickr
+	},
 		data() {
 			return {
 				popupActive1: false,
