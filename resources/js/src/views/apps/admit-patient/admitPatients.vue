@@ -52,7 +52,7 @@
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
 					<flat-pickr placeholder="Admisstion Date" v-model="admitDate"
-						:config="{ dateFormat: 'd F Y', maxDate: new Date() }" class="w-full" v-validate="'required'" />
+						:config="{ dateFormat: 'd F Y'}" class="w-full" v-validate="'required'" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
 					<flat-pickr placeholder="Release Date" v-model="releaseDate" :config="{ dateFormat: 'd F Y' }"

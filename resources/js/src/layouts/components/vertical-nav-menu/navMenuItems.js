@@ -222,7 +222,7 @@ export default [
 				url: 'null',
 				name: 'Admit Patients',
 				slug: 'admit-patients',
-				tag: '4',
+				tag: '2',
 				tagColor: 'success',
 				icon: 'ThermometerIcon',
 				i18n: 'Admit Patients',
@@ -237,18 +237,6 @@ export default [
 						name: 'All Admitted Patients',
 						slug: 'all-admitted-patients',
 						i18n: 'All Admitted Patients'
-					},
-					{
-						url: '/apps/releasePatients',
-						name: 'Release Patients',
-						slug: 'release-patients',
-						i18n: 'Release Patients'
-					},
-					{
-						url: '/apps/allReleasedPatients',
-						name: 'All Released Patients',
-						slug: 'all-released-patients',
-						i18n: 'All Released Patients'
 					},
 				]
 			},
