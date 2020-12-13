@@ -1,113 +1,159 @@
 <template>
-<div class="vx-col w-full mb-base">
-      <vx-card title="Prescription for Your Patient">
-        <div class="vx-row">
-          <div class="vx-col sm:w-1/2 w-full mb-2">
-            <v-select v-model="selected1" placeholder="Patient UID" :options="options1" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
-          </div>
-          <div class="vx-col sm:w-1/2 w-full mb-2">
-            <vs-input  class="w-full"  icon-pack="feather" icon="icon-bookmark" disabled label-placeholder="Dr. Nurul Islam" v-model="input2" />
-          </div>
-          <div class="vx-col sm:w-1/2 w-full mb-2 mt-3">
-            <vs-textarea class="w-full" v-model="textarea" placeholder="Description" />
-          </div>
-          <vs-divider color="primary">Add Medicine Here</vs-divider>
-<div class="vx-col sm:w-1/2 w-full mb-2">
+	<div class="vx-col w-full mb-base">
+		<vx-card title="Create Prescription for Your Patient">
+			<div class="vx-row">
+				<div class="vx-col sm:w-3/4 w-full mb-2">
+          <v-select class="w-full" icon-pack="feather" icon="icon-plus" v-model="selected" :options="options" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+				</div>
+			</div>
+			<div class="vx-row">
+				<div class="vx-col sm:w-3/4 w-full mb-2 mt-3">
+					<vs-textarea class="w-full" v-model="textarea" placeholder="Information About Patient Problem" />
+				</div>
+			</div>
 
-		<ul class="centerx inline-status">
-      <li class="mr-3">
-            <vs-input class="w-full"  icon-pack="feather" icon="icon-plus" label-placeholder="Doctor Full Name*" v-model="input1" />
-            </li>
-            <li class="mr-1 mt-4">
-            <vs-button radius color="danger" type="gradient" @click="addmedicinefeild" icon-pack="feather" icon="icon-user-plus"></vs-button>
-          </li>
-          </ul>
-          
-          </div>
+			<div class="vx-row">
+				<div class="vx-col sm:w-3/3 mb-2 mt-3">
+					<vs-table stripe noDataText="">
+						<template slot="thead">
+							<vs-th>Medicine Name</vs-th>
+							<vs-th>Morning</vs-th>
+							<vs-th>Noon</vs-th>
+              <vs-th>Night</vs-th>
+							<vs-th>Action</vs-th>
+						</template>
+
+						<template>
+							<vs-tr v-for="(servicePackage, index) in servicePackages" :key="index">
+								<vs-td>
+									<vs-input icon-pack="feather" icon="icon-edit-2" placeholder="*" v-model="servicePackage.serviceName" />
+								</vs-td>
+								<vs-td>
+									<vs-input-number label="Quantity:" v-model="servicePackage.morning" />
+								</vs-td>
+								<vs-td>
+									<vs-input-number label="Quantity:" v-model="servicePackage.noon" />
+								</vs-td>
+                <vs-td>
+									<vs-input-number label="Quantity:" v-model="servicePackage.night" />
+								</vs-td>
+								<vs-td>
+									<vs-button radius color="success" type="gradient" icon-pack="feather" icon="icon-plus" class="inline-action" @click="addNewService"></vs-button>
+									<vs-button radius color="danger" type="gradient" icon-pack="feather" icon="icon-minus" class="inline-action" @click="removeService(index, servicePackage)" :disabled="servicePackage.serviceName < 1"></vs-button>
+								</vs-td>
+							</vs-tr>
+						</template>
+					</vs-table>
+				</div>
+			</div>
 
 
 
-        </div>
-        
+			
 
-      </vx-card>
-    </div>
+			<div class="vx-row">
+				<div class="vx-col w-full">
+					<vs-button class="mr-3 mb-2" @click="popupActive=true" type="filled">Print</vs-button>
+
+					<vs-popup background-color="rgba(255,255,255,.6)" :background-color-popup="colorx" class=""
+						title="Review" :active.sync="popupActive">
+						<p> Are You Sure You Want to Print This Prescription ?</p><br>
+					</vs-popup>
+					<vs-button color="warning" type="border" class="mb-2"
+						@click="input1 = input2 = ''; check7 = false;">Reset</vs-button>
+				</div>
+			</div>
+		</vx-card>
+	</div>
 </template>
-<style lang="scss">
-.inline-status{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-}
-</style>
-<script>
-import flatPickr from 'vue-flatpickr-component'
-import 'flatpickr/dist/flatpickr.css'
-import vSelect from 'vue-select'
-export default{
-  components: {
-    'v-select': vSelect,
-    flatPickr
-  },
-  data () {
-    return {
-      check7: '',
-      input1: '',
-      input2: '',
-      input3: '',
-      input4: '',
-      input5: '',
-      input6: '',
-      input7: '',
-      input8: '',
-      input9: '',
-      input10: '',
-      input11: '',
-      input12: '',
-	  status: 'Active',
-      colorx:"#def1d1",
-      popupActive: false,
-      colorLoading: '#ff8000',
-      date: null,
-      options1: [
-        {id: 1, label: 'Shakil Ahmed(6620)'},
-        {id: 3, label: 'Saifur Rahman(8390)'},
-        {id: 2, label: 'Saymoon Islam(8793)'},
-      ],
-      selected2: {id: 0, label: 'Patients UID'},
-     
-    }
-  },
-  methods: {
-    openLoadingColor() {
-      this.$vs.loading({ type: 'sound' })
-      this.popupActive=false;
-      
-      setTimeout(() => {
-          
-        this.$vs.loading.close()
-      }, 2000);
-        setTimeout(() =>{
-      this.$vs.notify({
-        title: 'Success',
-        text: 'Data Added Successfully!!',
-        color: 'success',
-        position:'top-right',
-        time: '4000',
-        iconPack: 'feather',
-        icon:'icon-check'})
-        }, 2000);
-    },addmedicinefeild(){
-      this.applicants.push({
-        previous:'',
-        expiration: ''
-      })
-    },
-    deleteVisa(counter){
-      this.applicants.splice(counter,1);
-},
-  }
-}
-</script>
 
+<style lang="scss">
+	.inline-status {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.inline-action {
+		float: left !important;
+		margin: 0 .5rem;
+	}
+	.inline-action:first-child{
+		margin: 0 .5rem 0 0;
+	}
+
+</style>
+
+
+<script>
+import vSelect from 'vue-select'
+
+	export default {
+		data() {
+			return {
+				check7: '',
+				input1: '',
+				input2: '',
+				textarea: '',
+				status: 'Active',
+				amount: 0,
+				colorx: "#def1d1",
+				popupActive: false,
+        colorLoading: '#ff8000',
+        options: [
+        {id: 1, label: 'Shakil Ahmed(16261)'},
+        {id: 3, label: 'Saifur Rahman(28292)'},
+        {id: 2, label: 'Saymoon Islam(3312)'},
+      ],
+      selected: {id: 1, label: 'Patient '},
+				servicePackages: [{
+					serviceName: '',
+					morning: 0,
+          noon: 0,
+          night:0,
+				}],
+			}
+		},components: {
+    'v-select': vSelect,
+    },
+		methods: {
+			openLoadingColor() {
+				this.$vs.loading({
+					type: 'sound'
+				})
+				this.popupActive = false;
+
+				setTimeout(() => {
+
+					this.$vs.loading.close()
+				}, 2000);
+				setTimeout(() => {
+					this.$vs.notify({
+						title: 'Success',
+						text: 'Data Added Successfully!!',
+						color: 'success',
+						position: 'top-right',
+						time: '4000',
+						iconPack: 'feather',
+						icon: 'icon-check'
+					})
+				}, 2000);
+			},
+
+			addNewService(){
+				this.servicePackages.push({
+					serviceNames: '',
+					morning: 0,
+          noon: 0,
+          night: 0,
+				});
+			},
+			removeService(index, servicePackage){
+				this.servicePackages.indexOf(servicePackage);
+				this.servicePackages.splice(index, 1);
+			}
+
+		}
+	}
+
+</script>
