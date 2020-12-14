@@ -61,6 +61,8 @@
 					<vs-popup background-color="rgba(255,255,255,.6)" :background-color-popup="colorx" class=""
 						title="Review" :active.sync="popupActive">
 						<p> Are You Sure You Want to Print This Prescription ?</p><br>
+						
+						<vs-button @click="openLoadingColor" type="filled" :color="colorLoading">OK</vs-button>
 					</vs-popup>
 					<vs-button color="warning" type="border" class="mb-2"
 						@click="input1 = input2 = ''; check7 = false;">Reset</vs-button>
