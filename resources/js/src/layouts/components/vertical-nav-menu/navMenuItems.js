@@ -61,8 +61,6 @@ export default [
 				url: 'null',
 				name: 'Sectors',
 				slug: 'sectors',
-				tag: '3',
-				tagColor: 'success',
 				icon: 'GitPullRequestIcon',
 				i18n: 'Sectors',
 				submenu: [{
@@ -93,8 +91,6 @@ export default [
 				url: 'null',
 				name: 'Services & Packages',
 				slug: 'services-and-packages',
-				tag: '6',
-				tagColor: 'success',
 				icon: 'PackageIcon',
 				i18n: 'Services & Packages',
 				submenu: [{
@@ -144,8 +140,6 @@ export default [
 				url: 'null',
 				name: 'Doctors',
 				slug: 'Doctors',
-				tag: '3',
-				tagColor: 'success',
 				icon: 'UsersIcon',
 				i18n: 'Doctors',
 				submenu: [{
@@ -177,8 +171,6 @@ export default [
 				url: 'null',
 				name: 'Patients',
 				slug: 'Patients',
-				tag: '5',
-				tagColor: 'success',
 				icon: 'SmileIcon',
 				i18n: 'Patients',
 				submenu: [{
@@ -222,8 +214,6 @@ export default [
 				url: 'null',
 				name: 'Admit Patients',
 				slug: 'admit-patients',
-				tag: '2',
-				tagColor: 'success',
 				icon: 'ThermometerIcon',
 				i18n: 'Admit Patients',
 				submenu: [{
@@ -249,8 +239,6 @@ export default [
 				url: 'null',
 				name: 'Serial',
 				slug: 'Serial',
-				tag: '3',
-				tagColor: 'success',
 				icon: 'ListIcon',
 				i18n: 'Serial',
 				submenu: [{
@@ -282,8 +270,6 @@ export default [
 				url: 'null',
 				name: 'Appointment',
 				slug: 'Appointment',
-				tag: '5',
-				tagColor: 'success',
 				icon: 'CoffeeIcon',
 				i18n: 'Appointment',
 				submenu: [{
@@ -327,8 +313,6 @@ export default [
 				url: 'null',
 				name: 'Prescription',
 				slug: 'Prescription',
-				tag: '3',
-				tagColor: 'success',
 				icon: 'FileTextIcon',
 				i18n: 'Prescription',
 				submenu: [{
@@ -360,8 +344,6 @@ export default [
 				url: 'null',
 				name: 'Medical Records',
 				slug: 'medical-records',
-				tag: '3',
-				tagColor: 'success',
 				icon: 'LayersIcon',
 				i18n: 'Medical Records',
 				submenu: [{
@@ -393,8 +375,6 @@ export default [
 				url: 'null',
 				name: 'Account Manager',
 				slug: 'account-manager',
-				tag: '8',
-				tagColor: 'success',
 				icon: 'TrendingUpIcon',
 				i18n: 'Account Manager',
 				submenu: [{
@@ -416,16 +396,16 @@ export default [
 						i18n: 'All Accounts'
 					},
 					{
-						url: '/apps/addPayment',
-						name: 'Add Payment',
-						slug: 'add-payment',
-						i18n: 'Add Payment'
+						url: '/apps/makePayment',
+						name: 'Make Payment',
+						slug: 'make-payment',
+						i18n: 'Make Payment'
 					},
 					{
-						url: '/apps/allPayments',
-						name: 'All Payments',
-						slug: 'all-payments',
-						i18n: 'All Payments'
+						url: '/apps/paymentList',
+						name: 'Payment List',
+						slug: 'payment-list',
+						i18n: 'Payment List'
 					},
 					{
 						url: '/apps/debits',
@@ -439,12 +419,6 @@ export default [
 						slug: 'credits',
 						i18n: 'Credits'
 					},
-					{
-						url: '/apps/accountManagerAnalytics',
-						name: 'Accounts Analytics',
-						slug: 'accounts-analytics',
-						i18n: 'Accounts Analytics'
-					},
 				]
 			},
 
@@ -456,8 +430,6 @@ export default [
 				url: 'null',
 				name: 'Invoices',
 				slug: 'invoices',
-				tag: '3',
-				tagColor: 'success',
 				icon: 'AlertCircleIcon',
 				i18n: 'Invoices',
 				submenu: [{
@@ -478,6 +450,7 @@ export default [
 						slug: 'all-invoices',
 						i18n: 'All Invoices'
 					},
+
 				]
 			},
 
@@ -489,8 +462,6 @@ export default [
 				url: 'null',
 				name: 'Insurance',
 				slug: 'insurance',
-				tag: '5',
-				tagColor: 'success',
 				icon: 'AnchorIcon',
 				i18n: 'Insurance',
 				submenu: [{
@@ -527,41 +498,41 @@ export default [
 			},
 
 	// ********************
-	// Payments Items
+	// Bill Items
 	// ********************
 
 			{
 				url: 'null',
-				name: 'Payments',
-				slug: 'payments',
-				tag: '4',
-				tagColor: 'success',
+				name: 'Bill',
+				slug: 'bill',
 				icon: 'DollarSignIcon',
-				i18n: 'Payments',
-				submenu: [{
-						url: '/apps/addPayment',
-						name: 'Add Payment',
-						slug: 'add-payment',
-						i18n: 'Add Payment'
+				i18n: 'Bill',
+				submenu: [
+					{
+						url: '/apps/addBill',
+						name: 'Add Bill',
+						slug: 'add-bill',
+						i18n: 'Add Bill'
 					},
 					{
-						url: '/apps/paymentList',
-						name: 'Payment List',
-						slug: 'payment-list',
-						i18n: 'Payment List'
+						url: '/apps/allBills',
+						name: 'All Bills',
+						slug: 'all-bills',
+						i18n: 'All Bills'
 					},
 					{
-						url: '/apps/addAdvancePayment',
-						name: 'Add Advance Payment',
-						slug: 'add-advance-payment',
-						i18n: 'Add Advance Payment'
+						url: '/apps/addAdvanceBill',
+						name: 'Add Advance Bill',
+						slug: 'add-advance-bill',
+						i18n: 'Add Advance Bill'
 					},
 					{
-						url: '/apps/allAdvancePayment',
-						name: 'All Advance Payment',
-						slug: 'all-advance-payment',
-						i18n: 'All Advance Payment'
+						url: '/apps/allAdvanceBill',
+						name: 'All Advance Bill',
+						slug: 'all-advance-bill',
+						i18n: 'All Advance Bill'
 					},
+
 				]
 			},
 
@@ -573,8 +544,6 @@ export default [
 				url: 'null',
 				name: 'HR Dept.',
 				slug: 'hr-dept',
-				tag: '8',
-				tagColor: 'success',
 				icon: 'PieChartIcon',
 				i18n: 'HR Dept.',
 				submenu: [{
@@ -636,8 +605,6 @@ export default [
 				url: 'null',
 				name: 'Bed Management',
 				slug: 'bed-management',
-				tag: '5',
-				tagColor: 'success',
 				icon: 'ColumnsIcon',
 				i18n: 'Bed Management',
 				submenu: [{
@@ -645,6 +612,12 @@ export default [
 						name: 'Add Bed',
 						slug: 'add-bed',
 						i18n: 'Add Bed'
+					},
+					{
+						url: '/apps/allBeds',
+						name: 'All Beds',
+						slug: 'all-beds',
+						i18n: 'All Beds'
 					},
 					{
 						url: '/apps/allocateBed',
@@ -657,12 +630,6 @@ export default [
 						name: 'Allocated Bed',
 						slug: 'allocated-bed',
 						i18n: 'Allocated Bed'
-					},
-					{
-						url: '/apps/allBeds',
-						name: 'All Beds',
-						slug: 'all-beds',
-						i18n: 'All Beds'
 					},
 					{
 						url: '/apps/bedAnalytics',
@@ -681,8 +648,6 @@ export default [
 				url: 'null',
 				name: 'Pharmacy',
 				slug: 'pharmacy',
-				tag: '4',
-				tagColor: 'success',
 				icon: 'ShoppingBagIcon',
 				i18n: 'Pharmacy',
 				submenu: [{
@@ -720,8 +685,6 @@ export default [
 				url: 'null',
 				name: 'Hospital Activities',
 				slug: 'hospital-activities',
-				tag: '8',
-				tagColor: 'success',
 				icon: 'ActivityIcon',
 				i18n: 'Hospital Activities',
 				submenu: [{
@@ -783,8 +746,6 @@ export default [
 				url: 'null',
 				name: 'Notice Board',
 				slug: 'notice-board',
-				tag: '3',
-				tagColor: 'success',
 				icon: 'ClipboardIcon',
 				i18n: 'Notice Board',
 				submenu: [{
@@ -816,8 +777,6 @@ export default [
 				url: 'null',
 				name: 'App Settings',
 				slug: 'app-settings',
-				tag: '4',
-				tagColor: 'success',
 				icon: 'SettingsIcon',
 				i18n: 'App Settings',
 				submenu: [
@@ -856,8 +815,6 @@ export default [
 				url: 'null',
 				name: 'SMS',
 				slug: 'sms',
-				tag: '5',
-				tagColor: 'success',
 				icon: 'MessageSquareIcon',
 				i18n: 'SMS',
 				submenu: [
@@ -902,8 +859,6 @@ export default [
 				url: 'null',
 				name: 'Messages',
 				slug: 'messages',
-				tag: '3',
-				tagColor: 'success',
 				icon: 'MessageCircleIcon',
 				i18n: 'Messages',
 				submenu: [
@@ -936,8 +891,6 @@ export default [
 				url: 'null',
 				name: 'Mail',
 				slug: 'mail',
-				tag: '3',
-				tagColor: 'success',
 				icon: 'MailIcon',
 				i18n: 'Mail',
 				submenu: [
