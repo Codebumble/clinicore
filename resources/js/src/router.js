@@ -505,18 +505,18 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/apps/addPayment',
-			name: 'Add Payment',
-			component: () => import('./views/apps/account-manager/addPayment.vue'),
+			path: '/apps/addBill',
+			name: 'Add Bill',
+			component: () => import('./views/apps/account-manager/addBill.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
 			}
 		},
 		{
-			path: '/apps/allPayments',
-			name: 'All Payments',
-			component: () => import('./views/apps/account-manager/allPayments.vue'),
+			path: '/apps/allBills',
+			name: 'All Bills',
+			component: () => import('./views/apps/account-manager/allBills.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false

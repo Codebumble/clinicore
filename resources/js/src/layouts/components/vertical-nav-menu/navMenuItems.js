@@ -416,16 +416,16 @@ export default [
 						i18n: 'All Accounts'
 					},
 					{
-						url: '/apps/addPayment',
-						name: 'Add Payment',
-						slug: 'add-payment',
-						i18n: 'Add Payment'
+						url: '/apps/addBill',
+						name: 'Add Bill',
+						slug: 'add-bill',
+						i18n: 'Add Bill'
 					},
 					{
-						url: '/apps/allPayments',
-						name: 'All Payments',
-						slug: 'all-payments',
-						i18n: 'All Payments'
+						url: '/apps/allBills',
+						name: 'All Bills',
+						slug: 'all-bills',
+						i18n: 'All Bills'
 					},
 					{
 						url: '/apps/debits',
