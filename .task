@@ -16,9 +16,9 @@
 > Admit Patient (Complete)
 > Prescription
 > Medical Record (Complete)
-> Account Manager
-> Payment (On Going)
-> Bed Managment
+> Account Manager (Complete) [Payment Section Marged with Account Manager and Bills section Extracted]
+> Bills (on Going) [addBill & allBill have to work]
+> Bed Managment (On going) [Due: Bed Analysis tab]
 
 
 ## Shawon

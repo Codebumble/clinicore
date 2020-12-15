@@ -1,19 +1,19 @@
 <template>
 	<div class="vx-row">
 		<div class="vx-col w-full mb-6">
-			<vx-card title="Debit Reports">
+			<vx-card title="All Payments List">
 
-				<vs-table pagination max-items="5" stripe search :data="debitList">
+				<vs-table pagination max-items="3" stripe search :data="PaymentsList">
 
 					<template slot="thead">
 						<vs-th sort-key="date">Date</vs-th>
 						<vs-th sort-key="accName">Account Name</vs-th>
 						<vs-th sort-key="payTo">To Pay</vs-th>
-						<vs-th sort-key="desc">Desc</vs-th>
 						<vs-th sort-key="amount">Amount</vs-th>
+						<vs-th sort-key="desc">Desc</vs-th>
 					</template>
 					<template slot-scope="{data}">
-						<vs-tr :key="index" v-for="(debitList, index) in data">
+						<vs-tr :key="index" v-for="(PaymentsList, index) in data">
 
 							<vs-td :data="data[index].date">
 								{{ data[index].date }}
@@ -31,22 +31,15 @@
 
 							</vs-td>
 
-							<vs-td :data="data[index].desc">
-								{{ data[index].desc }}
-
-							</vs-td>
 
 							<vs-td :data="data[index].amount">
 								{{ data[index].amount }}
 
 							</vs-td>
-						</vs-tr>
-						<vs-tr>
-							<vs-td colspan="4">
-								<p style="margin: 0 auto; display: table;">Total:</p>
-							</vs-td>
-							<vs-td>
-								<p>203642</p>
+
+							<vs-td :data="data[index].desc">
+								{{ data[index].desc }}
+
 							</vs-td>
 						</vs-tr>
 					</template>
@@ -66,7 +59,7 @@
 
 				colorLoading: '#ff8000',
 
-				debitList: [
+				PaymentsList: [
 					{
 						amount: '5000',
 						accName: 'Office Rent',

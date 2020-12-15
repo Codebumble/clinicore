@@ -1,6 +1,6 @@
 <template>
 	<div class="vx-col w-full mb-base">
-		<vx-card title="Add Advance Payment">
+		<vx-card title="Add Advance Bill">
 			<div class="vx-row">
 				<div class="vx-col sm:w-1/2 w-full mb-2">
 					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="AID"
@@ -14,12 +14,9 @@
 					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Amount"
 						v-model="amount" />
 				</div>
-				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Payment Method"
-						v-model="pMethod" />
-				</div>
+
 				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
-					<v-select v-model="selectedPOn" :options="pOn" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+					<v-select v-model="selectedMethod" :options="paymentMethod" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
 					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Receipt No"
@@ -93,12 +90,10 @@ export default {
 			aid: '',
 			patientID: '',
 			amount: '',
-			pMethod: '',
-			selectedVia: '',
 			receiptNo: '',
 			date: null,
 			status: 'Active',
-			pOn: [{
+			paymentMethod: [{
 					id: 1,
 					label: ''
 				},
@@ -119,9 +114,9 @@ export default {
 					label: 'Mobile Banking'
 				},
 			],
-			selectedPOn: {
+			selectedMethod: {
 				id: 1,
-				label: 'Payment on'
+				label: 'Payment Method'
 			},
 		}
 	},

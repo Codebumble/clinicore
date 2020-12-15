@@ -514,18 +514,18 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/apps/addBill',
-			name: 'Add Bill',
-			component: () => import('./views/apps/account-manager/addBill.vue'),
+			path: '/apps/makePayment',
+			name: 'Make Payment',
+			component: () => import('./views/apps/account-manager/makePayment.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
 			}
 		},
 		{
-			path: '/apps/allBills',
-			name: 'All Bills',
-			component: () => import('./views/apps/account-manager/allBills.vue'),
+			path: '/apps/paymentList',
+			name: 'Payment List',
+			component: () => import('./views/apps/account-manager/paymentList.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
@@ -549,15 +549,7 @@ const router = new Router({
 			  no_scroll: false
 			}
 		},
-		{
-			path: '/apps/accountManagerAnalytics',
-			name: 'Accounts Analytics',
-			component: () => import('./views/apps/account-manager/accountManagerAnalytics.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
+
 
 		// ********************
 		// Invoices Path
@@ -590,6 +582,7 @@ const router = new Router({
 			  no_scroll: false
 			}
 		},
+
 
 		// ********************
 		// Insurance Path
@@ -642,45 +635,46 @@ const router = new Router({
 		},
 
 		// ********************
-		// Payments Path
+		// Bill Path
 		// ********************
+		{
+			path: '/apps/addBill',
+			name: 'Add Bill',
+			component: () => import('./views/apps/bills/addBill.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allBills',
+			name: 'All Bills',
+			component: () => import('./views/apps/bills/allBills.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/addAdvanceBill',
+			name: 'Add Advance Bill',
+			component: () => import('./views/apps/bills/addAdvanceBill.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/allAdvanceBill',
+			name: 'All Advance Bill',
+			component: () => import('./views/apps/bills/allAdvanceBill.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
 
-		{
-			path: '/apps/addPayment',
-			name: 'Add Payment',
-			component: () => import('./views/apps/payments/addPayment.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
-			path: '/apps/paymentList',
-			name: 'Payment List',
-			component: () => import('./views/apps/payments/paymentList.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
-			path: '/apps/addAdvancePayment',
-			name: 'Add Advance Payment',
-			component: () => import('./views/apps/payments/addAdvancePayment.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
-			path: '/apps/allAdvancePayment',
-			name: 'All Advance Payment',
-			component: () => import('./views/apps/payments/allAdvancePayment.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
+
 
 		// ********************
 		// HR Dept Path
