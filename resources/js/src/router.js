@@ -471,6 +471,15 @@ const router = new Router({
 			  rule: 'editor',
 			  no_scroll: false
 			}
+    },
+    {
+			path: '/apps/demoPrescription',
+			name: 'deemo-prescription',
+			component: () => import('./views/apps/prescription/samplePrescription.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
 		},
 
 		// ********************

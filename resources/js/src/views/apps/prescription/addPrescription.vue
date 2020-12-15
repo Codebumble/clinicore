@@ -1,237 +1,161 @@
-<!-- =========================================================================================
-    File Name: Invoice.vue
-    Description: Invoice Page
-    ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
-========================================================================================== -->
-
-
 <template>
-    <div id="invoice-page">
+	<div class="vx-col w-full mb-base">
+		<vx-card title="Create Prescription for Your Patient">
+			<div class="vx-row">
+				<div class="vx-col sm:w-3/4 w-full mb-2">
+          <v-select class="w-full" icon-pack="feather" icon="icon-plus" v-model="selected" :options="options" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+				</div>
+			</div>
+			<div class="vx-row">
+				<div class="vx-col sm:w-3/4 w-full mb-2 mt-3">
+					<vs-textarea class="w-full" v-model="textarea" placeholder="Information About Patient Problem" />
+				</div>
+			</div>
 
-        <div class="flex flex-wrap items-center justify-between">
-          <vx-input-group class="mb-base mr-3">
-            <vs-input v-model="mailTo" placeholder="Email" />
+			<div class="vx-row">
+				<div class="vx-col sm:w-3/3 mb-2 mt-3">
+					<vs-table stripe noDataText="">
+						<template slot="thead">
+							<vs-th>Medicine Name</vs-th>
+							<vs-th>Morning</vs-th>
+							<vs-th>Noon</vs-th>
+              <vs-th>Night</vs-th>
+							<vs-th>Action</vs-th>
+						</template>
 
-            <template slot="append">
-              <div class="append-text btn-addon">
-                <vs-button type="border" @click="mailTo = ''" class="whitespace-no-wrap">Send Prescription</vs-button>
-              </div>
-            </template>
-          </vx-input-group>
-          <div class="flex items-center">
-            <vs-button class="mb-base mr-3" type="border" icon-pack="feather" icon="icon icon-download">Download</vs-button>
-            <vs-button class="mb-base mr-3" icon-pack="feather" icon="icon icon-file" @click="printInvoice">Print</vs-button>
-          </div>
-        </div>
+						<template>
+							<vs-tr v-for="(servicePackage, index) in servicePackages" :key="index">
+								<vs-td>
+									<vs-input icon-pack="feather" icon="icon-edit-2" placeholder="*" v-model="servicePackage.serviceName" />
+								</vs-td>
+								<vs-td>
+									<vs-input-number label="Quantity:" v-model="servicePackage.morning" />
+								</vs-td>
+								<vs-td>
+									<vs-input-number label="Quantity:" v-model="servicePackage.noon" />
+								</vs-td>
+                <vs-td>
+									<vs-input-number label="Quantity:" v-model="servicePackage.night" />
+								</vs-td>
+								<vs-td>
+									<vs-button radius color="success" type="gradient" icon-pack="feather" icon="icon-plus" class="inline-action" @click="addNewService"></vs-button>
+									<vs-button radius color="danger" type="gradient" icon-pack="feather" icon="icon-minus" class="inline-action" @click="removeService(index, servicePackage)" :disabled="servicePackage.serviceName < 1"></vs-button>
+								</vs-td>
+							</vs-tr>
+						</template>
+					</vs-table>
+				</div>
+			</div>
 
-        <vx-card id="invoice-container">
 
-            <!-- INVOICE METADATA -->
-            <div class="vx-row leading-loose p-base">
-                <div class="vx-col w-1/2 mt-base">
-                    <img src="@assets/images/logo/logo.png" alt="vuexy-logo">
-                </div>
-                <div class="vx-col w-1/2 text-right">
-                    <h1>Prescription</h1>
-                    <div class="invoice__invoice-detail mt-6">
-                        <h6>Prescription NO.</h6>
-                        <p>{{ invoiceDetails.invoiceNo }}</p>
 
-                        <h6 class="mt-4">Issue DATE</h6>
-                        <p>{{ invoiceDetails.invoiceDate | date(true) }}</p>
-                    </div>
-                </div>
-                <div class="vx-col w-1/2 mt-12">
-                    <h5>Patients</h5>
-                    <div class="invoice__recipient-info my-4">
-                        <p>{{ recipientDetails.fullName }}</p>
-                        <p>{{ recipientDetails.addressLine1 }}</p>
-                        <p>{{ recipientDetails.addressLine2 }}</p>
-                        <p>{{ recipientDetails.zipcode }}</p>
-                    </div>
-                    <div class="invoice__recipient-contact ">
-                        <p class="flex items-center">
-                            <feather-icon icon="MailIcon" svgClasses="h-4 w-4"></feather-icon>
-                            <span class="ml-2">{{ recipientDetails.mailId }}</span>
-                        </p>
-                        <p class="flex items-center">
-                            <feather-icon icon="PhoneIcon" svgClasses="h-4 w-4"></feather-icon>
-                            <span class="ml-2">{{ recipientDetails.mobile }}</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="vx-col w-1/2 mt-base text-right mt-12">
-                    <h5>{{ companyDetails.name }}</h5>
-                    <div class="invoice__company-info my-4">
-                        <p>{{ companyDetails.addressLine1 }}</p>
-                        <p>{{ companyDetails.addressLine2 }}</p>
-                        <p>{{ companyDetails.zipcode }}</p>
-                    </div>
-                    <div class="invoice__company-contact">
-                        <p class="flex items-center justify-end">
-                            <feather-icon icon="MailIcon" svgClasses="h-4 w-4"></feather-icon>
-                            <span class="ml-2">{{ companyDetails.mailId }}</span>
-                        </p>
-                        <p class="flex items-center justify-end">
-                            <feather-icon icon="PhoneIcon" svgClasses="h-4 w-4"></feather-icon>
-                            <span class="ml-2">{{ companyDetails.mobile }}</span>
-                        </p>
-                    </div>
+			
 
-                </div>
-            </div>
+			<div class="vx-row">
+				<div class="vx-col w-full">
+					<vs-button class="mr-3 mb-2" @click="popupActive=true" type="filled">Print</vs-button>
 
-            <!-- INVOICE CONTENT -->
-            <div class="p-base">
-                <!-- INVOICE TASKS TABLE -->
-                <vs-table hoverFlat :data="invoiceData.tasks">
-                    <!-- HEADER -->
-                    <template slot="thead">
-                        <vs-th class="pointer-events-none">Medicine name</vs-th>
-                        <vs-th class="pointer-events-none">Times(Morning-Noon-Night)</vs-th>
-                        <vs-th class="pointer-events-none">Days</vs-th>
-                    </template>
-
-                    <!-- DATA -->
-                    <template slot-scope="{data}">
-                        <vs-tr v-for="(tr, index) in data" :key="index">
-                            <vs-td :data="data[index].task">{{ data[index].task }}</vs-td>
-                            <vs-td :data="data[index].hours">{{ data[index].morning }}-{{ data[index].noon }}-{{ data[index].night }}</vs-td>
-                            <vs-td :data="data[index].rate">{{ data[index].rate }} Days</vs-td>
-                        </vs-tr>
-                    </template>
-                </vs-table>
-
-                <!-- INVOICE SUMMARY TABLE -->
-                <vs-table hoverFlat class="w-1/2 ml-auto mt-4" :data="invoiceData">
-                    <vs-tr>
-                        <vs-th class="pointer-events-none">SUBTOTAL</vs-th>
-                        <vs-td>{{ invoiceData.subtotal }} USD</vs-td>
-                    </vs-tr>
-                    <vs-tr>
-                        <vs-th class="pointer-events-none">DISCOUNT ({{ invoiceData.discountPercentage }}%)</vs-th>
-                        <vs-td>{{ invoiceData.discountedAmount }} USD</vs-td>
-                    </vs-tr>
-                    <vs-tr>
-                        <vs-th class="pointer-events-none">TOTAL</vs-th>
-                        <vs-td>{{ invoiceData.total }} USD</vs-td>
-                    </vs-tr>
-                </vs-table>
-            </div>
-
-            <!-- INVOICE FOOTER -->
-            <div class="invoice__footer text-right p-base">
-                <p class="mb-4">Transfer the amounts to the business amount below. Please include invoice number on your check.</p>
-                <p>
-                    <span class="mr-8">BANK: <span class="font-semibold">FTSBUS33</span></span>
-                    <span>IBAN: <span class="font-semibold"> G882-1111-2222-3333 </span></span>
-                </p>
-            </div>
-        </vx-card>
-    </div>
+					<vs-popup background-color="rgba(255,255,255,.6)" :background-color-popup="colorx" class=""
+						title="Review" :active.sync="popupActive">
+						<p> Are You Sure You Want to Print This Prescription ?</p><br>
+						
+						<vs-button @click="openLoadingColor" type="filled" :color="colorLoading">OK</vs-button>
+					</vs-popup>
+					<vs-button color="warning" type="border" class="mb-2"
+						@click="input1 = input2 = ''; check7 = false;">Reset</vs-button>
+				</div>
+			</div>
+		</vx-card>
+	</div>
 </template>
 
-<script>
-
-export default{
-  data () {
-    return {
-      mailTo: '',
-      companyDetails: {
-        name: 'Dr.Saifur Rahman',
-        addressLine1: 'M.B.B.S, F.R.C.S',
-        addressLine2: 'Dhaka Medical College',
-        zipcode: '',
-        mailId: 'drsaifur969@gmail.com',
-        mobile: '+880-1981-796399'
-      },
-      recipientDetails: {
-        fullName: 'Shakil Ahmed',
-        addressLine1: '187/6, East Khilgaon',
-        addressLine2: 'Dhaka,Bangladesh',
-        zipcode: '1237',
-        mailId: 'shakilofficial0@mail.com',
-        mobile: '+880 1701 678374'
-      },
-      invoiceDetails: {
-        invoiceNo: '981600/8h655/622-v',
-        invoiceDate: 'Mon Dec 10 2018 07:46:00 GMT+12.54 (GMT)'
-      },
-      invoiceData: {
-        tasks: [
-          {
-            id: 1,
-            task: 'Napa',
-            morning: 2,
-            noon:3,
-            night:2,
-            rate: 13,
-            amount: 90000
-          },
-          {
-            id: 2,
-            task: 'Newsletter template design',
-            hours: 20,
-            rate: 12,
-            amount: 24000
-          }
-        ],
-        subtotal: 114000,
-        discountPercentage: 5,
-        discountedAmount: 5700,
-        total: 108300
-      }
-    }
-  },
-  computed: {
-
-  },
-  methods: {
-    printInvoice () {
-      window.print()
-    }
-  },
-  components: {},
-  mounted () {
-    this.$emit('setAppClasses', 'invoice-page')
-  }
-}
-</script>
-
 <style lang="scss">
-@media print {
-  .invoice-page {
-    * {
-      visibility: hidden;
-    }
+	.inline-status {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.inline-action {
+		float: left !important;
+		margin: 0 .5rem;
+	}
+	.inline-action:first-child{
+		margin: 0 .5rem 0 0;
+	}
 
-    #content-area {
-      margin: 0 !important;
-    }
-
-    .vs-con-table {
-      .vs-con-tbody {
-        overflow: hidden !important;
-      }
-    }
-
-    #invoice-container,
-    #invoice-container * {
-      visibility: visible;
-    }
-    #invoice-container {
-      position: absolute;
-      left: 0;
-      top: 0;
-      box-shadow: none;
-    }
-  }
-}
-
-@page {
-  size: auto;
-}
 </style>
+
+
+<script>
+import vSelect from 'vue-select'
+
+	export default {
+		data() {
+			return {
+				check7: '',
+				input1: '',
+				input2: '',
+				textarea: '',
+				status: 'Active',
+				amount: 0,
+				colorx: "#def1d1",
+				popupActive: false,
+        colorLoading: '#ff8000',
+        options: [
+        {id: 1, label: 'Shakil Ahmed(16261)'},
+        {id: 3, label: 'Saifur Rahman(28292)'},
+        {id: 2, label: 'Saymoon Islam(3312)'},
+      ],
+      selected: {id: 1, label: 'Patient '},
+				servicePackages: [{
+					serviceName: '',
+					morning: 0,
+          noon: 0,
+          night:0,
+				}],
+			}
+		},components: {
+    'v-select': vSelect,
+    },
+		methods: {
+			openLoadingColor() {
+				this.$vs.loading({
+					type: 'sound'
+				})
+				this.popupActive = false;
+			
+				setTimeout(() => {
+
+					this.$vs.loading.close()
+				}, 2000);
+				setTimeout(() => {
+					this.$vs.notify({
+						title: 'Success',
+						text: 'Data Added Successfully!!',
+						color: 'success',
+						position: 'top-right',
+						time: '4000',
+						iconPack: 'feather',
+						icon: 'icon-check'
+					})
+				}, 2000);
+			},
+
+			addNewService(){
+				this.servicePackages.push({
+					serviceNames: '',
+					morning: 0,
+          noon: 0,
+          night: 0,
+				});
+			},
+			removeService(index, servicePackage){
+				this.servicePackages.indexOf(servicePackage);
+				this.servicePackages.splice(index, 1);
+			}
+
+		}
+	}
+
+</script>
