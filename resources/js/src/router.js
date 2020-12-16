@@ -574,15 +574,6 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/apps/removeInvoices',
-			name: 'Remove Invoices',
-			component: () => import('./views/apps/invoices/removeInvoices.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
 			path: '/apps/allInvoices',
 			name: 'All Invoices',
 			component: () => import('./views/apps/invoices/allInvoices.vue'),
@@ -818,36 +809,118 @@ const router = new Router({
 		// ********************
 
 		{
-			path: '/apps/addCategory',
-			name: 'Add Category',
-			component: () => import('./views/apps/pharmacy/addCategory.vue'),
+			path: '/apps/pharmacyCategories',
+			name: 'Categories',
+			component: () => import('./views/apps/pharmacy/pharmacyCategories.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false,
+			  pageTitle: 'Categories',
+			},
+		},
+		{
+			path: '/apps/medicines',
+			name: 'Medicines',
+			component: () => import('./views/apps/pharmacy/medicines.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
 			}
 		},
 		{
-			path: '/apps/allCategories',
-			name: 'All Categories',
-			component: () => import('./views/apps/pharmacy/allCategories.vue'),
+			path: '/apps/units',
+			name: 'Units',
+			component: () => import('./views/apps/pharmacy/units.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
 			}
 		},
 		{
-			path: '/apps/addMedicine',
-			name: 'Add Medicine',
-			component: () => import('./views/apps/pharmacy/addMedicine.vue'),
+			path: '/apps/manufacturerControl',
+			name: 'Manufacturer Control',
+			component: () => import('./views/apps/pharmacy/manufacturerControl.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
 			}
 		},
 		{
-			path: '/apps/allMedicines',
-			name: 'All Medicines',
-			component: () => import('./views/apps/pharmacy/allMedicines.vue'),
+			path: '/apps/manufacturerLedger',
+			name: 'Manufacturer Ledger',
+			component: () => import('./views/apps/pharmacy/manufacturerLedger.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/manufacturerAdvance',
+			name: 'Manufacturer Advance',
+			component: () => import('./views/apps/pharmacy/manufacturerAdvance.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/addPurchase',
+			name: 'Add Purchase',
+			component: () => import('./views/apps/pharmacy/addPurchase.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/managePurchase',
+			name: 'Manage Purchase',
+			component: () => import('./views/apps/pharmacy/managePurchase.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/supplierManagement',
+			name: 'Supplier Management',
+			component: () => import('./views/apps/pharmacy/supplierManagement.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/supplierLedger',
+			name: 'Supplier Ledger',
+			component: () => import('./views/apps/pharmacy/supplierLedger.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/newInvoice',
+			name: 'New Invoice',
+			component: () => import('./views/apps/pharmacy/newInvoice.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/PosInvoice',
+			name: 'POS Invoice',
+			component: () => import('./views/apps/pharmacy/PosInvoice.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/stockManagement',
+			name: 'Stock Management',
+			component: () => import('./views/apps/pharmacy/stockManagement.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false
