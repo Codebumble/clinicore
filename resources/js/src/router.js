@@ -440,6 +440,15 @@ const router = new Router({
 			  no_scroll: false
 			}
 		},
+		{
+			path: '/apps/samplePrescription',
+			name: 'Sample Prescription',
+			component: () => import('./views/apps/prescription/samplePrescription.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
 
 		// ********************
 		// Medical Records Path
