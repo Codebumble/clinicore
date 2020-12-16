@@ -439,12 +439,6 @@ export default [
 						i18n: 'Add Invoices'
 					},
 					{
-						url: '/apps/removeInvoices',
-						name: 'Remove Invoices',
-						slug: 'remove-invoices',
-						i18n: 'Remove Invoices'
-					},
-					{
 						url: '/apps/allInvoices',
 						name: 'All Invoices',
 						slug: 'all-invoices',
@@ -650,30 +644,127 @@ export default [
 				slug: 'pharmacy',
 				icon: 'ShoppingBagIcon',
 				i18n: 'Pharmacy',
-				submenu: [{
-						url: '/apps/addCategory',
-						name: 'Add Category',
-						slug: 'add-category',
-						i18n: 'Add Category'
+				submenu: [
+					{
+						url: null,
+						name: 'Medicine',
+						slug: 'medicine',
+						i18n: 'Medicine',
+						submenu: [
+							{
+								url: '/apps/pharmacyCategories',
+								name: 'Categories',
+								slug: 'categories',
+								i18n: 'Categories',
+
+							},
+							{
+								url: '/apps/medicines',
+								name: 'Medicine',
+								slug: 'medicines',
+								i18n: 'Medicines'
+							},
+							{
+								url: '/apps/units',
+								name: 'Units',
+								slug: 'units',
+								i18n: 'Units'
+							},
+						]
 					},
 					{
-						url: '/apps/allCategories',
-						name: 'All Categories',
-						slug: 'all-categories',
-						i18n: 'All Categories'
+						url: null,
+						name: 'Manufacturer ',
+						slug: 'manufacturer ',
+						i18n: 'Manufacturer ',
+						submenu: [
+							{
+								url: '/apps/manufacturerControl',
+								name: 'Add/Manage Manufacturer',
+								slug: 'add-manage-manufacturer',
+								i18n: 'Add/Manage Manufacturer'
+							},
+							{
+								url: '/apps/manufacturerLedger',
+								name: 'Manufacturer Ledger',
+								slug: 'manufacturer-ledger',
+								i18n: 'Manufacturer Ledger'
+							},
+							{
+								url: '/apps/manufacturerAdvance',
+								name: 'Manufacturer Advance',
+								slug: 'manufacturer-advance',
+								i18n: 'Manufacturer Advance'
+							},
+						]
 					},
 					{
-						url: '/apps/addMedicine',
-						name: 'Add Medicine',
-						slug: 'add-medicine',
-						i18n: 'Add Medicine'
+						url: null,
+						name: 'Purchase',
+						slug: 'purchase',
+						i18n: 'Purchase',
+						submenu: [
+							{
+								url: '/apps/addPurchase',
+								name: 'Add Purchase',
+								slug: 'add-purchase',
+								i18n: 'Add Purchase'
+							},
+							{
+								url: '/apps/managePurchase',
+								name: 'Manage Purchase',
+								slug: 'manage-purchase',
+								i18n: 'Manage Purchase'
+							},
+						]
 					},
 					{
-						url: '/apps/allMedicines',
-						name: 'All Medicines',
-						slug: 'all-medicines',
-						i18n: 'All Medicines'
+						url: null,
+						name: 'Supplier',
+						slug: 'supplier',
+						i18n: 'Supplier',
+						submenu: [
+							{
+								url: '/apps/supplierManagement',
+								name: 'Supplier Management',
+								slug: 'supplier-management',
+								i18n: 'Supplier Management'
+							},
+							{
+								url: '/apps/supplierLedger',
+								name: 'Supplier Ledger',
+								slug: 'supplier-ledger',
+								i18n: 'Supplier Ledger'
+							},
+						]
 					},
+					{
+						url: null,
+						name: 'Invoice',
+						slug: 'invoice',
+						i18n: 'Invoice',
+						submenu: [
+							{
+								url: '/apps/newInvoice',
+								name: 'New Invoice',
+								slug: 'new-invoice',
+								i18n: 'New Invoice'
+							},
+							{
+								url: '/apps/PosInvoice',
+								name: 'POS Invoice',
+								slug: 'pos-invoice',
+								i18n: 'POS Invoice'
+							},
+						]
+					},
+					{
+						url: '/apps/stockManagement',
+						name: 'Stock Management',
+						slug: 'stock-management',
+						i18n: 'Stock Management'
+					},
+
 				]
 			},
 
