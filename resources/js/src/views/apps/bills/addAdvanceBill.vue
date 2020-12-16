@@ -1,23 +1,29 @@
 <template>
 	<div class="vx-col w-full mb-base">
-		<vx-card title="Allocate Bed">
+		<vx-card title="Add Advance Bill">
 			<div class="vx-row">
+				<div class="vx-col sm:w-1/2 w-full mb-2">
+					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="AID"
+						v-model="aid" />
+				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
 					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Patient ID"
 						v-model="patientID" />
 				</div>
-				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
-					<v-select v-model="selectedBedType" :options="bedType" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+				<div class="vx-col sm:w-1/2 w-full mb-2">
+					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Amount"
+						v-model="amount" />
 				</div>
+
 				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
-					<flat-pickr placeholder="Assign Date" v-model="assignDate" :config="{ dateFormat: 'd F Y' }" class="w-full"/>
-				</div>
-				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
-					<flat-pickr placeholder="Discharge Date" v-model="dischargeDate" :config="{ dateFormat: 'd F Y' }" class="w-full"/>
+					<v-select v-model="selectedMethod" :options="paymentMethod" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Desc."
-						v-model="desc" />
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Receipt No"
+						v-model="receiptNo" />
+				</div>
+				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
+					<flat-pickr placeholder="Date" v-model="date" :config="{ dateFormat: 'd F Y' }" class="w-full"/>
 				</div>
 			</div>
 
@@ -51,7 +57,7 @@
 						<vs-button @click="openLoadingColor" type="filled" :color="colorLoading">Accept</vs-button>
 					</vs-popup>
 					<vs-button color="warning" type="border" class="mb-2"
-						@click="patientID = assignDate = dischargeDate = desc = ''; check7 = false;">
+						@click="aid = patientID = amount = pMethod = selectedVia = receiptNo = date = ''; check7 = false;">
 						Reset</vs-button>
 				</div>
 			</div>
@@ -81,35 +87,36 @@ export default {
 	data() {
 		return {
 			check7: '',
+			aid: '',
 			patientID: '',
-			desc: '',
-			assignDate: null,
-			dischargeDate: null,
+			amount: '',
+			receiptNo: '',
+			date: null,
 			status: 'Active',
-			bedType: [{
+			paymentMethod: [{
 					id: 1,
 					label: ''
 				},
 				{
-					id: 2,
-					label: 'General Word'
+					id: 3,
+					label: 'Cheque'
 				},
 				{
-					id: 3,
-					label: 'General'
+					id: 2,
+					label: 'Cash'
 				},
 				{
 					id: 4,
-					label: 'Semi Private'
+					label: 'Card'
 				},
 				{
-					id: 5,
-					label: 'Private room 1001'
+					id: 4,
+					label: 'Mobile Banking'
 				},
 			],
-			selectedBedType: {
+			selectedMethod: {
 				id: 1,
-				label: 'Select Bed Type'
+				label: 'Payment Method'
 			},
 		}
 	},

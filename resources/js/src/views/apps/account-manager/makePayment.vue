@@ -1,43 +1,25 @@
 <template>
 	<div class="vx-col w-full mb-base">
-		<vx-card title="Allocate Bed">
+		<vx-card title="Make Payment">
 			<div class="vx-row">
-				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Patient ID"
-						v-model="patientID" />
+				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
+					<flat-pickr placeholder="Date" v-model="date" :config="{ dateFormat: 'd F Y' }" class="w-full"/>
 				</div>
 				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
-					<v-select v-model="selectedBedType" :options="bedType" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+					<v-select v-model="selectedAccName" :options="accName" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
 				</div>
-				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
-					<flat-pickr placeholder="Assign Date" v-model="assignDate" :config="{ dateFormat: 'd F Y' }" class="w-full"/>
-				</div>
-				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
-					<flat-pickr placeholder="Discharge Date" v-model="dischargeDate" :config="{ dateFormat: 'd F Y' }" class="w-full"/>
-				</div>
-				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Desc."
-						v-model="desc" />
-				</div>
-			</div>
 
-			<div class="vx-row mt-3">
-				<div class="vx-col w-full">
-					<div class="vx-row mb-6">
-						<div class="vx-col sm:w-2/6">
-							<span>Status:</span>
-						</div>
-						<div class="vx-col sm:w-3/6">
-							<ul class="centerx inline-status">
-								<li class="mr-4">
-									<vs-radio color="success" v-model="status" vs-value="Active">Active</vs-radio>
-								</li>
-								<li class="mr-4">
-									<vs-radio color="danger" v-model="status" vs-value="Inactive">Inactive</vs-radio>
-								</li>
-							</ul>
-						</div>
-					</div>
+				<div class="vx-col sm:w-1/2 w-full mb-2">
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="To Pay"
+						v-model="toPay" />
+				</div>
+				<div class="vx-col sm:w-1/2 w-full mb-2">
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Amount"
+						v-model="amount" />
+				</div>
+				<div class="vx-col sm:w-1/2 w-full mb-2">
+					<vs-input class="w-full" icon-pack="feather" icon="icon-edit" label-placeholder="Description"
+						v-model="desc" />
 				</div>
 			</div>
 
@@ -47,11 +29,11 @@
 
 					<vs-popup background-color="rgba(255,255,255,.6)" :background-color-popup="colorx" class=""
 						title="Review" :active.sync="popupActive">
-						<p> Are You Sure You Want to Add This Payment?</p><br>
+						<p> Are You Sure You Want to Make This Payment?</p><br>
 						<vs-button @click="openLoadingColor" type="filled" :color="colorLoading">Accept</vs-button>
 					</vs-popup>
 					<vs-button color="warning" type="border" class="mb-2"
-						@click="patientID = assignDate = dischargeDate = desc = ''; check7 = false;">
+						@click="toPay = amount = desc = date = ''; check7 = false;">
 						Reset</vs-button>
 				</div>
 			</div>
@@ -81,35 +63,30 @@ export default {
 	data() {
 		return {
 			check7: '',
-			patientID: '',
+			toPay: '',
+			amount: '',
 			desc: '',
-			assignDate: null,
-			dischargeDate: null,
-			status: 'Active',
-			bedType: [{
+			date: null,
+			accName: [{
 					id: 1,
 					label: ''
 				},
 				{
 					id: 2,
-					label: 'General Word'
+					label: 'Employee Salary'
 				},
 				{
 					id: 3,
-					label: 'General'
+					label: 'Office Rent'
 				},
 				{
 					id: 4,
-					label: 'Semi Private'
-				},
-				{
-					id: 5,
-					label: 'Private room 1001'
+					label: 'Expendature'
 				},
 			],
-			selectedBedType: {
+			selectedAccName: {
 				id: 1,
-				label: 'Select Bed Type'
+				label: 'Account Name'
 			},
 		}
 	},

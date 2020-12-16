@@ -6,26 +6,26 @@
 > Pharmacy
 > HR Dept. (Complete)
 > Serial
-> Appointment
-> Mail
+> Appointment (Complete)
+> Mail (Will be modified)
 
 
 ## Saifur
 
 > Service & Package (Complete)
 > Admit Patient (Complete)
-> Prescription
+> Prescription (Complete)
 > Medical Record (Complete)
-> Account Manager
-> Payment
-> Bed Managment
+> Account Manager (Complete) [Payment Section Marged with Account Manager and Bills section Extracted]
+> Bills (on Going) [addBill & allBill have to work]
+> Bed Managment (On going) [Due: Bed Analysis tab]
 
 
 ## Shawon
 
-> Invoices
+> Invoices (Complete)
 > Insurance
-> Hospital Activities
+> Hospital Activities (Complete)
 > Notice Board
 > App Settings
 > SMS
