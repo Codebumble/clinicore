@@ -332,6 +332,12 @@ export default [
 						name: 'All Prescription',
 						slug: 'all-prescription',
 						i18n: 'All Prescription'
+					},
+					{
+						url: '/apps/samplePrescription',
+						name: 'Sample Prescription',
+						slug: 'sample-prescription',
+						i18n: 'Sample Prescription'
 					}
 				]
 			},
