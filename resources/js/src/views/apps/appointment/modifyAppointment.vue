@@ -69,7 +69,7 @@
 
 	</div>
     <div class="vx-col w-full mb-6">
-			<vx-card title="Remove Package">
+			<vx-card title="Remove Appointment">
 				<div class="vx-row mr-auto">
 					<div class="vx-col sm:w-1/2 w-full mb-2">
 						<v-select v-model="selected4" :options="options4" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
@@ -114,7 +114,7 @@ export default {
 			status: 'Active',
 			colorx: "#def1d1",
             popupActive: false,
-            
+
 			popupActive1: false,
             colorLoading: '#ff8000',
             options1: [
@@ -151,10 +151,10 @@ export default {
       selected4: {id: 1, label: 'Appointment ID'},
       textarea: '',
     counterDanger: false
-  
+
 		}
     },
-    
+
     components: {
     'v-select': vSelect,
     flatPickr

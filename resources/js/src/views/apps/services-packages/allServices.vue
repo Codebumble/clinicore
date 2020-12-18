@@ -9,6 +9,7 @@
       <vs-th sort-key="qty">Quantity</vs-th>
       <vs-th sort-key="price">Price</vs-th>
       <vs-th sort-key="status">Status</vs-th>
+      <vs-th>Action</vs-th>
     </template>
 
     <template slot-scope="{data}">
@@ -16,50 +17,29 @@
 
         <vs-td :data="data[indextr].serviceName">
           {{ data[indextr].serviceName }}
-		  <template slot="edit">
-            <vs-input v-model="tr.serviceName" class="inputx" placeholder="Service Name" />
-          </template>
         </vs-td>
 
         <vs-td :data="data[indextr].desc">
           {{ data[indextr].desc }}
-		  <template slot="edit">
-            <vs-input v-model="tr.desc" class="inputx" placeholder="Desc" />
-          </template>
         </vs-td>
 
 
 
         <vs-td :data="data[indextr].qty">
           {{ data[indextr].qty }}
-		  <template slot="edit">
-            <div class="vx-col mb-2">
-            <vs-input v-model="tr.qty" class="inputx" placeholder="Quantity" />
-          </div>
-          </template>
         </vs-td>
 
         <vs-td :data="data[indextr].price">
           {{ data[indextr].price }}
-		  <template slot="edit">
-           <vs-input v-model="tr.price" class="inputx" placeholder="Price" />
-          </template>
         </vs-td>
 
         <vs-td :data="data[indextr].status">
           {{ data[indextr].status }}
-		  <template slot="edit">
-            <div class="vx-col sm:w-3/6">
-		<ul class="centerx inline-status">
-			<li class="mr-4">
-				<vs-radio color="success" v-model="tr.status" vs-value="Active">Active</vs-radio>
-			</li>
-			<li class="mr-4">
-				<vs-radio color="danger" v-model="tr.status" vs-value="Inactive">Inactive</vs-radio>
-			</li>
-		</ul>
-      </div>
-          </template>
+        </vs-td>
+
+        <vs-td>
+          <vs-button color="success" type="line" icon-pack="feather" icon="icon-edit" class="inline-action"></vs-button>
+						<vs-button color="danger" type="line" icon-pack="feather" icon="icon-trash" class="inline-action"></vs-button>
         </vs-td>
 
       </vs-tr>
@@ -77,6 +57,17 @@
     justify-content: flex-start;
     align-items: center;
 }
+	.inline-action {
+		float: left !important;
+		margin: 0 .5rem;
+	}
+	.inline-action:first-child{
+		margin: 0 .5rem 0 0;
+	}
+
+	.vs-table--td{
+		padding: 5px 15px !important;
+	}
 </style>
 
 

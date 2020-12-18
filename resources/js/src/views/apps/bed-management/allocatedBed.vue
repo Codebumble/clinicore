@@ -10,6 +10,7 @@
 					<vs-th sort-key="assignDate">Assign Date</vs-th>
 					<vs-th sort-key="dischargeDate">Discharge Date</vs-th>
 					<vs-th sort-key="status">Total</vs-th>
+					<vs-th>Action</vs-th>
 				</template>
 
 				<template slot-scope="{data}">
@@ -20,12 +21,6 @@
 						</vs-td>
 						<vs-td :data="data[index].bedType">
 							{{ data[index].bedType }}
-							<template slot="edit">
-								<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
-									<v-select v-model="selectedBedType" :options="bedType"
-										:dir="$vs.rtl ? 'rtl' : 'ltr'" />
-								</div>
-							</template>
 						</vs-td>
 						<vs-td :data="data[index].assignDate">
 							{{ data[index].assignDate }}
@@ -39,6 +34,11 @@
 						<vs-td :data="data[index].total">
 							{{ data[index].total }}
 						</vs-td>
+
+        <vs-td>
+          <vs-button color="success" type="line" icon-pack="feather" icon="icon-edit" class="inline-action"></vs-button>
+						<vs-button color="danger" type="line" icon-pack="feather" icon="icon-trash" class="inline-action"></vs-button>
+        </vs-td>
 
 						<template class="expand-user" slot="expand">
 							<div class="con-expand-users w-full">
@@ -127,6 +127,17 @@
     justify-content: flex-start;
     align-items: center;
 }
+	.inline-action {
+		float: left !important;
+		margin: 0 .5rem;
+	}
+	.inline-action:first-child{
+		margin: 0 .5rem 0 0;
+	}
+
+	.vs-table--td{
+		padding: 5px 15px !important;
+	}
 </style>
 
 

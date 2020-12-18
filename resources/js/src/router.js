@@ -391,15 +391,6 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/apps/assignedBy',
-			name: 'Assigned By',
-			component: () => import('./views/apps/appointment/assignedBy.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
 			path: '/apps/assignedTo',
 			name: 'Assigned to Doctor',
 			component: () => import('./views/apps/appointment/assignedTo.vue'),
@@ -846,24 +837,6 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/apps/manufacturerLedger',
-			name: 'Manufacturer Ledger',
-			component: () => import('./views/apps/pharmacy/manufacturerLedger.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
-			path: '/apps/manufacturerAdvance',
-			name: 'Manufacturer Advance',
-			component: () => import('./views/apps/pharmacy/manufacturerAdvance.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
 			path: '/apps/addPurchase',
 			name: 'Add Purchase',
 			component: () => import('./views/apps/pharmacy/addPurchase.vue'),
@@ -891,15 +864,6 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/apps/supplierLedger',
-			name: 'Supplier Ledger',
-			component: () => import('./views/apps/pharmacy/supplierLedger.vue'),
-			meta: {
-			  rule: 'editor',
-			  no_scroll: false
-			}
-		},
-		{
 			path: '/apps/newInvoice',
 			name: 'New Invoice',
 			component: () => import('./views/apps/pharmacy/newInvoice.vue'),
@@ -921,6 +885,15 @@ const router = new Router({
 			path: '/apps/stockManagement',
 			name: 'Stock Management',
 			component: () => import('./views/apps/pharmacy/stockManagement.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+		{
+			path: '/apps/ledger',
+			name: 'Ledger',
+			component: () => import('./views/apps/pharmacy/ledger.vue'),
 			meta: {
 			  rule: 'editor',
 			  no_scroll: false

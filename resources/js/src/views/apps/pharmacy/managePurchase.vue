@@ -9,10 +9,10 @@
 
 			<template slot="thead">
 				<vs-th>Serial</vs-th>
-				<vs-th>Purchase ID</vs-th>
+				<vs-th>Manufacturer Name</vs-th>
                 <vs-th>Invoice ID</vs-th>
                 <vs-th>Purchase Date</vs-th>
-                <vs-th>Toral Price</vs-th>
+                <vs-th>ToTal Price</vs-th>
 				<vs-th>Action</vs-th>
 			</template>
 
@@ -40,6 +40,7 @@
 					</vs-td>
 
 					<vs-td>
+						<vs-button color="primary" type="line" icon-pack="feather" icon="icon-eye" class="inline-action"></vs-button>
 						<vs-button color="success" type="line" icon-pack="feather" icon="icon-edit" class="inline-action"></vs-button>
 						<vs-button color="danger" type="line" icon-pack="feather" icon="icon-trash" class="inline-action"></vs-button>
 					</vs-td>
@@ -62,7 +63,7 @@
 
 
 			</vs-tab>
-			
+
 		</vs-tabs>
 	</vx-card>
 </template>
@@ -88,21 +89,21 @@ export default {
 	tabColor:'success',
 	categories: [{
                     "id": 1,
-                    "pid": "P728282",
+                    "pid": "Baximco",
                     "iid": "I27292",
                     "pdate": "22-08-2020",
                     "cost": "4,292",
 				},
 				{
                     "id": 2,
-                    "pid": "P728281",
+                    "pid": "Baximco",
                     "iid": "I27290",
                     "pdate": "22-08-2020",
                     "cost": "6,801",
 				},
 				{
                     "id": 3,
-                    "pid": "P728280",
+                    "pid": "Baximco",
                     "iid": "I27285",
                     "pdate": "22-08-2020",
                     "cost": "637",
@@ -110,14 +111,14 @@ export default {
 				},
 				{
                     "id": 4,
-                    "pid": "P728279",
+                    "pid": "Baximco",
                     "iid": "I27279",
                     "pdate": "22-08-2020",
                     "cost": "4,812",
 				},
 				{
                     "id": 5,
-                    "pid": "P728278",
+                    "pid": "Baximco",
                     "iid": "I27278",
                     "pdate": "22-08-2020",
                     "cost": "760",

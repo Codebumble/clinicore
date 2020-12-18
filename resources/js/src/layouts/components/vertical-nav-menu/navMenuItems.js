@@ -291,12 +291,6 @@ export default [
 						i18n: 'Modify Appointment'
 					},
 					{
-						url: '/apps/assignedBy',
-						name: 'Assigned By',
-						slug: 'appointment-assigned-by',
-						i18n: 'Appoin. Assigned By'
-					},
-					{
 						url: '/apps/assignedTo',
 						name: 'Assigned to Doctor',
 						slug: 'assigned-to-doctor',
@@ -650,107 +644,55 @@ export default [
 				slug: 'pharmacy',
 				icon: 'ShoppingBagIcon',
 				i18n: 'Pharmacy',
-				submenu: [
-					{
-						url: null,
-						name: 'Medicine',
-						slug: 'medicine',
-						i18n: 'Medicine',
-						submenu: [
-							{
-								url: '/apps/pharmacyCategories',
-								name: 'Categories',
-								slug: 'categories',
-								i18n: 'Categories',
+				submenu: [{
+						url: '/apps/pharmacyCategories',
+						name: 'Categories',
+						slug: 'categories',
+						i18n: 'Categories',
 
-							},
-							{
-								url: '/apps/medicines',
-								name: 'Medicine',
-								slug: 'medicines',
-								i18n: 'Medicines'
-							},
-							{
-								url: '/apps/units',
-								name: 'Units',
-								slug: 'units',
-								i18n: 'Units'
-							},
-						]
 					},
 					{
-						url: null,
-						name: 'Manufacturer ',
-						slug: 'manufacturer ',
-						i18n: 'Manufacturer ',
-						submenu: [
-							{
-								url: '/apps/manufacturerControl',
-								name: 'Add/Manage Manufacturer',
-								slug: 'add-manage-manufacturer',
-								i18n: 'Add/Manage Manufacturer'
-							},
-							{
-								url: '/apps/manufacturerLedger',
-								name: 'Manufacturer Ledger',
-								slug: 'manufacturer-ledger',
-								i18n: 'Manufacturer Ledger'
-							},
-							{
-								url: '/apps/manufacturerAdvance',
-								name: 'Manufacturer Advance',
-								slug: 'manufacturer-advance',
-								i18n: 'Manufacturer Advance'
-							},
-						]
+						url: '/apps/medicines',
+						name: 'Medicine',
+						slug: 'medicines',
+						i18n: 'Medicines'
 					},
 					{
-						url: null,
-						name: 'Purchase',
-						slug: 'purchase',
-						i18n: 'Purchase',
-						submenu: [
-							{
-								url: '/apps/addPurchase',
-								name: 'Add Purchase',
-								slug: 'add-purchase',
-								i18n: 'Add Purchase'
-							},
-							{
-								url: '/apps/managePurchase',
-								name: 'Manage Purchase',
-								slug: 'manage-purchase',
-								i18n: 'Manage Purchase'
-							},
-						]
+						url: '/apps/units',
+						name: 'Units',
+						slug: 'units',
+						i18n: 'Units'
 					},
 					{
-						url: null,
-						name: 'Supplier',
-						slug: 'supplier',
-						i18n: 'Supplier',
-						submenu: [
-							{
-								url: '/apps/supplierManagement',
-								name: 'Supplier Management',
-								slug: 'supplier-management',
-								i18n: 'Supplier Management'
-							},
-							{
-								url: '/apps/supplierLedger',
-								name: 'Supplier Ledger',
-								slug: 'supplier-ledger',
-								i18n: 'Supplier Ledger'
-							},
-						]
+						url: '/apps/manufacturerControl',
+						name: 'Manage Manufacturer',
+						slug: 'manage-manufacturer',
+						i18n: 'Manage Manufacturer'
+					},
+					{
+						url: '/apps/supplierManagement',
+						name: 'Supplier Management',
+						slug: 'supplier-management',
+						i18n: 'Supplier Management'
+					},
+					{
+						url: '/apps/stockManagement',
+						name: 'Stock Management',
+						slug: 'stock-management',
+						i18n: 'Stock Management'
+					},
+					{
+						url: '/apps/ledger',
+						name: 'Ledger',
+						slug: 'ledger',
+						i18n: 'Ledger'
 					},
 					{
 						url: null,
 						name: 'Invoice',
 						slug: 'invoice',
 						i18n: 'Invoice',
-						submenu: [
-							{
+						submenu: [{
 								url: '/apps/newInvoice',
 								name: 'New Invoice',
 								slug: 'new-invoice',
@@ -763,12 +705,6 @@ export default [
 								i18n: 'POS Invoice'
 							},
 						]
-					},
-					{
-						url: '/apps/stockManagement',
-						name: 'Stock Management',
-						slug: 'stock-management',
-						i18n: 'Stock Management'
 					},
 
 				]

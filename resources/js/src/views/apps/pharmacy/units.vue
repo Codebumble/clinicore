@@ -91,26 +91,12 @@ export default {
 	catName: '',
 	categories: [{
 					"id": 1,
-					"category": "Tablet",
+					"category": "Piece ",
 				},
 				{
 					"id": 2,
-					"category": "Capsule",
+					"category": "Box",
 				},
-				{
-					"id": 3,
-					"category": "Cream",
-
-				},
-				{
-					"id": 4,
-					"category": "Gel",
-				},
-				{
-					"id": 5,
-					"category": "Injection",
-				},
-
 			]
   }),
 }

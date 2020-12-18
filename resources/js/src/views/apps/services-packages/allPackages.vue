@@ -12,6 +12,7 @@
 						<vs-th>Discount</vs-th>
 						<vs-th>Total Price</vs-th>
 						<vs-th>Status</vs-th>
+						<vs-th>Action</vs-th>
 					</template>
 					<template slot-scope="{data}">
 						<vs-tr :key="index" v-for="(allPackages, index) in data">
@@ -39,6 +40,12 @@
 							<vs-td :data="data[index].status">
 								{{ data[index].status }}
 							</vs-td>
+
+
+        <vs-td>
+          <vs-button color="success" type="line" icon-pack="feather" icon="icon-edit" class="inline-action"></vs-button>
+						<vs-button color="danger" type="line" icon-pack="feather" icon="icon-trash" class="inline-action"></vs-button>
+        </vs-td>
 
 							<template class="expand-user" slot="expand">
 								<div class="con-expand-users w-full">
@@ -78,6 +85,20 @@
 	</div>
 
 </template>
+
+<style lang="scss">
+	.inline-action {
+		float: left !important;
+		margin: 0 .5rem;
+	}
+	.inline-action:first-child{
+		margin: 0 .5rem 0 0;
+	}
+
+	.vs-table--td{
+		padding: 5px 15px !important;
+	}
+</style>
 
 <script>
 export default {

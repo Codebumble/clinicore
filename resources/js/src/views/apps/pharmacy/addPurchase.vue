@@ -3,17 +3,23 @@
 		<vx-card title="Add Purchase Data">
 			<div class="vx-row">
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Purchase From(Company Name)*" v-model="input1" />
+					<v-select v-model="selectedManufacturer" :options="manufacturers" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
 				</div>
-			</div>
-			<div class="vx-row">
-				<div class="vx-col sm:w-1/3 w-full mb-2 mt-3">
+				<div class="vx-col sm:w-1/2 w-full mb-2">
+					<v-select v-model="selectedPayType" :options="payType" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+				</div>
+				<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
 					<flat-pickr placeholder="Purchase Date" v-model="pdate" :config="{ dateFormat: 'd F Y', maxDate: new Date() }" class="w-full" v-validate="'required'" />
 				</div>
+				<div class="vx-col sm:w-1/2 w-full mb-2">
+					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Invoice Number"
+						v-model="invoiceNo" />
+				</div>
+
 			</div>
 
 			<div class="vx-row">
-				<div class="vx-col sm:w-3/3 mb-2 mt-3">
+				<div class="vx-col sm:w-2/2 w-full mb-2 mt-3">
 					<vs-table stripe noDataText="">
 						<template slot="thead">
 							<vs-th>Medicine Name</vs-th>
@@ -37,7 +43,7 @@
 								<vs-td>
 									<vs-input-number label="Price:" v-model="servicePackage.price" />
 								</vs-td>
-                                
+
 								<vs-td>
 									<vs-button radius color="success" type="gradient" icon-pack="feather" icon="icon-plus" class="inline-action" @click="addNewService"></vs-button>
 									<vs-button radius color="danger" type="gradient" icon-pack="feather" icon="icon-minus" class="inline-action" @click="removeService(index, servicePackage)" :disabled="servicePackage.serviceName < 1"></vs-button>
@@ -80,11 +86,17 @@
 		margin: 0 .5rem 0 0;
 	}
 
+	.vs-table--tbody-table .tr-values:not(.activeEdit):not(.tr-expandedx):not(.hoverFlat):hover {
+    z-index: 200;
+    transform: unset !important;
+}
+
 </style>
 
 <script>
 import flatPickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
+import vSelect from 'vue-select'
 	export default {
 		data() {
 			return {
@@ -92,6 +104,9 @@ import 'flatpickr/dist/flatpickr.css'
 				input1: '',
 				input2: '',
 				textarea: '',
+				pdate: '',
+				edate: '',
+				invoiceNo: '',
 				status: 'Active',
 				amount: 0,
 				colorx: "#def1d1",
@@ -104,9 +119,72 @@ import 'flatpickr/dist/flatpickr.css'
                     pdate: '',
                     edate: '',
 				}],
+				manufacturers: [
+				{
+					id: 0,
+					label: '',
+				},
+				{
+					id: 1,
+					label: 'ACI ',
+				},
+				{
+					id: 2,
+					label: 'ACME Laboratories Ltd',
+				},
+				{
+					id: 3,
+					label: 'Ad-din pharmaceuticals Ltd.',
+				},
+				{
+					id: 4,
+					label: 'Aexim Pharmaceuticals Ltd',
+				},
+				{
+					id: 5,
+					label: 'Al-Madina Pharmaceuticals Ltd',
+				},
+				{
+					id: 6,
+					label: 'Alco Pharma Ltd.',
+				},
+
+			],
+			selectedManufacturer:[{
+				id: 0,
+				label: 'Select Manufacturer'
+			}],
+				payType: [
+				{
+					id: 0,
+					label: '',
+				},
+				{
+					id: 1,
+					label: 'Mobile Banking ',
+				},
+				{
+					id: 2,
+					label: 'Cash',
+				},
+				{
+					id: 3,
+					label: 'Card',
+				},
+				{
+					id: 4,
+					label: 'Due',
+				},
+
+			],
+			selectedPayType:[{
+				id: 0,
+				label: 'Select Payment Type'
+			}]
 			}
 		},components: {
-    flatPickr
+	flatPickr,
+	'v-select': vSelect,
   },
 		methods: {
 			openLoadingColor() {

@@ -9,6 +9,7 @@
       <vs-th sort-key="bedCap">Bed Capacity</vs-th>
       <vs-th sort-key="charge">Charge</vs-th>
       <vs-th sort-key="status">Status</vs-th>
+      <vs-th>Action</vs-th>
     </template>
 
     <template slot-scope="{data}">
@@ -16,53 +17,24 @@
 
         <vs-td :data="data[index].bedType">
           {{ data[index].bedType }}
-		  <template slot="edit">
-            <vs-input v-model="data[index].bedType" class="input" placeholder="Bed Type" />
-          </template>
         </vs-td>
         <vs-td :data="data[index].desc">
           {{ data[index].desc }}
-		  <template slot="edit">
-            <vs-input v-model="data[index].desc" class="input" placeholder="Bed Type" />
-          </template>
         </vs-td>
         <vs-td :data="data[index].bedCap">
           {{ data[index].bedCap }}
-		  <template slot="edit">
-            <vs-input v-model="data[index].bedCap" class="input" placeholder="Bed Type" />
-          </template>
         </vs-td>
         <vs-td :data="data[index].charge">
           {{ data[index].charge }}
-		  <template slot="edit">
-            <vs-input v-model="data[index].charge" class="input" placeholder="Bed Type" />
-          </template>
         </vs-td>
         <vs-td :data="data[index].status">
           {{ data[index].status }}
-		  <template slot="edit">
-           <div class="vx-row">
-         <div class="vx-col w-full mt-2">
-             <div class="vx-row mb-6">
-      <div class="vx-col sm:w-2/6">
-        <span>Status:</span>
-      </div>
-      <div class="vx-col sm:w-3/6">
-		<ul class="centerx inline-status">
-			<li class="mr-4">
-				<vs-radio color="success" v-model="data[index].status" vs-value="Active">Active</vs-radio>
-			</li>
-			<li class="mr-4">
-				<vs-radio color="danger" v-model="data[index].status" vs-value="Inactive">Inactive</vs-radio>
-			</li>
-		</ul>
-      </div>
-    </div>
-         </div>
-        </div>
-          </template>
         </vs-td>
 
+        <vs-td>
+          <vs-button color="success" type="line" icon-pack="feather" icon="icon-edit" class="inline-action"></vs-button>
+						<vs-button color="danger" type="line" icon-pack="feather" icon="icon-trash" class="inline-action"></vs-button>
+        </vs-td>
 
       </vs-tr>
     </template>
@@ -79,6 +51,17 @@
     justify-content: flex-start;
     align-items: center;
 }
+	.inline-action {
+		float: left !important;
+		margin: 0 .5rem;
+	}
+	.inline-action:first-child{
+		margin: 0 .5rem 0 0;
+	}
+
+	.vs-table--td{
+		padding: 5px 15px !important;
+	}
 </style>
 
 
