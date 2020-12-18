@@ -564,6 +564,16 @@ const router = new Router({
 			}
 		},
 		{
+			path: '/apps/demoInvoices',
+			name: 'Demo Invoices',
+			component: () => import('./views/apps/invoices/sampleInvoice.vue'),
+			meta: {
+			  rule: 'editor',
+			  no_scroll: false
+			}
+		},
+
+		{
 			path: '/apps/removeInvoices',
 			name: 'Remove Invoices',
 			component: () => import('./views/apps/invoices/removeInvoices.vue'),
