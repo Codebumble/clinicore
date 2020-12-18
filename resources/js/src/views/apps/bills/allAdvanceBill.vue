@@ -1,53 +1,89 @@
 <template>
 	<div class="vx-row">
 		<div class="vx-col w-full mb-6">
-			<vx-card title="All Admitted Patients">
+			<vx-card title="All Advance Bill">
 
-				<vs-table pagination max-items="3" stripe search :data="allAdmittedPatients">
+				<vs-table pagination max-items="3" stripe search :data="allAdvancePayments">
 
 					<template slot="thead">
+						<vs-th sort-key="aid">AID</vs-th>
 						<vs-th sort-key="patientID">Patient ID</vs-th>
-						<vs-th sort-key="patientName">Patient Name</vs-th>
-						<vs-th sort-key="gurardianName">Gurardian Name</vs-th>
-						<vs-th sort-key="admitDate">Admit Date</vs-th>
-						<vs-th sort-key="releaseDate">Release Date</vs-th>
+						<vs-th sort-key="amount">Amount</vs-th>
+						<vs-th sort-key="paymentMethod">Payment Method</vs-th>
+						<vs-th sort-key="receiptNo">Receipt No.</vs-th>
+						<vs-th sort-key="date">Date</vs-th>
 					</template>
 					<template slot-scope="{data}">
-						<vs-tr :key="index" v-for="(allAdmittedPatients, index) in data">
+						<vs-tr :key="index" v-for="(allAdvancePayments, index) in data">
+
+							<vs-td :data="data[index].aid">
+								{{ data[index].aid }}
+
+								<template slot="edit">
+									<div class="mb-2">
+										<vs-input icon-pack="feather" icon="icon-edit" label-placeholder="AID"
+						v-model="data[index].aid" />
+									</div>
+								</template>
+							</vs-td>
 
 							<vs-td :data="data[index].patientID">
 								{{ data[index].patientID }}
+								<template slot="edit">
+									<div class="vx-col mb-2">
+										<vs-input icon-pack="feather" icon="icon-edit" label-placeholder="Patient ID"
+						v-model="data[index].patientID" />
+									</div>
+								</template>
 							</vs-td>
 
-							<vs-td :data="data[index].patientName">
-								{{ data[index].patientName }}
+							<vs-td :data="data[index].amount">
+								{{ data[index].amount }}
+								<template slot="edit">
+									<div class="vx-col mb-2">
+										<vs-input icon-pack="feather" icon="icon-edit" label-placeholder="Amount"
+						v-model="data[index].amount" />
+									</div>
+								</template>
 							</vs-td>
 
 
-							<vs-td :data="data[index].gurardianName">
-								{{ data[index].gurardianName }}
+							<vs-td :data="data[index].paymentMethod">
+								{{ data[index].paymentMethod }}
+								<template slot="edit">
+									<div class="vx-col mb-2">
+										<vs-input icon-pack="feather" icon="icon-edit" label-placeholder="Payment Method"
+						v-model="data[index].paymentMethod" />
+									</div>
+								</template>
 							</vs-td>
 
-							<vs-td :data="data[index].admitDate">
-								{{ data[index].admitDate }}
+							<vs-td :data="data[index].receiptNo">
+								{{ data[index].receiptNo }}
+								<template slot="edit">
+									<div class="vx-col mb-2">
+										<vs-input icon-pack="feather" icon="icon-edit" label-placeholder="Receipt No."
+						v-model="data[index].receiptNo" />
+									</div>
+								</template>
 							</vs-td>
 
-							<vs-td :data="data[index].releaseDate">
-								{{ data[index].releaseDate }}
+							<vs-td :data="data[index].date">
+								{{ data[index].date }}
 
 								<template slot="edit">
 									<div class="vx-col mb-2">
-										<flat-pickr placeholder="Release Date" v-model="data[index].releaseDate"
+										<flat-pickr placeholder="Date" v-model="data[index].date"
 						:config="{ dateFormat: 'd F Y'}" class="w-full inputx" />
 									</div>
 								</template>
 
 							</vs-td>
 
-							<template class="expand-user" slot="expand">
-								<div class="con-expand-users w-full">
+							<!-- <template class="expand-user" slot="expand">
+								<div class="con-expand-users w-full"> -->
 									<!-- Expandable Data goes here -->
-									<vx-card>
+									<!-- <vx-card>
 										<div class="vx-row">
 											<div class="vx-col sm:w-1/2 w-full mb-2">
 												<vs-list>
@@ -135,9 +171,9 @@
 												</vs-list>
 											</div>
 										</div>
-									</vx-card>
-								</div>
-							</template>
+									</vx-card> -->
+								<!-- </div>
+							</template> -->
 						</vs-tr>
 					</template>
 				</vs-table>
@@ -169,91 +205,38 @@ import 'flatpickr/dist/flatpickr.css'
 
 				colorLoading: '#ff8000',
 
-				allAdmittedPatients: [
+				allAdvancePayments: [
 					{
+						aid: 'APP034353',
 						patientID: 'HCAP032624',
-						patientName: 'Saifur',
-						city: 'Dinajpur',
-						gurardianName: 'Mustafa',
-						gurardianRel: 'Grand Father',
-						admitDate: '02 December 2020',
-						releaseDate: '06 December 2020',
-						mob: '0184749573',
-						gender: 'Male',
-						addr: '600, Sk. Mujib Road, Agrabad',
-						country: 'BD',
-						postal: 'N/A',
-						gurardianAddr: '600, Sk. Mujib Road, Agrabad',
-						gurardianContact: '01836435543',
-						agent: 'Rafi',
-						policy: '97234',
-						insurance: 'IFIC',
-						sector: 'General Surgery',
-						doctor: 'Dr. Shakil',
-						package: 'Package 1',
+						amount: '50000',
+						paymentMethod: 'bKash',
+						receiptNo: '873678435',
+						date: '02 December 2020',
 					},
 					{
-						patientID: 'HCAP34546',
-						patientName: 'Shakil',
-						city: 'Dhaka',
-						gurardianName: 'Saifur',
-						gurardianRel: 'Brother',
-						admitDate: '',
-						releaseDate: '',
-						addr: '',
-						country: '',
-						postal: '',
-						gurardianRel: '',
-						gurardianAddr: '',
-						gurardianContact: '',
-						agent: '',
-						policy: '',
-						insurance: '',
-						sector: 'General Surgery',
-						doctor: 'Dr. Shakil',
-						package: 'Package 1',
-					},
-					{
-						patientID: 'HCAP073243',
-						patientName: 'Sunny',
-						city: 'Shylhet',
-						gurardianName: 'Shawon',
-						gurardianRel: 'Brother',
-						admitDate: '',
-						releaseDate: '',
-						addr: '',
-						country: '',
-						postal: '',
-						gurardianRel: '',
-						gurardianAddr: '',
-						gurardianContact: '',
-						agent: '',
-						policy: '',
-						insurance: '',
-						sector: 'General Surgery',
-						doctor: 'Dr. Shakil',
-						package: 'Package 1',
-					},
-					{
+						aid: 'APP034353',
 						patientID: 'HCAP032624',
-						patientName: 'Shawon',
-						city: 'Dinajpur',
-						gurardianName: 'Saifur',
-						gurardianRel: 'Brother',
-						admitDate: '',
-						releaseDate: '',
-						addr: '',
-						country: '',
-						postal: '',
-						gurardianRel: '',
-						gurardianAddr: '',
-						gurardianContact: '',
-						agent: '',
-						policy: '',
-						insurance: '',
-						sector: 'General Surgery',
-						doctor: 'Dr. Shakil',
-						package: 'Package 1',
+						amount: '50000',
+						paymentMethod: 'bKash',
+						receiptNo: '873678435',
+						date: '02 December 2020',
+					},
+					{
+						aid: 'APP034353',
+						patientID: 'HCAP032624',
+						amount: '50000',
+						paymentMethod: 'bKash',
+						receiptNo: '873678435',
+						date: '02 December 2020',
+					},
+					{
+						aid: 'APP034353',
+						patientID: 'HCAP032624',
+						amount: '50000',
+						paymentMethod: 'bKash',
+						receiptNo: '873678435',
+						date: '02 December 2020',
 					},
 
 				],
