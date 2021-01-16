@@ -4,12 +4,12 @@
 			<div class="vx-row">
 				<div class="vx-col sm:w-1/2 w-full mb-2">
 					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Department Name*"
-						v-model="input1" />
+						v-model="form.name" />
 				</div>
 			</div>
 			<div class="vx-row">
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" v-model="input2" label-placeholder="Description" />
+					<vs-input class="w-full" v-model="form.description" label-placeholder="Description" />
 				</div>
 			</div>
 			<div class="vx-row">
@@ -21,10 +21,10 @@
 						<div class="vx-col sm:w-3/6">
 							<ul class="centerx inline-status">
 								<li class="mr-4">
-									<vs-radio color="success" v-model="status" vs-value="Active">Active</vs-radio>
+									<vs-radio color="success" v-model="form.status" vs-value="Active">Active</vs-radio>
 								</li>
 								<li class="mr-4">
-									<vs-radio color="danger" v-model="status" vs-value="Inactive">Inactive</vs-radio>
+									<vs-radio color="danger" v-model="form.status" vs-value="Inactive">Inactive</vs-radio>
 								</li>
 							</ul>
 						</div>
@@ -42,7 +42,7 @@
 						<vs-button @click="openLoadingColor" type="filled" :color="colorLoading">OK</vs-button>
 					</vs-popup>
 					<vs-button color="warning" type="border" class="mb-2"
-						@click="input1 = input2 = ''; check7 = false;">Reset</vs-button>
+						@click="form.name = form.description = form.status = '';">Reset</vs-button>
 				</div>
 			</div>
 		</vx-card>
@@ -59,12 +59,11 @@
 </style>
 
 <script>
+const axios = require('axios');
 export default {
 	data() {
 		return {
-			check7: '',
-			input1: '',
-			input2: '',
+			form: {},
 			status: 'Active',
 			colorx: "#def1d1",
 			popupActive: false,
@@ -76,9 +75,19 @@ export default {
 			this.$vs.loading({
 				type: 'sound'
 			})
+			console.log(this.form);
 			this.popupActive = false;
+			axios.post('/api/add-department', this.form)
+  .then(function (response) {
+	 console.log(response);
+	 console.log(response.data);
 
-			setTimeout(() => {
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+
+  setTimeout(() => {
 
 				this.$vs.loading.close()
 			}, 2000);
@@ -91,8 +100,12 @@ export default {
 					time: '4000',
 					iconPack: 'feather',
 					icon: 'icon-check'
-				})
+				});
+				this.form.name = '';
+			this.form.status = '';
+			this.form.description = '';
 			}, 2000);
+			
 		},
 	}
 }

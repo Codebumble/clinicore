@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/apigeter','ApiGeter@demoshow');
+
+
+//Route::get('/doctor-registration','ApiGeter@doctor');
+Route::post('/add-department','ApiGeter@add_department');
+Route::get('/department-list','ApiGeter@department_list');
