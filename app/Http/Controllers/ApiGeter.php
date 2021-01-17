@@ -23,11 +23,13 @@ class ApiGeter extends Controller
         $name = $request->get('name');
         $description = $request->get('description');
         $status = $request->get('status');
+        $departmentheadname = $request->get('departmentheadname');
+        $departmentheadsince = $request->get('departmentheadsince');
 
         DB::table('cb_departments')
     ->updateOrInsert(
         ['name' => $name, 'value' => $description],
-        ['status' => $status]
+        ['status' => $status, 'department_head_name' => $departmentheadname, 'head_since' => $departmentheadsince]
     );
     return response()->json('success');
     }

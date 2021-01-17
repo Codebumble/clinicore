@@ -3,8 +3,9 @@
 		<vx-card title="Add Department/Sector for Your Hospital">
 			<div class="vx-row">
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" icon-pack="feather" icon="icon-plus" label-placeholder="Department Name*"
-						v-model="form.name" />
+					<vs-input class="w-full" icon-pack="feather" name="Department Name" icon="icon-plus" label-placeholder="Department Name*"
+						v-model="form.name" v-validate="'required'"/>
+						<span class="text-danger text-sm" v-show="errors.has('Department Name')">{{ errors.first('Department Name') }}</span>
 				</div>
 			</div>
 			<div class="vx-row">
@@ -12,6 +13,17 @@
 					<vs-input class="w-full" v-model="form.description" label-placeholder="Description" />
 				</div>
 			</div>
+			<div class="vx-row">
+				<div class="vx-col sm:w-1/2 w-full mb-2">
+					<vs-input class="w-full" v-model="form.departmentheadname" label-placeholder="Head of the Department/Incharge Name" />
+				</div>
+			</div>
+			<div class="vx-row">
+					<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
+            <flat-pickr placeholder="Head of the Department/Incharge Since" v-model="form.departmentheadsince" :config="{ dateFormat: 'd F Y', maxDate: new Date() }" class="w-full"/>
+          </div>
+		  </div>
+
 			<div class="vx-row">
 				<div class="vx-col w-full mt-5">
 					<div class="vx-row mb-6">
@@ -42,7 +54,7 @@
 						<vs-button @click="openLoadingColor" type="filled" :color="colorLoading">OK</vs-button>
 					</vs-popup>
 					<vs-button color="warning" type="border" class="mb-2"
-						@click="form.name = form.description = form.status = '';">Reset</vs-button>
+						@click="form.name = form.departmentheadsince = form.departmentheadname = form.description = form.status = '';">Reset</vs-button>
 				</div>
 			</div>
 		</vx-card>
@@ -60,6 +72,8 @@
 
 <script>
 const axios = require('axios');
+import flatPickr from 'vue-flatpickr-component'
+import 'flatpickr/dist/flatpickr.css'
 export default {
 	data() {
 		return {
@@ -69,9 +83,12 @@ export default {
 			popupActive: false,
 			colorLoading: '#ff8000',
 		}
-	},
-	methods: {
+	},components: {
+    flatPickr
+  },methods: {
 		openLoadingColor() {
+			this.$validator.validateAll().then(result => {
+        if(result) {
 			this.$vs.loading({
 				type: 'sound'
 			})
@@ -103,8 +120,25 @@ export default {
 				});
 				this.form.name = '';
 			this.form.status = '';
+			this.form.departmentheadname = '';
 			this.form.description = '';
+			this.form.departmentheadsince = '';
 			}, 2000);
+		} else {
+			this.popupActive = false;
+			setTimeout(() => {
+				this.$vs.notify({
+					title: 'Failed',
+					text: 'Something Went Wrong!!',
+					color: 'danger',
+					position: 'top-right',
+					time: '4000',
+					iconPack: 'feather',
+					icon: 'icon-check'
+				});
+			}, 2000);
+		}
+		})
 			
 		},
 	}
