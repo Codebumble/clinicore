@@ -7,13 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class ApiGeter extends Controller
 {
-    public function demoshow()
+    public function department_list()
     {
-        $demodata = [
-            'name' => 'Shakil Ahmed',
-            'phone' => 'ok',
-            'blank' => '',
-        ];
+        $demodata = DB::table('cb_departments')
+        ->get();
 
         return response()->json($demodata);
     }

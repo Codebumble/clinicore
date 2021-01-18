@@ -1,12 +1,13 @@
 <template>
-	<vx-card title="All Sector/Department List">
+	<vx-card title="All Sector & Department">
 		<vs-table :data="users">
 
 			<template slot="thead">
 				<vs-th>ID</vs-th>
-				<vs-th>Sector Name</vs-th>
-				<vs-th>Discription</vs-th>
-				<vs-th>Status</vs-th>
+				<vs-th>Sector/Department Name</vs-th>
+				<vs-th>Incharge/Departent Head</vs-th>
+				<vs-th>Joinng As Incharge/D. Head</vs-th>
+                <vs-th>Action</vs-th>
 			</template>
 
 			<template slot-scope="{data}">
@@ -17,19 +18,27 @@
 						{{ data[indextr].id }}
 					</vs-td>
 
-					<vs-td :data="data[indextr].username">
+					<vs-td :data="data[indextr].name">
 						{{ data[indextr].name }}
 					</vs-td>
 
-					<vs-td :data="data[indextr].email">
+					<vs-td :data="data[indextr].signedby">
 
-						{{ data[indextr].email }}
+						{{ data[indextr].signedby }}
 					</vs-td>
 
-					<vs-td :data="data[indextr].website">
+					<vs-td :data="data[indextr].entry">
 
-						{{ data[indextr].website }}
+						{{ data[indextr].entry }}
 					</vs-td>
+                    <vs-td :data="data[indextr].id">
+                            <div class="flex">
+                  <vs-button type="border" size="small" icon-pack="feather" icon="icon-eye" class="mr-2"></vs-button>
+                  <vs-button type="border" size="small" icon-pack="feather" icon="icon-trash" color="danger"></vs-button>
+   
+                            </div>
+                    </vs-td>
+
 
 				</vs-tr>
 			</template>
@@ -44,35 +53,38 @@ export default {
 		return {
 			users: [{
 					"id": 1,
-					"name": "Doctor",
-					"username": "doctor",
-					"email": "Sections for Doctors",
+					"name": "Ahona Shaikh(XS6754)",
+					"signedby": "Dr. Shakil Khan",
+					"entry": "21 July,2020",
 					"website": "Active",
 				},
 				{
 					"id": 2,
-					"name": "Admin",
-					"username": "admin",
-					"email": "Section Created for Admins",
+					"name": "Promy Ahmed(XT6945)",
+					"signedby": "Dr. Miraj Datta",
+					"entry": "20 July,2020",
 					"website": "Active",
 				},
 				{
 					"id": 3,
-					"name": "Nurse",
-					"username": "nurse",
-					"email": "Nurses Sedtion",
+					"name": "Israt Jahan(XU5375)",
+					"signedby": "Dr. Noor-E-Jannat",
+					"entry": "20 July,2020",
 					"website": "Inactive",
 				},
 				{
 					"id": 4,
-					"name": "Combined",
-					"username": "combined",
-					"email": "For All",
+					"name": "Tanjima Tahiya(XX5355)",
+					"signedby": "Dr. Noor-E-Jannat",
+					"entry": "20 July,2020",
 					"website": "Active",
 				},
 
 			]
 		}
+	},methods: {
+
+
 	},
 }
 </script>
