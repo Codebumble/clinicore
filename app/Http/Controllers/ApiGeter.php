@@ -18,10 +18,10 @@ class ApiGeter extends Controller
     public function add_department(Request $request)
     {   
         $name = $request->get('name');
-        $description = $request->get('description');
+        $description = $request->get('value');
         $status = $request->get('status');
-        $departmentheadname = $request->get('departmentheadname');
-        $departmentheadsince = $request->get('departmentheadsince');
+        $departmentheadname = $request->get('department_head_name');
+        $departmentheadsince = $request->get('head_since');
 
         DB::table('cb_departments')
     ->updateOrInsert(

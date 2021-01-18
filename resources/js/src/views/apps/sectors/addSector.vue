@@ -10,17 +10,17 @@
 			</div>
 			<div class="vx-row">
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" v-model="form.description" label-placeholder="Description" />
+					<vs-input class="w-full" v-model="form.value" label-placeholder="Description" />
 				</div>
 			</div>
 			<div class="vx-row">
 				<div class="vx-col sm:w-1/2 w-full mb-2">
-					<vs-input class="w-full" v-model="form.departmentheadname" label-placeholder="Head of the Department/Incharge Name" />
+					<vs-input class="w-full" v-model="form.department_head_name" label-placeholder="Head of the Department/Incharge Name" />
 				</div>
 			</div>
 			<div class="vx-row">
 					<div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
-            <flat-pickr placeholder="Head of the Department/Incharge Since" v-model="form.departmentheadsince" :config="{ dateFormat: 'd F Y', maxDate: new Date() }" class="w-full"/>
+            <flat-pickr placeholder="Head of the Department/Incharge Since" v-model="form.head_since" :config="{ dateFormat: 'd F Y', maxDate: new Date() }" class="w-full"/>
           </div>
 		  </div>
 
