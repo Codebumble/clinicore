@@ -4,14 +4,14 @@
 			<vx-card title="Modify A Department/Sector">
 				<div class="vx-row mr-auto">
 					<div class="vx-col sm:w-2/2 w-full mb-2">
-						<v-select v-model="selected_department" label="name" :options="department_option" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+						<v-select v-model="selected_department_edit" label="name" :options="department_option_edit" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
 					</div>
 					<div class="vx-col sm:w-2/2 w-full mb-2">
 						<vs-input class="w-full" icon-pack="feather" icon="icon-plus" :disabled="isDisabled" label-placeholder="New Name"
-							v-model="selected_department.name" />
+							v-model="selected_department_edit.name" />
 					</div>
 					<div class="vx-col sm:w-2/2 w-full mb-2">
-						<vs-input class="w-full" :disabled="isDisabled" v-model="selected_department.value" label-placeholder="Description" />
+						<vs-input class="w-full" :disabled="isDisabled" v-model="selected_department_edit.value" label-placeholder="Description" />
 					</div>
 				</div>
 
@@ -24,10 +24,10 @@
 							<div class="vx-col sm:w-3/6">
 								<ul class="centerx inline-status">
 									<li class="mr-4">
-										<vs-radio color="success" v-model="selected_department.status" vs-value="Active">Active</vs-radio>
+										<vs-radio color="success" v-model="selected_department_edit.status" vs-value="Active">Active</vs-radio>
 									</li>
 									<li class="mr-4">
-										<vs-radio color="danger" v-model="selected_department.status" vs-value="Inactive">Inactive
+										<vs-radio color="danger" v-model="selected_department_edit.status" vs-value="Inactive">Inactive
 										</vs-radio>
 									</li>
 								</ul>
@@ -38,12 +38,12 @@
 
 				<div class="vx-row">
 					<div class="vx-col w-full">
-						<vs-button class="mr-3 mb-2" @click="popupActive=true" type="filled">Submit</vs-button>
+						<vs-button class="mr-3 mb-2" @click="popupActiveEdit=true" type="filled">Submit</vs-button>
 
 						<vs-popup background-color="rgba(255,255,255,.6)" :background-color-popup="colorx" class=""
-							title="Review" :active.sync="popupActive">
+							title="Review" :active.sync="popupActiveEdit">
 							<p> Are You Sure You Want to Modify The Sector/Department?</p><br>
-							<vs-button @click="openLoadingColor" type="filled" :color="colorLoading">OK</vs-button>
+							<vs-button @click="openLoadingColor" type="filled" :color="colorLoading">Confirm</vs-button>
 						</vs-popup>
 						<vs-button color="warning" type="border" class="mb-2"
 							@click="selected_department = [];">Reset</vs-button>
@@ -56,7 +56,7 @@
 			<vx-card title="Remove A Department/Sector">
 				<div class="vx-row mr-auto">
 					<div class="vx-col sm:w-2/2 w-full mb-2">
-						<v-select v-model="selected" label="name" :options="options" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+						<v-select v-model="selected_department_edit" label="name" :options="department_option_delete" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
 					</div>
 				</div>
 
@@ -92,38 +92,16 @@ import axios from 'axios'
 export default {
 	data() {
 		return {
-			check7: '',
-			input1: '',
-			input2: '',
-			status: 'Active',
 			colorx: "#def1d1",
-			popupActive: false,
+			popupActiveEdit: false,
 			popupActive1: false,
 
 			colorLoading: '#ff8000',
-			label: {
-	type: String,
-	default: "name"
-},
-			options: [{
-					id: 1,
-					label: 'Doctor'
-				},
-				{
-					id: 3,
-					label: 'Laboratorist'
-				},
-				{
-					id: 2,
-					label: 'Receptionist'
-				},
-			],
-			selected: {
-				id: 3,
-				label: 'Laboratorist'
-			},
-			department_option : [],
-			selected_department: {},
+
+			department_option_delete: [],
+			department_option_edit: [],
+			selected_department_edit: {},
+			selected_department_delete: {},
 		}
 
 	},
@@ -131,7 +109,7 @@ export default {
 		'v-select': vSelect,
 	},computed: {
       isDisabled() {
-        if(!this.selected_department.id){
+        if(!this.selected_department_edit.id){
 			return true;
 		} else {
 		return false;
@@ -142,7 +120,8 @@ export default {
 		loadData(){
 		  axios.get('/api/department-list')
                 .then(response => {
-					this.department_option = response.data;
+					this.department_option_edit = response.data;
+					this.department_option_delete =response.data;
 					console.log("Updated");
 				});
 				this.form = {};
@@ -193,9 +172,9 @@ export default {
 				})
 			}, 2000);
 		}
-	},created:function() { 
-            
-            
+	},created:function() {
+
+
         this.loadData();
 
         },

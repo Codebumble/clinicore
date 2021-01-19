@@ -16,7 +16,8 @@ class ApiGeter extends Controller
     }
 
     public function add_department(Request $request)
-    {   
+    {
+		$id = $request->get('id');
         $name = $request->get('name');
         $description = $request->get('value');
         $status = $request->get('status');
@@ -25,14 +26,14 @@ class ApiGeter extends Controller
 
         DB::table('cb_departments')
     ->updateOrInsert(
-        ['name' => $name, 'value' => $description],
-        ['status' => $status, 'department_head_name' => $departmentheadname, 'head_since' => $departmentheadsince]
+        ['id' => $id],
+        ['name' =>  $name, 'value' => $description,'status' => $status, 'department_head_name' => $departmentheadname, 'head_since' => $departmentheadsince]
     );
     return response()->json('success');
     }
 
     public function delete_department(Request $request)
-    {   
+    {
         $id = $request->get('id');
         DB::table('cb_departments')->where('id', '=', $id)->delete();
 

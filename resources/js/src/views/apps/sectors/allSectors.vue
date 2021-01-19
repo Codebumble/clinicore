@@ -44,7 +44,7 @@
 					<vs-button @click="editData(sector)" type="border" size="small" icon-pack="feather" icon="icon-edit" class="mr-2" color="success"></vs-button>
                   <vs-button @click="viewData(sector)" type="border" size="small" icon-pack="feather" icon="icon-eye" class="mr-2"></vs-button>
                   <vs-button @click="deleteData(sector)" type="border" size="small" icon-pack="feather" icon="icon-trash" color="danger"></vs-button>
-   
+
                             </div>
                     </vs-td>
 
@@ -55,7 +55,7 @@
 		</vs-table>
 		<div class="demo-alignment">
 		<vs-popup classContent="popup-example" title="Edit Sector" :active.sync="popupEditField1">
-      
+
 	  <div class="vx-row">
 				<div class="vx-col sm:w-2/2 w-full mb-2">
 					<vs-input class="w-full" icon-pack="feather" name="Department Name" icon="icon-plus" label-placeholder="Department Name*"
@@ -118,7 +118,7 @@
 
 		<div class="demo-alignment">
 		<vs-popup classContent="popup-example" title="View Sector" :active.sync="popupViewField1">
-      
+
 	  <div class="vx-row">
 				<div class="vx-col sm:w-2/2 w-full mb-2">
 					<vs-input disabled class="w-full"  name="Department Name" label-placeholder="Department Name*"
@@ -210,7 +210,7 @@ export default {
 			this.loadData();
 		this.popupEditField1 = true;
 			this.form = sector;
-			
+
 
 		},
 		deleteData:function(sector){
@@ -221,7 +221,7 @@ export default {
 		viewData:function(sector){
 				this.formview = sector;
 			this.popupViewField1 = true;
-			
+
 
 		},
 		openLoadingColor() {
@@ -275,7 +275,7 @@ export default {
 			}, 2000);
 		}
 		})
-			
+
 		},openLoadingDelete() {
 			this.$validator.validateAll().then(result => {
         if(result) {
@@ -301,8 +301,8 @@ export default {
 			setTimeout(() => {
 				this.$vs.notify({
 					title: 'Success',
-					text: 'Data Added Successfully!!',
-					color: 'success',
+					text: 'Data Removed Successfully!!',
+					color: 'danger',
 					position: 'top-right',
 					time: '4000',
 					iconPack: 'feather',
@@ -326,11 +326,11 @@ export default {
 			}, 2000);
 		}
 		})
-			
+
 		}
-	},created:function() { 
-            
-            
+	},created:function() {
+
+
         this.loadData();
 
         },

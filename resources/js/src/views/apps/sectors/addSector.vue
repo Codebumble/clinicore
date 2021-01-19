@@ -118,11 +118,7 @@ export default {
 					iconPack: 'feather',
 					icon: 'icon-check'
 				});
-				this.form.name = '';
-			this.form.status = '';
-			this.form.departmentheadname = '';
-			this.form.description = '';
-			this.form.departmentheadsince = '';
+				this.form = {};
 			}, 2000);
 		} else {
 			this.popupActive = false;
@@ -139,7 +135,7 @@ export default {
 			}, 2000);
 		}
 		})
-			
+
 		},
 	}
 }
