@@ -42,8 +42,8 @@
                     <vs-td :data="sector.id">
                             <div class="flex">
 					<vs-button @click="editData(sector)" type="border" size="small" icon-pack="feather" icon="icon-edit" class="mr-2" color="success"></vs-button>
-                  <vs-button type="border" size="small" icon-pack="feather" icon="icon-eye" class="mr-2"></vs-button>
-                  <vs-button type="border" size="small" icon-pack="feather" icon="icon-trash" color="danger"></vs-button>
+                  <vs-button @click="viewData(sector)" type="border" size="small" icon-pack="feather" icon="icon-eye" class="mr-2"></vs-button>
+                  <vs-button @click="deleteData(sector)" type="border" size="small" icon-pack="feather" icon="icon-trash" color="danger"></vs-button>
    
                             </div>
                     </vs-td>
@@ -54,7 +54,7 @@
 
 		</vs-table>
 		<div class="demo-alignment">
-		<vs-popup classContent="popup-example" title="Lorem ipsum dolor sit amet" :active.sync="popupActive2">
+		<vs-popup classContent="popup-example" title="Edit Sector" :active.sync="popupEditField1">
       
 	  <div class="vx-row">
 				<div class="vx-col sm:w-2/2 w-full mb-2">
@@ -63,7 +63,7 @@
 			</div>
 			<div class="vx-row">
 				<div class="vx-col sm:w-2/2 w-full mb-2">
-					<vs-input class="w-full" v-model="form.value" label-placeholder="Description" />
+					<vs-input class="w-full" v-model="form.value" label-placeholder="Description"/>
 				</div>
 			</div>
 			<div class="vx-row">
@@ -97,16 +97,72 @@
 				</div>
 			</div>
 
-      <vs-button class="mr-3 mb-2" @click="popupActive3=true" color="primary" type="filled">Edit</vs-button>
-	  <vs-button class="mr-3 mb-2" @click="popupActive2=false" color="danger" type="filled">Close</vs-button>
+      <vs-button class="mr-3 mb-2" @click="popupEditConfirm1=true" color="primary" type="filled">Edit</vs-button>
+	  <vs-button class="mr-3 mb-2" @click="popupEditField1=false,loadData()" color="danger" type="filled">Close</vs-button>
 
-      <vs-popup title="Inner popup" :active.sync="popupActive3">
+      <vs-popup title="Inner popup" :active.sync="popupEditConfirm1">
         <p class="mr-3 mb-2">Are You Sure You Want to Modify The Sector/Department?</p>
 		<vs-button class="mr-3 mb-2" @click="openLoadingColor" color="primary" type="filled">Confirm</vs-button>
-		<vs-button class="mr-3 mb-2" @click="popupActive3=false" color="danger" type="filled">Discard</vs-button>
+		<vs-button class="mr-3 mb-2" @click="popupEditConfirm1=false" color="danger" type="filled">Discard</vs-button>
       </vs-popup>
     </vs-popup>
+
+		<vs-popup title="Inner popup" :active.sync="popupDeleteConfirm1">
+        <p class="mr-3 mb-2">Are You Sure You Want to Delete The Sector/Department "{{ form.name }}"?</p>
+		<div class="centerx inline-status">
+		<vs-button class="mr-3 mb-2 centerx inline-status" @click="openLoadingDelete" color="danger" icon-pack="feather" icon="icon-trash" type="filled">Delete</vs-button>
+		<vs-button class="mr-3 mb-2 centerx inline-status" @click="popupDeleteConfirm1=false" color="primary" type="filled">Discard</vs-button>
 		</div>
+      </vs-popup>
+		</div>
+
+		<div class="demo-alignment">
+		<vs-popup classContent="popup-example" title="View Sector" :active.sync="popupViewField1">
+      
+	  <div class="vx-row">
+				<div class="vx-col sm:w-2/2 w-full mb-2">
+					<vs-input disabled class="w-full"  name="Department Name" label-placeholder="Department Name*"
+						v-model="formview.name" /></div>
+			</div>
+			<div class="vx-row">
+				<div class="vx-col sm:w-2/2 w-full mb-2">
+					<vs-input height="200px"  disabled class="w-full bigsize" v-model="formview.value" label-placeholder="Description" />
+				</div>
+			</div>
+			<div class="vx-row">
+				<div class="vx-col sm:w-2/2 w-full mb-2">
+					<vs-input disabled class="w-full" v-model="formview.department_head_name" label-placeholder="Head of the Department/Incharge Name" />
+				</div>
+			</div>
+			<div class="vx-row">
+					<div class="vx-col sm:w-2/2 w-full mb-2 mt-5">
+            <flat-pickr disabled placeholder="Head of the Department/Incharge Since" v-model="formview.head_since" :config="{ dateFormat: 'd F Y', maxDate: new Date() }" class="w-full"/>
+          </div>
+		  </div>
+
+			<div class="vx-row">
+				<div class="vx-col w-full mt-5">
+					<div class="vx-row mb-6">
+						<div class="vx-col sm:w-2/6">
+							<span>Status:</span>
+						</div>
+						<div class="vx-col sm:w-3/6">
+							<ul class="centerx inline-status">
+								<li class="mr-4">
+									<vs-radio disabled color="success" v-model="formview.status" vs-value="Active">Active</vs-radio>
+								</li>
+								<li class="mr-4">
+									<vs-radio disabled color="danger" v-model="formview.status" vs-value="Inactive">Inactive</vs-radio>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	  <vs-button class="mr-3 mb-2" @click="popupViewField1=false,loadData()" :color="colorLoadingView" type="filled">Close</vs-button>
+    </vs-popup>
+	</div>
 	</vx-card>
 </template>
 
@@ -130,8 +186,12 @@ export default {
 		return {
 			users: [],
 			form: {},
-			popupActive2: false,
-			popupActive3: false,
+			formview: {},
+			popupEditField1: false,
+			popupEditConfirm1: false,
+			popupViewField1: false,
+			popupDeleteConfirm1: false,
+			colorLoadingView: '#ff8000',
 		}
 	},components: {
     flatPickr
@@ -139,13 +199,29 @@ export default {
 	  loadData(){
 		  axios.get('/api/department-list')
                 .then(response => {
-                    this.users = response.data;
-                });
+					this.users = response.data;
+					console.log("Updated");
+				});
+				this.form = {};
+				this.formview = {};
 
 	  },
 		editData:function(sector){
-			this.popupActive2 = true;
+			this.loadData();
+		this.popupEditField1 = true;
 			this.form = sector;
+			
+
+		},
+		deleteData:function(sector){
+			this.popupDeleteConfirm1 = true;
+			this.form = sector;
+
+		},
+		viewData:function(sector){
+				this.formview = sector;
+			this.popupViewField1 = true;
+			
 
 		},
 		openLoadingColor() {
@@ -155,8 +231,8 @@ export default {
 				type: 'sound'
 			})
 			console.log(this.form);
-			this.popupActive2 = false;
-			this.popupActive3 = false;
+			this.popupEditField1 = false;
+			this.popupEditConfirm1 = false;
 			axios.post('/api/add-department', this.form)
   .then(function (response) {
 	 console.log(response);
@@ -185,7 +261,58 @@ export default {
 				this.loadData();
 			}, 2000);
 		} else {
-			this.popupActive3 = false;
+			this.popupEditConfirm1 = false;
+			setTimeout(() => {
+				this.$vs.notify({
+					title: 'Failed',
+					text: 'Something Went Wrong!!',
+					color: 'danger',
+					position: 'top-right',
+					time: '4000',
+					iconPack: 'feather',
+					icon: 'icon-check'
+				});
+			}, 2000);
+		}
+		})
+			
+		},openLoadingDelete() {
+			this.$validator.validateAll().then(result => {
+        if(result) {
+			this.$vs.loading({
+				type: 'sound'
+			})
+			console.log(this.form);
+			this.popupDeleteConfirm1 = false;
+			axios.post('/api/delete-department', this.form)
+  .then(function (response) {
+	 console.log(response);
+	 console.log(response.data);
+
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+
+  setTimeout(() => {
+
+				this.$vs.loading.close()
+			}, 2000);
+			setTimeout(() => {
+				this.$vs.notify({
+					title: 'Success',
+					text: 'Data Added Successfully!!',
+					color: 'success',
+					position: 'top-right',
+					time: '4000',
+					iconPack: 'feather',
+					icon: 'icon-check'
+				});
+				this.form = {};
+				this.loadData();
+			}, 2000);
+		} else {
+			this.popupEditConfirm1 = false;
 			setTimeout(() => {
 				this.$vs.notify({
 					title: 'Failed',

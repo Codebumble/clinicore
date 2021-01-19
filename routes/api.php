@@ -17,9 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/apigeter','ApiGeter@demoshow');
 
 
-//Route::get('/doctor-registration','ApiGeter@doctor');
+// Sector API Routes
 Route::post('/add-department','ApiGeter@add_department');
 Route::get('/department-list','ApiGeter@department_list');
+Route::post('/delete-department','ApiGeter@delete_department');

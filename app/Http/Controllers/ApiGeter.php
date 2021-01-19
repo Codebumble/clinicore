@@ -30,4 +30,12 @@ class ApiGeter extends Controller
     );
     return response()->json('success');
     }
+
+    public function delete_department(Request $request)
+    {   
+        $id = $request->get('id');
+        DB::table('cb_departments')->where('id', '=', $id)->delete();
+
+    return response()->json('Data Deleted');
+    }
 }
