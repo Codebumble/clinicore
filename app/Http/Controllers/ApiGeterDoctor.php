@@ -37,7 +37,7 @@ class ApiGeterDoctor extends Controller
         DB::table('cb_users_details')
     ->updateOrInsert(
         ['unique_id' => $uniqueid],
-        ['username' => $username,'occupation' => 'Doctor', 'full_name' => $fullname, 'date_of_birth' => $birthdate,'address' => $address,'city' => $city, 'postal_code' => $postal, 'country' => $country,'mobile' => $mobile, 'gender' => $gender] 
+        ['username' => $username,'occupation' => 'Doctor', 'full_name' => $fullname, 'date_of_birth' => $birthdate,'address' => $address,'city' => $city, 'postal_code' => $postal, 'country' => $country,'mobile' => $mobile, 'gender' => $gender, 'department' => $department] 
     );
 
     return response()->json('Updated Users');

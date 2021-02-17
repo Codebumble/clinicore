@@ -116,6 +116,7 @@ export default{
         { value: 'Female', text: 'Female' },
         { value: 'Others', text: 'Others' },
       ],
+      gender_selected: [],
       department: [],
     }
   },
@@ -142,10 +143,12 @@ export default{
 			})
 			console.log(this.form);
 			this.popupActive = false;
+       this.form.doc_gender = this.form.doc_gender.text;
+       this.form.department = this.form.department.name;
 			axios.post('/api/add-doctor', this.form)
   .then(function (response) {
-	 console.log(response);
 	 console.log(response.data);
+   console.log(form.doc_gender);
 
   })
   .catch(function (error) {
