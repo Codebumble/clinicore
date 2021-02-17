@@ -3,8 +3,7 @@
       <vx-card title="Add Doctor for Your Hospital">
         <div class="vx-row">
           <div class="vx-col sm:w-1/2 w-full mb-2">
-            <vs-input class="w-full"  icon-pack="feather" icon="icon-plus" label-placeholder="Doctor Full Name*" v-model="form.fullname" v-validate="'required'"/>
-            <span class="text-danger text-sm" v-show="errors.has('Doctor Full Name')">{{ errors.first('Doctor Full Name') }}</span>
+            <vs-input class="w-full"  icon-pack="feather" icon="icon-plus" label-placeholder="Doctor Full Name*" v-model="form.fullname"/>
           </div>
           <div class="vx-col sm:w-1/2 w-full mb-2">
             <vs-input class="w-full"  icon-pack="feather" icon="icon-bookmark" label-placeholder="Doctor Username*" v-model="form.username" />
@@ -13,7 +12,7 @@
             <vs-input class="w-full"  icon-pack="feather" icon="icon-bookmark" label-placeholder="Password*" v-model="form.password" />
           </div>
           <div class="vx-col sm:w-1/2 w-full mb-2">
-            <vs-input class="w-full"  icon-pack="feather" icon="icon-bookmark" label-placeholder="Retype Password*" v-model="retypepassword" />
+            <vs-input class="w-full"  icon-pack="feather" icon="icon-bookmark" label-placeholder="Retype Password*" v-model="form.retypepassword" />
           </div>
           <div class="vx-col sm:w-1/2 w-full mb-2">
             <vs-input class="w-full"  icon-pack="feather" icon="icon-edit" label-placeholder="Address" v-model="form.address" />
@@ -26,6 +25,9 @@
           </div>
           <div class="vx-col sm:w-1/2 w-full mb-2">
             <vs-input class="w-full"  icon-pack="feather" icon="icon-shield" label-placeholder="Country" v-model="form.country" />
+          </div>
+          <div class="vx-col sm:w-1/2 w-full mb-2">
+            <vs-input class="w-full"  icon-pack="feather" icon="icon-shield" label-placeholder="Nationality" v-model="form.nationality" />
           </div>
           <div class="vx-col sm:w-1/2 w-full mb-2 mt-5">
             <flat-pickr placeholder="Date of Birth" v-model="form.birthdate" :config="{ dateFormat: 'd F Y', maxDate: new Date() }" class="w-full" v-validate="'required'" />
@@ -138,6 +140,7 @@ export default{
     openLoadingColor() {
 			this.$validator.validateAll().then(result => {
         if(result) {
+          if(this.form.password == this.form.retypepassword) {
 			this.$vs.loading({
 				type: 'sound'
 			})
@@ -170,7 +173,20 @@ export default{
 					icon: 'icon-check'
 				});
 				this.form = {};
+			}, 2000); } else {
+        this.popupActive = false;
+			setTimeout(() => {
+				this.$vs.notify({
+					title: 'Failed',
+					text: 'Password Didnt Match!!',
+					color: 'danger',
+					position: 'top-right',
+					time: '4000',
+					iconPack: 'feather',
+					icon: 'icon-check'
+				});
 			}, 2000);
+      }
 		} else {
 			this.popupActive = false;
 			setTimeout(() => {

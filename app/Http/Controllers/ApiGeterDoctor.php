@@ -21,6 +21,10 @@ class ApiGeterDoctor extends Controller
         $id = $request->get('id');
         $username = $request->get('username');
         $uniqueid = $request->get('username');
+        $password = $request->get('password');
+        $hashed = Hash::make( $password, [
+            'rounds' => 12,
+        ]);
         $fullname = $request->get('fullname');
         $email = $request->get('email');
         $address = $request->get('address');
@@ -32,12 +36,19 @@ class ApiGeterDoctor extends Controller
         $mobile = $request->get('mobile');
         $department = $request->get('department');
         $nationality = $request->get('nationality');
+        $status = $request->get('status');
 
 
         DB::table('cb_users_details')
     ->updateOrInsert(
         ['unique_id' => $uniqueid],
-        ['username' => $username,'occupation' => 'Doctor', 'full_name' => $fullname, 'date_of_birth' => $birthdate,'address' => $address,'city' => $city, 'postal_code' => $postal, 'country' => $country,'mobile' => $mobile, 'gender' => $gender, 'department' => $department] 
+        ['username' => $username,'occupation' => 'Doctor', 'full_name' => $fullname, 'date_of_birth' => $birthdate,'address' => $address,'city' => $city, 'postal_code' => $postal, 'country' => $country,'mobile' => $mobile, 'gender' => $gender, 'department' => $department, 'nationality' => $nationality] 
+    );
+
+    DB::table('cb_users')
+    ->updateOrInsert(
+        ['username' => $username],
+        ['email' => $email, 'password' => $hashed, 'status' => $status] 
     );
 
     return response()->json('Updated Users');
