@@ -23,3 +23,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/add-department','ApiGeter@add_department');
 Route::get('/department-list','ApiGeter@department_list');
 Route::post('/delete-department','ApiGeter@delete_department');
+Route::post('/add-doctor','ApiGeterDoctor@add_doctor');
