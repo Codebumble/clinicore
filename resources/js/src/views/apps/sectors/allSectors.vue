@@ -23,11 +23,7 @@
 					</vs-td>
 
 					<vs-td :data="sector.name">
-						<vx-tooltip
-    title="Description"
-    :text="sector.value" delay=".2s">
 						{{ sector.name }}
-						</vx-tooltip>
 					</vs-td>
 
 					<vs-td :data="sector.department_head_name">
