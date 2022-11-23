@@ -16,7 +16,7 @@
         "@fullhuman/postcss-purgecss": "^1.2.0",
         "@vue/cli-plugin-babel": "^3.7.0",
         "@vue/cli-plugin-eslint": "^3.7.0",
-        "@vue/cli-service": "^3.7.0",
+        "@vue/cli-service": "^5.0.8",
         "ag-grid-community": "^21.0.1",
         "ag-grid-vue": "^21.0.1",
         "algoliasearch": "^3.33.0",
@@ -78,7 +78,7 @@
         "vuecode.js": "0.0.27",
         "vuedraggable": "^2.21.0",
         "vuejs-datepicker": "^1.5.4",
-        "vuepress": "0.14.11",
+        "vuepress": "1.9.7",
         "vuesax": "3.11.0",
         "vuex": "^3.1.1",
         "xlsx": "^0.15.0"
